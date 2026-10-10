@@ -14,25 +14,30 @@
  * and fails unless each exits 0. The examples themselves are never written to.
  *
  * Which `pwf`: `--cli <path-to-bin.js>`, else the PWF_CLI environment
- * variable, else the built CLI of an engine clone next to this one
- * (`../pwfabric/packages/cli/dist/bin.js`; run `pnpm build` there first).
+ * variable, else the published CLI: `@pwfabric/cli` installed in this folder's
+ * node_modules if there is one, otherwise `@pwfabric/cli@rc` from npm,
+ * installed into the temporary directory for this run. To check against an
+ * engine clone, pass `--cli ../pwfabric/packages/cli/dist/bin.js` (after
+ * `pnpm build` there).
  *
  * Which foundation: `--foundation <.pwpack or folder>`, else the
  * PWF_FOUNDATION environment variable, else the newest `.pwpack` in
  * `../foundation/dist/` (a clone next to this one, built with
  * `node scripts/export-tgz.mjs --canonical`).
  *
- * Node built-ins only.
+ * Node built-ins only (and npm, to fetch the published CLI).
  *
  *   node check.mjs [--cli <path>] [--foundation <path>] [--keep]
  */
 import { spawnSync } from 'node:child_process'
-import { cpSync, existsSync, mkdtempSync, readdirSync, rmSync, statSync } from 'node:fs'
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
+/** The published CLI this check runs when no other is named. */
+const CLI_PACKAGE = '@pwfabric/cli@rc'
 function parseArgs(argv) {
   const opts = { cli: undefined, foundation: undefined, keep: false }
   for (let i = 0; i < argv.length; i++) {
@@ -47,17 +52,44 @@ function parseArgs(argv) {
   return opts
 }
 
-function findCli(flag) {
-  const candidate = flag ?? process.env.PWF_CLI ?? join(HERE, '..', 'pwfabric', 'packages', 'cli', 'dist', 'bin.js')
-  const abs = resolve(candidate)
-  if (!existsSync(abs)) {
+function findCli(flag, work) {
+  const named = flag ?? process.env.PWF_CLI
+  if (named) {
+    const abs = resolve(named)
+    if (!existsSync(abs)) throw new Error(`no pwf CLI at ${abs} (from ${flag ? '--cli' : 'PWF_CLI'}).`)
+    return abs
+  }
+  return installedCli(HERE) ?? installedCli(npmInstall(join(work, '.cli'))) ?? fail()
+
+  function fail() {
     throw new Error(
-      `no pwf CLI at ${abs}.\n` +
-        '  With the engine cloned next to this repository (../pwfabric): run `pnpm build` there first.\n' +
-        '  Elsewhere: pass --cli <path to pwf bin.js> or set PWF_CLI.'
+      `could not install ${CLI_PACKAGE} from npm.\n` +
+        '  Pass --cli <path to pwf bin.js> or set PWF_CLI to use a CLI you already have.'
     )
   }
-  return abs
+}
+
+/** The `pwf` bin of `@pwfabric/cli` in `<root>/node_modules`, if installed there. */
+function installedCli(root) {
+  const pkg = join(root, 'node_modules', '@pwfabric', 'cli', 'package.json')
+  if (!existsSync(pkg)) return undefined
+  const { bin } = JSON.parse(readFileSync(pkg, 'utf8'))
+  const rel = typeof bin === 'string' ? bin : bin?.pwf
+  return rel ? join(dirname(pkg), rel) : undefined
+}
+
+/** Install the published CLI into `dir`; returns `dir`. */
+function npmInstall(dir) {
+  mkdirSync(dir, { recursive: true })
+  console.log(`installing ${CLI_PACKAGE} from npm …`)
+  // npm is a .cmd on Windows, which only runs through a shell; the arguments are fixed.
+  const r = spawnSync(`npm install --no-save --no-audit --no-fund --prefix "${dir}" ${CLI_PACKAGE}`, {
+    encoding: 'utf8',
+    shell: true,
+    windowsHide: true,
+  })
+  if (r.status !== 0) console.error(`${r.stdout ?? ''}${r.stderr ?? ''}`.trimEnd())
+  return dir
 }
 
 function findFoundation(flag) {
@@ -105,13 +137,23 @@ function pwf(cli, args, cwd) {
 
 function main() {
   const opts = parseArgs(process.argv.slice(2))
-  const cli = findCli(opts.cli)
   const foundation = findFoundation(opts.foundation)
   const list = apps()
   if (list.length === 0) throw new Error(`no example apps found in ${HERE}`)
 
   const work = mkdtempSync(join(tmpdir(), 'pwf-examples-'))
-  console.log(`pwf: ${cli}`)
+  let cli
+  try {
+    cli = findCli(opts.cli, work)
+  } catch (e) {
+    rmSync(work, { recursive: true, force: true, maxRetries: 3 })
+    throw e
+  }
+  const v = pwf(cli, ['--version'], work)
+  const first = v.output.trim().split(/\r?\n/)[0] ?? ''
+  // A CLI older than --version prints its usage instead.
+  const version = v.code === 0 && /^(pwf )?v?\d+\.\d+\.\d+/.test(first) ? first : ''
+  console.log(`pwf: ${cli}${version ? ` (${version})` : ''}`)
   console.log(`foundation: ${foundation}`)
   console.log(`work: ${work}\n`)
 

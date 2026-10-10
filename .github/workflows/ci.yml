@@ -20,9 +20,9 @@ permissions:
 
 jobs:
   # Every example: `pwf add <foundation.pwpack>`, `pwf validate` and
-  # `pwf build` in a temporary copy. `pwf` and the foundation pack are both
-  # built from their repositories' main branches, the foundation against that
-  # same engine.
+  # `pwf build` in a temporary copy, once with `pwf` built from the engine's
+  # main branch and once with the published CLI. The foundation pack is built
+  # from its main branch against that same engine.
   ci:
     name: add, validate and build every example
     runs-on: ubuntu-latest
@@ -57,6 +57,9 @@ jobs:
           node scripts/use-engine.mjs ../pwfabric
           pnpm install --no-frozen-lockfile
           node scripts/export-tgz.mjs --canonical
-      - name: Check the examples
+      - name: Check the examples with pwf from the engine's main branch
+        working-directory: examples
+        run: node check.mjs --cli ../pwfabric/packages/cli/dist/bin.js
+      - name: Check the examples with the published pwf (@pwfabric/cli@rc)
         working-directory: examples
         run: node check.mjs
