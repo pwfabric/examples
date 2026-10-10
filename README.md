@@ -14,6 +14,15 @@ any blocks of its own under `atoms/`).
 Each folder has its own `README.md` with the exact commands and what to look
 at.
 
+## Getting `pwf`
+
+The command line is published on npm (Node 22 or newer):
+
+```sh
+npm install -g @pwfabric/cli@rc
+pwf --help
+```
+
 ## The foundation pack
 
 Every app stands on a **foundation pack**, the pack that supplies the blocks
@@ -59,18 +68,22 @@ or set `PWF_FOUNDATION` to that path once and leave the flag out.
 
 ## Checking all three
 
-With the engine ([pwfabric/pwfabric](https://github.com/pwfabric/pwfabric))
-cloned next to this repository as `../pwfabric` and built with `pnpm build`,
-and the foundation as `../foundation` with its `.pwpack` built:
-
 ```sh
-node check.mjs
+node check.mjs --foundation /path/to/foundation-1.0.0.pwpack
 ```
 
 For each app it copies the folder to a temporary directory and runs
 `pwf add <the foundation>`, `pwf validate` and `pwf build`, failing on any
-non-zero exit. With either anywhere else, pass `--cli <path to pwf's bin.js>`
-(or `PWF_CLI`) and `--foundation <path to the .pwpack>` (or `PWF_FOUNDATION`).
+non-zero exit.
+
+It runs the published CLI: `@pwfabric/cli` from this folder's `node_modules`
+if you installed it here, otherwise `@pwfabric/cli@rc`, which it installs from
+npm into its temporary directory. To check against another build — an engine
+clone, say — pass `--cli <path to pwf's bin.js>` (or set `PWF_CLI`), e.g.
+`--cli ../pwfabric/packages/cli/dist/bin.js` after `pnpm build` there.
+
+The foundation can also come from `PWF_FOUNDATION`, or, with no flag, from the
+newest `.pwpack` in `../foundation/dist/` (a clone next to this one).
 
 ## Licence
 
