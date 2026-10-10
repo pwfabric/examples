@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "links": [
+      {
+        "label": "Members",
+        "href": "/"
+      },
+      {
+        "label": "Account",
+        "href": "/account"
+      }
+    ]
+  },
+  "account": {
+    "placement": "navbar",
+    "profileHref": "/account"
+  }
+}

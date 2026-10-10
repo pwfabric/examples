@@ -1,0 +1,257 @@
+{
+  "title": "Home",
+  "blocks": [
+    {
+      "id": "shell",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "shell-nav",
+          "type": "navbar",
+          "props": {
+            "logoText": "Hello, static",
+            "links": [],
+            "sticky": true
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        },
+        {
+          "id": "shell-content",
+          "type": "container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "shell-main",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 0
+              },
+              "children": [
+                {
+                  "id": "hero",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 64,
+                    "gap": 20
+                  },
+                  "children": [
+                    {
+                      "id": "hero-title",
+                      "type": "heading",
+                      "props": {
+                        "text": "Hello from a PWFabric app",
+                        "level": "h1"
+                      }
+                    },
+                    {
+                      "id": "hero-lead",
+                      "type": "text",
+                      "props": {
+                        "content": "This page is a JSON file: app/surfaces/home.receipt.json. Change a sentence, save, and pwf dev reloads it.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    },
+                    {
+                      "id": "hero-actions",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 20,
+                        "padding": 0,
+                        "align": "center",
+                        "justify": "start",
+                        "wrap": true
+                      },
+                      "style": {
+                        "width": "auto"
+                      },
+                      "children": [
+                        {
+                          "id": "hero-about",
+                          "type": "link",
+                          "props": {
+                            "text": "How this app is made →",
+                            "href": "/about"
+                          }
+                        },
+                        {
+                          "id": "hero-gh",
+                          "type": "button",
+                          "props": {
+                            "label": "PWFabric on GitHub",
+                            "href": "https://github.com/pwfabric/pwfabric",
+                            "variant": "secondary"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "points",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 16,
+                    "gap": 16
+                  },
+                  "children": [
+                    {
+                      "id": "points-grid",
+                      "type": "grid",
+                      "props": {
+                        "columns": 3,
+                        "columnsXs": 1,
+                        "gap": 20,
+                        "alignItems": "stretch"
+                      },
+                      "children": [
+                        {
+                          "id": "p1",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "p1-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "Pages are JSON",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "p1-t",
+                              "type": "text",
+                              "props": {
+                                "content": "Each page is a tree of blocks with their props. No build step stands between the file and the page.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "p2",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "p2-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "Blocks come from a pack",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "p2-t",
+                              "type": "text",
+                              "props": {
+                                "content": "The heading, cards, links and navbar here are the foundation pack’s blocks, pinned in pwpack.json by content hash.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "p3",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "p3-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "Runs on any static host",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "p3-t",
+                              "type": "text",
+                              "props": {
+                                "content": "pwf build writes plain files to .pwf/out/. Copy the folder anywhere that serves files.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shell-foot",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 12
+          },
+          "children": [
+            {
+              "id": "shell-foot-div",
+              "type": "divider",
+              "props": {
+                "spacing": 12
+              }
+            },
+            {
+              "id": "shell-foot-c",
+              "type": "text",
+              "props": {
+                "content": "A PWFabric example app. Pages are JSON files under app/surfaces/.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "appearance": {
+    "config": {
+      "theme": {}
+    }
+  },
+  "capabilities": []
+}

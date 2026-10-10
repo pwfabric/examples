@@ -1,0 +1,125 @@
+{
+  "title": "Account",
+  "blocks": [
+    {
+      "id": "shell",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "shell-nav",
+          "type": "navbar",
+          "props": {
+            "logoText": "The Club",
+            "links": [],
+            "sticky": true
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        },
+        {
+          "id": "shell-content",
+          "type": "container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "shell-main",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 0
+              },
+              "children": [
+                {
+                  "id": "me",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 64,
+                    "gap": 12
+                  },
+                  "children": [
+                    {
+                      "id": "me-title",
+                      "type": "heading",
+                      "props": {
+                        "text": "Your account",
+                        "level": "h1"
+                      }
+                    },
+                    {
+                      "id": "me-what",
+                      "type": "text",
+                      "props": {
+                        "content": "Sign-in is optional in this app: the members list is open to everyone. Use Sign in in the top bar; once you are in, the same control shows your name and offers sign-out.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    },
+                    {
+                      "id": "me-dev",
+                      "type": "text",
+                      "props": {
+                        "content": "Under pwf dev the local host has one development user and accepts any e-mail and password.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shell-foot",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 12
+          },
+          "children": [
+            {
+              "id": "shell-foot-div",
+              "type": "divider",
+              "props": {
+                "spacing": 12
+              }
+            },
+            {
+              "id": "shell-foot-c",
+              "type": "text",
+              "props": {
+                "content": "A PWFabric example app with records and sign-in.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "appearance": {
+    "config": {
+      "theme": {}
+    }
+  },
+  "capabilities": []
+}

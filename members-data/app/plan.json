@@ -1,0 +1,13 @@
+{
+  "title": "A members list with sign-in",
+  "pages": [
+    {
+      "key": "members",
+      "purpose": "List the club's members"
+    },
+    {
+      "key": "account",
+      "purpose": "Show who is signed in"
+    }
+  ]
+}

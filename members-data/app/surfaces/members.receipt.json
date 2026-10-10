@@ -1,0 +1,181 @@
+{
+  "title": "Members",
+  "blocks": [
+    {
+      "id": "shell",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "shell-nav",
+          "type": "navbar",
+          "props": {
+            "logoText": "The Club",
+            "links": [],
+            "sticky": true
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        },
+        {
+          "id": "shell-content",
+          "type": "container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "shell-main",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 0
+              },
+              "children": [
+                {
+                  "id": "hero",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 64,
+                    "gap": 12
+                  },
+                  "children": [
+                    {
+                      "id": "hero-title",
+                      "type": "heading",
+                      "props": {
+                        "text": "Members",
+                        "level": "h1"
+                      }
+                    },
+                    {
+                      "id": "hero-lead",
+                      "type": "text",
+                      "props": {
+                        "content": "Read from the app’s own data: the Member entity, seeded from app/data/Member.json.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "list",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 16,
+                    "gap": 16
+                  },
+                  "children": [
+                    {
+                      "id": "rows",
+                      "type": "repeater",
+                      "repeat": "{{Member}}",
+                      "props": {
+                        "columns": 3,
+                        "gap": 20
+                      },
+                      "loadingWhen": "{{__loading.Member}}",
+                      "errorWhen": "{{__errors.Member}}",
+                      "children": [
+                        {
+                          "id": "member",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "member-name",
+                              "type": "heading",
+                              "props": {
+                                "text": "{{item.name}}",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "member-role",
+                              "type": "badge",
+                              "props": {
+                                "text": "{{item.role}}"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shell-foot",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 12
+          },
+          "children": [
+            {
+              "id": "shell-foot-div",
+              "type": "divider",
+              "props": {
+                "spacing": 12
+              }
+            },
+            {
+              "id": "shell-foot-c",
+              "type": "text",
+              "props": {
+                "content": "A PWFabric example app with records and sign-in.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "appearance": {
+    "config": {
+      "theme": {}
+    }
+  },
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "config": {
+        "dataSources": [
+          {
+            "id": "Member",
+            "kind": "entity",
+            "entityType": "Member"
+          }
+        ],
+        "initialState": {}
+      }
+    }
+  ]
+}

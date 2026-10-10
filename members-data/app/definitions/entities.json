@@ -1,0 +1,19 @@
+{
+  "entities": [
+    {
+      "typeId": "Member",
+      "displayName": "Member",
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "role",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

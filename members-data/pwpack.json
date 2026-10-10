@@ -1,0 +1,32 @@
+{
+  "id": "@pwpack/examples/members-data",
+  "version": "1.0.0",
+  "formatVersion": "1.0",
+  "engines": {
+    "pwfabric": ">=1.0 <2"
+  },
+  "requires": [
+    {
+      "id": "@pwfabric/foundation",
+      "range": "^1.0.0"
+    }
+  ],
+  "license": {
+    "fork": true,
+    "redistribute": true
+  },
+  "app": {
+    "entry": "members",
+    "surfaceOrder": [
+      "members",
+      "account"
+    ]
+  },
+  "packs": [
+    {
+      "id": "@pwfabric/foundation",
+      "version": "1.0.0",
+      "hash": "sha256:8687aafa823ae6932baf2b06fe83ac45ab1b69ce67848c13d61f420e89660400"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # The examples follow the engine's main branch, which moves without them:
+  # a weekly run catches a `pwf` change that breaks one of them.
+  schedule:
+    - cron: '17 4 * * 1'
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# No secrets: a pull request from a fork runs exactly what a maintainer's does.
+permissions:
+  contents: read
+
+jobs:
+  # Every example: `pwf add <foundation.pwpack>`, `pwf validate` and
+  # `pwf build` in a temporary copy. `pwf` and the foundation pack are both
+  # built from their repositories' main branches, the foundation against that
+  # same engine.
+  ci:
+    name: add, validate and build every example
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          path: examples
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          repository: pwfabric/pwfabric
+          persist-credentials: false
+          path: pwfabric
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          repository: pwfabric/foundation
+          persist-credentials: false
+          path: foundation
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
+        with:
+          package_json_file: pwfabric/package.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - name: Build pwf and the engine packages the foundation uses
+        working-directory: pwfabric
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm -r --filter "@pwfabric/cli..." --filter "@pwfabric/runtime..." --filter "@pwfabric/pack..." build
+      - name: Build the foundation pack
+        working-directory: foundation
+        run: |
+          node scripts/use-engine.mjs ../pwfabric
+          pnpm install --no-frozen-lockfile
+          node scripts/export-tgz.mjs --canonical
+      - name: Check the examples
+        working-directory: examples
+        run: node check.mjs

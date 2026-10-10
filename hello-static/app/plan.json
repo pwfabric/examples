@@ -1,0 +1,13 @@
+{
+  "title": "Hello, static",
+  "pages": [
+    {
+      "key": "home",
+      "purpose": "Say what the site is"
+    },
+    {
+      "key": "about",
+      "purpose": "Say who made it"
+    }
+  ]
+}

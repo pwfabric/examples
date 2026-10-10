@@ -1,0 +1,248 @@
+{
+  "title": "About",
+  "blocks": [
+    {
+      "id": "shell",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "shell-nav",
+          "type": "navbar",
+          "props": {
+            "logoText": "Hello, static",
+            "links": [],
+            "sticky": true
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        },
+        {
+          "id": "shell-content",
+          "type": "container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "shell-main",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 0
+              },
+              "children": [
+                {
+                  "id": "about",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 64,
+                    "gap": 12
+                  },
+                  "children": [
+                    {
+                      "id": "about-title",
+                      "type": "heading",
+                      "props": {
+                        "text": "How this app is made",
+                        "level": "h1"
+                      }
+                    },
+                    {
+                      "id": "about-lead",
+                      "type": "text",
+                      "props": {
+                        "content": "Two pages, one theme and a navigation file. Nothing else.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "files",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 16,
+                    "gap": 24
+                  },
+                  "children": [
+                    {
+                      "id": "files-grid",
+                      "type": "grid",
+                      "props": {
+                        "columns": 3,
+                        "columnsXs": 1,
+                        "gap": 20,
+                        "alignItems": "stretch"
+                      },
+                      "children": [
+                        {
+                          "id": "f1",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "f1-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "pwpack.json",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "f1-t",
+                              "type": "text",
+                              "props": {
+                                "content": "The app’s id and version, its two pages in order, and the foundation it stands on.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "f2",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "f2-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "app/definitions/",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "f2-t",
+                              "type": "text",
+                              "props": {
+                                "content": "navigation.json fills the top bar’s links; appearance.json picks the foundation’s zinc theme.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "f3",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "f3-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "app/surfaces/",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "f3-t",
+                              "type": "text",
+                              "props": {
+                                "content": "One *.receipt.json per page. Both pages share the same shell: a top bar, the page, a footer line.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "about-back",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 20,
+                        "padding": 0,
+                        "align": "center",
+                        "justify": "start",
+                        "wrap": true
+                      },
+                      "style": {
+                        "width": "auto"
+                      },
+                      "children": [
+                        {
+                          "id": "about-home",
+                          "type": "link",
+                          "props": {
+                            "text": "← Back to the home page",
+                            "href": "/"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shell-foot",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 12
+          },
+          "children": [
+            {
+              "id": "shell-foot-div",
+              "type": "divider",
+              "props": {
+                "spacing": 12
+              }
+            },
+            {
+              "id": "shell-foot-c",
+              "type": "text",
+              "props": {
+                "content": "A PWFabric example app. Pages are JSON files under app/surfaces/.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "appearance": {
+    "config": {
+      "theme": {}
+    }
+  },
+  "capabilities": []
+}

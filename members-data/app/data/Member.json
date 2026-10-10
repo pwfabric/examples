@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": "m-001",
+      "entityType": "Member",
+      "name": "Ada",
+      "role": "Chair"
+    },
+    {
+      "id": "m-002",
+      "entityType": "Member",
+      "name": "Grace",
+      "role": "Treasurer"
+    },
+    {
+      "id": "m-003",
+      "entityType": "Member",
+      "name": "Linus",
+      "role": "Volunteer"
+    }
+  ]
+}

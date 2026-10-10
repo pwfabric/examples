@@ -1,0 +1,10 @@
+{
+  "navbar": {
+    "links": [
+      {
+        "label": "Home",
+        "href": "/"
+      }
+    ]
+  }
+}

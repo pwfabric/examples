@@ -1,0 +1,221 @@
+{
+  "title": "Home",
+  "blocks": [
+    {
+      "id": "shell",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "shell-nav",
+          "type": "navbar",
+          "props": {
+            "logoText": "Own block",
+            "links": [],
+            "sticky": true
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        },
+        {
+          "id": "shell-content",
+          "type": "container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "shell-main",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 0
+              },
+              "children": [
+                {
+                  "id": "hero",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 64,
+                    "gap": 12
+                  },
+                  "children": [
+                    {
+                      "id": "hero-title",
+                      "type": "heading",
+                      "props": {
+                        "text": "A page with its own block",
+                        "level": "h1"
+                      }
+                    },
+                    {
+                      "id": "hero-lead",
+                      "type": "text",
+                      "props": {
+                        "content": "Everything on this page comes from the foundation pack except the greeting below, which this app brings itself.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "demo",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 16,
+                    "gap": 16
+                  },
+                  "children": [
+                    {
+                      "id": "demo-grid",
+                      "type": "grid",
+                      "props": {
+                        "columns": 2,
+                        "columnsXs": 1,
+                        "gap": 20,
+                        "alignItems": "stretch"
+                      },
+                      "children": [
+                        {
+                          "id": "own",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "own-greeting",
+                              "type": "greeting",
+                              "props": {
+                                "name": "visitor",
+                                "emphasis": true
+                              }
+                            },
+                            {
+                              "id": "own-t",
+                              "type": "text",
+                              "props": {
+                                "content": "The app’s own block: atoms/blocks/custom/greeting/ — a manifest.json and a component.tsx. pwf build compiles it beside the foundation’s.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "found",
+                          "type": "card",
+                          "props": {
+                            "padding": 24,
+                            "gap": 8,
+                            "shadow": "sm",
+                            "borderRadius": 12
+                          },
+                          "children": [
+                            {
+                              "id": "found-h",
+                              "type": "heading",
+                              "props": {
+                                "text": "A foundation card",
+                                "level": "h3"
+                              }
+                            },
+                            {
+                              "id": "found-t",
+                              "type": "text",
+                              "props": {
+                                "content": "This card, its heading, this text and the button below are foundation blocks. Both kinds sit in one page and one theme.",
+                                "color": "var(--pw-color-text-muted)"
+                              }
+                            },
+                            {
+                              "id": "found-actions",
+                              "type": "container",
+                              "props": {
+                                "direction": "row",
+                                "gap": 20,
+                                "padding": 0,
+                                "align": "center",
+                                "justify": "start",
+                                "wrap": true
+                              },
+                              "style": {
+                                "width": "auto"
+                              },
+                              "children": [
+                                {
+                                  "id": "found-gh",
+                                  "type": "button",
+                                  "props": {
+                                    "label": "Read defineBlock()",
+                                    "href": "https://pwfabric.com/authoring/define-block",
+                                    "variant": "secondary"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shell-foot",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 12
+          },
+          "children": [
+            {
+              "id": "shell-foot-div",
+              "type": "divider",
+              "props": {
+                "spacing": 12
+              }
+            },
+            {
+              "id": "shell-foot-c",
+              "type": "text",
+              "props": {
+                "content": "A PWFabric example app with a block of its own.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "appearance": {
+    "config": {
+      "theme": {}
+    }
+  },
+  "capabilities": []
+}
