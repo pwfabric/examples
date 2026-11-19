@@ -5,8 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  # The examples follow the engine's main branch, which moves without them:
-  # a weekly run catches a `pwf` change that breaks one of them.
+  # The packs and the published `pwf` move without the examples: a weekly
+  # run catches a change that breaks one of them.
   schedule:
     - cron: '17 4 * * 1'
 
@@ -19,10 +19,9 @@ permissions:
   contents: read
 
 jobs:
-  # Every example: `pwf add <foundation.pwpack>`, `pwf validate` and
-  # `pwf build` in a temporary copy, once with `pwf` built from the engine's
-  # main branch and once with the published CLI. The foundation pack is built
-  # from its main branch against that same engine.
+  # Every example: `pwf add` for each pack it requires, `pwf validate` and
+  # `pwf build` in a temporary copy, with the published `pwf` and the packs
+  # built from pwfabric/packs main.
   ci:
     name: add, validate and build every example
     runs-on: ubuntu-latest
@@ -32,34 +31,20 @@ jobs:
           path: examples
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          repository: pwfabric/pwfabric
+          repository: pwfabric/packs
           persist-credentials: false
-          path: pwfabric
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-        with:
-          repository: pwfabric/foundation
-          persist-credentials: false
-          path: foundation
+          path: packs
       - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         with:
-          package_json_file: pwfabric/package.json
+          package_json_file: packs/package.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
-      - name: Build pwf and the engine packages the foundation uses
-        working-directory: pwfabric
+      - name: Build the packs
+        working-directory: packs
         run: |
           pnpm install --frozen-lockfile
-          pnpm -r --filter "@pwfabric/cli..." --filter "@pwfabric/runtime..." --filter "@pwfabric/pack..." build
-      - name: Build the foundation pack
-        working-directory: foundation
-        run: |
-          node scripts/use-engine.mjs ../pwfabric
-          pnpm install --no-frozen-lockfile
-          node scripts/export-tgz.mjs --canonical
-      - name: Check the examples with pwf from the engine's main branch
+          pnpm build
+      - name: Check the examples with the published pwf (@pwfabric/cli@3)
         working-directory: examples
-        run: node check.mjs --cli ../pwfabric/packages/cli/dist/bin.js
-      - name: Check the examples with the published pwf (@pwfabric/cli@rc)
-        working-directory: examples
-        run: node check.mjs
+        run: node check.mjs --packs ../packs/dist

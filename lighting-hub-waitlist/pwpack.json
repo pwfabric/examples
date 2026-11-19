@@ -1,0 +1,43 @@
+{
+  "id": "@pwpack/local/lighting-hub-waitlist",
+  "version": "1.0.0",
+  "formatVersion": "1.0",
+  "engines": {
+    "pwfabric": ">=3.0.0 <4"
+  },
+  "requires": [
+    {
+      "id": "@pwpack/foundation",
+      "range": "^1.0.0"
+    },
+    {
+      "id": "@pwpack/widgets",
+      "range": "^1.0.0"
+    }
+  ],
+  "license": {
+    "fork": true,
+    "redistribute": true
+  },
+  "app": {
+    "entry": "home",
+    "surfaceOrder": [
+      "home",
+      "how-it-works",
+      "plans"
+    ],
+    "notFound": "not-found"
+  },
+  "packs": [
+    {
+      "id": "@pwpack/foundation",
+      "version": "1.0.0",
+      "hash": "sha256:88344a3158ef7db54ebf25d3885719efd8668031bdace9921470f6397cdc5f31"
+    },
+    {
+      "id": "@pwpack/widgets",
+      "version": "1.0.0",
+      "hash": "sha256:907e93da0e11c6fe2a094f74f779582c81f05e9fd3a08d92f3736ea7586cf0f8"
+    }
+  ]
+}

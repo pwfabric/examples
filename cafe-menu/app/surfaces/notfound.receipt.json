@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "notfound",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-cafe-menu"
+  },
+  "title": "Page not found",
+  "description": "This page or dish is not on Example Café's menu.",
+  "category": "content",
+  "tags": [
+    "menu",
+    "restaurant",
+    "cafe"
+  ],
+  "blocks": [
+    {
+      "id": "cafe",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "cafe-brand",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "keepRow": true,
+            "align": "center",
+            "gap": 10,
+            "padding": 12,
+            "landmark": "header"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-brand-logo",
+              "type": "image",
+              "props": {
+                "src": "pwpack/media/logo.svg",
+                "alt": "Example Café",
+                "height": 28,
+                "width": "auto",
+                "objectFit": "contain",
+                "hideWhenEmpty": true,
+                "priority": true
+              },
+              "style": {
+                "flex": "0 0 auto"
+              }
+            },
+            {
+              "id": "cafe-brand-name",
+              "type": "text",
+              "props": {
+                "content": "Example Café",
+                "fontWeight": "bold",
+                "hideWhenSet": "pwpack/media/logo.svg"
+              },
+              "style": {
+                "flex": "0 1 auto",
+                "fontSize": "var(--pw-font-size-lg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cafe-content",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "landmark": "main"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "--pw-section-inset": "0px",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-main",
+              "type": "container",
+              "props": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "id": "missing",
+                  "type": "container",
+                  "props": {
+                    "direction": "column",
+                    "gap": 10,
+                    "align": "center",
+                    "padding": 32
+                  },
+                  "children": [
+                    {
+                      "id": "missing-icon",
+                      "type": "icon",
+                      "props": {
+                        "name": "utensils",
+                        "size": 36,
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    },
+                    {
+                      "id": "missing-title",
+                      "type": "heading",
+                      "props": {
+                        "text": "Page not found",
+                        "level": "h1",
+                        "textAlign": "center"
+                      },
+                      "style": {
+                        "fontSize": "var(--pw-font-size-xl, 1.25rem)",
+                        "margin": "0"
+                      }
+                    },
+                    {
+                      "id": "missing-body",
+                      "type": "text",
+                      "props": {
+                        "content": "The dish may have come off the menu, or the link is mistyped. Everything we serve today is on the menu.",
+                        "color": "var(--pw-color-text-muted)",
+                        "textAlign": "center"
+                      }
+                    },
+                    {
+                      "id": "missing-cta",
+                      "type": "button",
+                      "props": {
+                        "label": "Back to the menu",
+                        "href": "/menu",
+                        "variant": "outline"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cafe-foot",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "padding": 0,
+            "landmark": "footer"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-legal",
+              "type": "text",
+              "props": {
+                "content": "© 2026 Example Café · 14 Mill Lane, Exampleton",
+                "textAlign": "left",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-xs)",
+                "padding": "16px 0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cafe-bar",
+          "type": "bottom-bar",
+          "props": {
+            "items": [
+              {
+                "label": "Menu",
+                "href": "/menu",
+                "icon": "utensils"
+              },
+              {
+                "label": "Visit",
+                "href": "/visit",
+                "icon": "map-pin"
+              }
+            ],
+            "activeHref": ""
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "knowledge": {
+    "purpose": "An unknown address or dish id meets an in-shell page that says so and leads back to the menu.",
+    "laws": [
+      "The not-found page wears the same shell as every page",
+      "Its title is the page's one h1",
+      "There is always one way on: the menu"
+    ],
+    "provenance": "Built from shell-bottombar-flow and empty-state.",
+    "patternsExercised": [
+      "shell-bottombar-flow",
+      "empty-state"
+    ]
+  }
+}

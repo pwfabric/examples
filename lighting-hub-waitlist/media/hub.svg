@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="200 160 1120 490" width="1120" height="490" role="img"><title>The Example Light hub, a pale disc the size of a coaster with an amber ring, on a sideboard beside a lit lamp and a plant</title><defs><radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f2a43a" stop-opacity=".45"/><stop offset="1" stop-color="#f2a43a" stop-opacity="0"/></radialGradient></defs><rect width="1600" height="700" fill="#2a1f19"/>
+<ellipse cx="800" cy="450" rx="260" ry="130" fill="url(#halo)"/>
+<rect x="0" y="470" width="1600" height="230" fill="#3a2b21"/>
+<rect x="260" y="470" width="1080" height="34" rx="8" fill="#4d3829"/>
+<rect x="300" y="504" width="1000" height="150" rx="10" fill="#3f2e23"/><line x1="800" y1="510" x2="800" y2="650" stroke="#2a1f19" stroke-width="4"/>
+<circle cx="770" cy="590" r="7" fill="#2a1f19"/><circle cx="830" cy="590" r="7" fill="#2a1f19"/>
+<g transform="translate(800 468) scale(0.4) translate(-800 -468)"><ellipse cx="800" cy="468" rx="150" ry="22" fill="#120d0a" opacity=".55"/>
+<path d="M660 440 q0 -26 30 -30 h220 q30 4 30 30 v14 q0 14 -14 14 h-252 q-14 0 -14 -14 z" fill="#efe5d6"/>
+<ellipse cx="800" cy="412" rx="132" ry="16" fill="#fbf4e8"/>
+<ellipse cx="800" cy="452" rx="138" ry="6" fill="#f2a43a"/><ellipse cx="800" cy="452" rx="150" ry="14" fill="#f2a43a" opacity=".35"/>
+<circle cx="800" cy="410" r="5" fill="#c8663a"/></g>
+<path d="M1250 470 v-230" stroke="#1a130f" stroke-width="5"/><path d="M1200 240 h100 l-20 -70 h-60 z" fill="#f6d9a8"/><ellipse cx="1250" cy="240" rx="50" ry="7" fill="#ffd08a"/>
+<rect x="250" y="380" width="120" height="90" rx="10" fill="#6f7f74"/><path d="M310 380 q-30 -80 -10 -150 M310 380 q30 -70 20 -140 M310 380 q0 -90 4 -170" stroke="#8fa08f" stroke-width="10" fill="none" stroke-linecap="round"/></svg>

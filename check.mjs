@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * Checks that every example app still installs its foundation, validates and
- * builds with the `pwf` command line — the same three commands its README
- * tells a reader to run.
+ * Checks that every example app still installs its packs, validates and
+ * builds with the `pwf` command line — the commands its README tells a reader
+ * to run.
  *
  * For each app folder here (every directory with a pwpack.json) it copies the
  * app to a fresh temporary directory, then runs, inside the copy:
  *
- *   pwf add <the foundation>
+ *   pwf add <each pack the app requires>
  *   pwf validate
  *   pwf build
  *
@@ -15,19 +15,20 @@
  *
  * Which `pwf`: `--cli <path-to-bin.js>`, else the PWF_CLI environment
  * variable, else the published CLI: `@pwfabric/cli` installed in this folder's
- * node_modules if there is one, otherwise `@pwfabric/cli@rc` from npm,
+ * node_modules if there is one, otherwise `@pwfabric/cli@3` from npm,
  * installed into the temporary directory for this run. To check against an
  * engine clone, pass `--cli ../pwfabric/packages/cli/dist/bin.js` (after
  * `pnpm build` there).
  *
- * Which foundation: `--foundation <.pwpack or folder>`, else the
- * PWF_FOUNDATION environment variable, else the newest `.pwpack` in
- * `../foundation/dist/` (a clone next to this one, built with
- * `node scripts/export-tgz.mjs --canonical`).
+ * Which packs: `--packs <folder>`, else the PWF_PACKS environment variable,
+ * else `../packs/dist/` (a clone of pwfabric/packs next to this one, after
+ * `pnpm build` there). The folder holds `<pack>-<version>.pwpack` files, as
+ * the packs releases name them; for each pack an app requires, the newest
+ * file of that pack is added.
  *
  * Node built-ins only (and npm, to fetch the published CLI).
  *
- *   node check.mjs [--cli <path>] [--foundation <path>] [--keep]
+ *   node check.mjs [--cli <path>] [--packs <folder>] [--keep]
  */
 import { spawnSync } from 'node:child_process'
 import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs'
@@ -37,16 +38,16 @@ import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 /** The published CLI this check runs when no other is named. */
-const CLI_PACKAGE = '@pwfabric/cli@rc'
+const CLI_PACKAGE = '@pwfabric/cli@3'
 function parseArgs(argv) {
-  const opts = { cli: undefined, foundation: undefined, keep: false }
+  const opts = { cli: undefined, packs: undefined, keep: false }
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
     if (a === '--keep') opts.keep = true
     else if (a === '--cli') opts.cli = argv[++i]
     else if (a.startsWith('--cli=')) opts.cli = a.slice('--cli='.length)
-    else if (a === '--foundation') opts.foundation = argv[++i]
-    else if (a.startsWith('--foundation=')) opts.foundation = a.slice('--foundation='.length)
+    else if (a === '--packs') opts.packs = argv[++i]
+    else if (a.startsWith('--packs=')) opts.packs = a.slice('--packs='.length)
     else throw new Error(`unknown argument: ${a}`)
   }
   return opts
@@ -92,23 +93,28 @@ function npmInstall(dir) {
   return dir
 }
 
-function findFoundation(flag) {
-  let candidate = flag ?? process.env.PWF_FOUNDATION
-  if (!candidate) {
-    const dist = join(HERE, '..', 'foundation', 'dist')
-    const packs = existsSync(dist) ? readdirSync(dist).filter((f) => f.endsWith('.pwpack')).sort() : []
-    if (packs.length) candidate = join(dist, packs[packs.length - 1])
-  }
-  const abs = candidate ? resolve(candidate) : ''
-  if (!abs || !existsSync(abs)) {
+function findPacks(flag) {
+  const dir = resolve(flag ?? process.env.PWF_PACKS ?? join(HERE, '..', 'packs', 'dist'))
+  const files = existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith('.pwpack')) : []
+  if (files.length === 0) {
     throw new Error(
-      `no foundation pack${abs ? ` at ${abs}` : ''}.\n` +
-        '  Download foundation-<version>.pwpack from the releases of pwfabric/foundation,\n' +
-        '  or build it in a clone next to this repository (node scripts/export-tgz.mjs --canonical),\n' +
-        '  and pass --foundation <path> or set PWF_FOUNDATION.'
+      `no .pwpack files in ${dir}.\n` +
+        '  Download them from the releases of pwfabric/packs, or build them in a clone\n' +
+        '  next to this repository (pnpm build), and pass --packs <folder> or set PWF_PACKS.'
     )
   }
-  return abs
+  return { dir, files }
+}
+
+/** The newest `<name>-<version>.pwpack` for the pack `id` (`@pwpack/foundation` → foundation-1.0.0.pwpack). */
+function packFile(packs, id) {
+  const name = id.replace(/^@pwpack\//, '')
+  const versionOf = (f) => f.slice(name.length + 1, -'.pwpack'.length)
+  const mine = packs.files.filter((f) => f.startsWith(`${name}-`) && /^\d+\.\d+\.\d+$/.test(versionOf(f)))
+  if (mine.length === 0) throw new Error(`no ${name}-<version>.pwpack in ${packs.dir}`)
+  const parts = (f) => versionOf(f).split('.').map(Number)
+  mine.sort((a, b) => parts(a).reduce((d, x, i) => d || x - parts(b)[i], 0))
+  return join(packs.dir, mine[mine.length - 1])
 }
 
 /** Every example app: a directory here with a pwpack.json. */
@@ -137,7 +143,7 @@ function pwf(cli, args, cwd) {
 
 function main() {
   const opts = parseArgs(process.argv.slice(2))
-  const foundation = findFoundation(opts.foundation)
+  const packs = findPacks(opts.packs)
   const list = apps()
   if (list.length === 0) throw new Error(`no example apps found in ${HERE}`)
 
@@ -154,7 +160,7 @@ function main() {
   // A CLI older than --version prints its usage instead.
   const version = v.code === 0 && /^(pwf )?v?\d+\.\d+\.\d+/.test(first) ? first : ''
   console.log(`pwf: ${cli}${version ? ` (${version})` : ''}`)
-  console.log(`foundation: ${foundation}`)
+  console.log(`packs: ${packs.dir}`)
   console.log(`work: ${work}\n`)
 
   let failed = 0
@@ -162,9 +168,11 @@ function main() {
     const dir = join(work, app)
     copyApp(join(HERE, app), dir)
     let ok = true
-    for (const args of [['add', foundation], ['validate'], ['build']]) {
+    const requires = JSON.parse(readFileSync(join(dir, 'pwpack.json'), 'utf8')).requires ?? []
+    const steps = [...requires.map((r) => ['add', packFile(packs, r.id)]), ['validate'], ['build']]
+    for (const args of steps) {
       const { code, output } = pwf(cli, args, dir)
-      const line = `pwf ${args.join(' ')}`
+      const line = `pwf ${args.map((a) => (a.endsWith('.pwpack') ? a.split(/[\\/]/).pop() : a)).join(' ')}`
       if (code === 0) {
         console.log(`  ✓ ${app.padEnd(14)} ${line}`)
       } else {

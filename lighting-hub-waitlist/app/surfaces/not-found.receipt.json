@@ -1,0 +1,446 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "not-found",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-lighting-hub-waitlist"
+  },
+  "title": "Page not found",
+  "description": "This address is not a page of Example Light.",
+  "category": "content",
+  "tags": [
+    "lighting",
+    "not-found"
+  ],
+  "blocks": [
+    {
+      "id": "stage",
+      "type": "section",
+      "props": {
+        "paddingY": 0,
+        "paddingX": 0,
+        "gap": 0,
+        "maxWidth": 4000,
+        "backgroundGradient": {
+          "from": "color-mix(in srgb, var(--pw-color-primary) 22%, var(--pw-color-background))",
+          "to": "var(--pw-color-background)",
+          "type": "radial",
+          "at": "50% 115%"
+        }
+      },
+      "style": {
+        "position": "fixed",
+        "top": "0",
+        "left": "0",
+        "width": "100vw",
+        "height": "100vh",
+        "zIndex": "0",
+        "overflow": "hidden",
+        "pointerEvents": "none"
+      },
+      "children": [
+        {
+          "id": "stage-amber",
+          "type": "section",
+          "props": {
+            "paddingY": 0,
+            "paddingX": 0,
+            "gap": 0,
+            "maxWidth": 4000,
+            "backgroundGradient": {
+              "from": "color-mix(in srgb, var(--pw-color-primary) 22%, transparent)",
+              "to": "transparent",
+              "type": "conic",
+              "at": "50% 50%"
+            }
+          },
+          "style": {
+            "position": "absolute",
+            "top": "-30%",
+            "left": "-25%",
+            "width": "150%",
+            "height": "160%",
+            "borderRadius": "50%",
+            "filter": "blur(80px) saturate(140%)",
+            "opacity": "0.7",
+            "mixBlendMode": "screen",
+            "pointerEvents": "none"
+          }
+        },
+        {
+          "id": "stage-dusk",
+          "type": "section",
+          "props": {
+            "paddingY": 0,
+            "paddingX": 0,
+            "gap": 0,
+            "maxWidth": 4000,
+            "backgroundGradient": {
+              "from": "transparent",
+              "to": "color-mix(in srgb, var(--pw-color-info) 12%, transparent)",
+              "type": "conic",
+              "at": "50% 50%"
+            }
+          },
+          "style": {
+            "position": "absolute",
+            "top": "-30%",
+            "left": "-25%",
+            "width": "150%",
+            "height": "160%",
+            "borderRadius": "50%",
+            "filter": "blur(80px) saturate(140%)",
+            "opacity": "0.7",
+            "mixBlendMode": "screen",
+            "pointerEvents": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nav",
+      "type": "section",
+      "props": {
+        "paddingY": 0,
+        "gap": 0,
+        "maxWidth": 1240,
+        "landmark": "header"
+      },
+      "children": [
+        {
+          "id": "nav-row",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "gap": 16,
+            "align": "center",
+            "justify": "between",
+            "padding": 0,
+            "keepRow": true,
+            "wrap": true
+          },
+          "style": {
+            "paddingTop": "28px",
+            "paddingBottom": "28px"
+          },
+          "children": [
+            {
+              "id": "nav-brand",
+              "type": "link",
+              "props": {
+                "text": "Example Light",
+                "href": "/home",
+                "underline": "none",
+                "fontWeight": "semibold",
+                "color": "inherit"
+              },
+              "style": {
+                "letterSpacing": "0.02em",
+                "flex": "0 0 auto",
+                "minHeight": "44px",
+                "display": "inline-flex",
+                "alignItems": "center"
+              }
+            },
+            {
+              "id": "nav-caps",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "gap": 4,
+                "align": "center",
+                "padding": 6,
+                "keepRow": true,
+                "landmark": "nav",
+                "label": "Main"
+              },
+              "style": {
+                "flex": {
+                  "xs": "1 1 100%",
+                  "md": "0 0 auto"
+                },
+                "borderRadius": "999px",
+                "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
+                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                "backdropFilter": "blur(18px) saturate(140%)",
+                "maxWidth": "100%"
+              },
+              "children": [
+                {
+                  "id": "nav-link",
+                  "type": "link",
+                  "props": {
+                    "text": "{{item.label}}",
+                    "href": "{{item.href}}",
+                    "current": "{{item.active}}",
+                    "underline": "none",
+                    "color": "inherit"
+                  },
+                  "style": {
+                    "borderRadius": "999px",
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "padding": {
+                      "xs": "8px 8px",
+                      "md": "8px 14px"
+                    },
+                    "flex": {
+                      "xs": "1 1 0",
+                      "md": "0 0 auto"
+                    },
+                    "transition": "background-color 160ms ease, color 160ms ease",
+                    "display": "inline-flex",
+                    "alignItems": "center",
+                    "minHeight": "44px",
+                    "justifyContent": "center",
+                    "whiteSpace": "nowrap",
+                    "textAlign": "center",
+                    "width": "100%",
+                    "boxSizing": "border-box"
+                  },
+                  "states": {
+                    "hover": {
+                      "backgroundColor": "rgba(255,255,255,0.08)"
+                    }
+                  }
+                }
+              ],
+              "repeat": "{{state.pillLinks}}",
+              "layout": {
+                "order": {
+                  "xs": 3,
+                  "md": 0
+                }
+              }
+            },
+            {
+              "id": "nav-cta",
+              "type": "button",
+              "props": {
+                "label": "Join the waitlist",
+                "href": "/plans#waitlist",
+                "variant": "ghost"
+              },
+              "style": {
+                "flex": "0 0 auto",
+                "borderRadius": "999px",
+                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                "padding": "10px 18px",
+                "transition": "background-color 160ms ease",
+                "minHeight": "44px"
+              },
+              "states": {
+                "hover": {
+                  "backgroundColor": "rgba(255,255,255,0.08)"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "style": {
+        "position": "relative",
+        "zIndex": "2"
+      }
+    },
+    {
+      "id": "lost",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "landmark": "main"
+      },
+      "children": [
+        {
+          "id": "lost-s",
+          "type": "section",
+          "props": {
+            "paddingY": 64,
+            "gap": 16
+          },
+          "children": [
+            {
+              "id": "lost-h",
+              "type": "heading",
+              "props": {
+                "text": "Page not found",
+                "level": "h1"
+              }
+            },
+            {
+              "id": "lost-t",
+              "type": "text",
+              "props": {
+                "content": "This address is not a page of Example Light. The link may be old or mistyped.",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "maxWidth": "65ch",
+                "margin": "0"
+              }
+            },
+            {
+              "id": "lost-a",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "gap": 12,
+                "padding": 0,
+                "wrap": true
+              },
+              "children": [
+                {
+                  "id": "lost-home",
+                  "type": "button",
+                  "props": {
+                    "label": "Go to the home page",
+                    "href": "/home",
+                    "variant": "primary"
+                  },
+                  "style": {
+                    "flex": "0 0 auto"
+                  }
+                },
+                {
+                  "id": "lost-plans",
+                  "type": "button",
+                  "props": {
+                    "label": "Compare the kits",
+                    "href": "/plans#kits",
+                    "variant": "outline"
+                  },
+                  "style": {
+                    "flex": "0 0 auto"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "style": {
+        "position": "relative",
+        "zIndex": "1",
+        "width": "100%",
+        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+        "marginInline": "auto",
+        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+        "boxSizing": "border-box",
+        "--pw-section-inset": "0px"
+      }
+    },
+    {
+      "id": "foot",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "landmark": "footer"
+      },
+      "style": {
+        "position": "relative",
+        "zIndex": "1",
+        "width": "100%",
+        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+        "marginInline": "auto",
+        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+        "boxSizing": "border-box",
+        "--pw-section-inset": "0px"
+      },
+      "children": [
+        {
+          "id": "foot-s",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 8
+          },
+          "style": {
+            "borderTop": "1px solid var(--pw-color-border)",
+            "marginTop": "24px"
+          },
+          "children": [
+            {
+              "id": "foot-row",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "justify": "between",
+                "gap": 12,
+                "padding": 0,
+                "wrap": true
+              },
+              "children": [
+                {
+                  "id": "foot-c",
+                  "type": "text",
+                  "props": {
+                    "content": "© 2026 Example Light · hello@example.com",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "flex": "0 1 auto",
+                    "minWidth": "0"
+                  }
+                },
+                {
+                  "id": "foot-f",
+                  "type": "text",
+                  "props": {
+                    "content": "Private beta on hub firmware 0.9 · kits ship March 2027",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "flex": "0 1 auto",
+                    "minWidth": "0"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "initialState": {
+          "pillLinks": [
+            {
+              "label": "Home",
+              "href": "/home",
+              "active": false
+            },
+            {
+              "label": "How it works",
+              "href": "/how-it-works",
+              "active": false
+            },
+            {
+              "label": "Kits",
+              "href": "/plans",
+              "active": false
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "An unknown address: say so inside the app’s own stage and offer the three pages.",
+    "laws": [
+      "The not-found page wears the same stage and capsule as every page; no pill is lit",
+      "One h1 and a way onward to each page"
+    ],
+    "patternsExercised": [
+      "stage-backdrop",
+      "paint-layer",
+      "pill-nav",
+      "weave-pitch"
+    ]
+  }
+}

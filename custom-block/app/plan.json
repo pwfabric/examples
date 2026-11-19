@@ -1,9 +1,0 @@
-{
-  "title": "A page with its own block",
-  "pages": [
-    {
-      "key": "home",
-      "purpose": "Greet the visitor with a block this app defines"
-    }
-  ]
-}

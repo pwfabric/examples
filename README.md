@@ -1,91 +1,65 @@
 # PWFabric examples
 
-Three small apps you can build and run with nothing but the `pwf` command
-line: no account and no hosted service. Each folder is a complete **pwpack**,
-the source form of a PWFabric app (`pwpack.json`, its pages under `app/`, and
-any blocks of its own under `atoms/`).
+Two complete apps you can build and run with nothing but the `pwf` command
+line: no account and no hosted service. Each folder is a **pwpack**, the
+source form of a PWFabric app (`pwpack.json`, its pages and records under
+`app/`, its own theme under `atoms/`, its pictures under `media/`), built from
+the open [foundation and widgets packs](https://github.com/pwfabric/packs).
 
-| Example | What it shows |
-|---|---|
-| [`hello-static/`](hello-static/) | The smallest real app: two pages with a top bar between them, cards and links, one light theme. No data, no sign-in, no code. |
-| [`custom-block/`](custom-block/) | An app that brings its own block (`atoms/blocks/custom/greeting/`) and uses it beside the foundation's blocks, in the dark theme. |
-| [`members-data/`](members-data/) | An app with records and sign-in: an entity declaration, seed data in `app/data/`, a card per record, and the account control in the top bar. |
+| App | The need it serves | Packs |
+|---|---|---|
+| [`cafe-menu`](cafe-menu/) | Example Café: the menu a guest opens from the QR code on the table. Dishes by category with diet tags, allergens and prices, and how to find the café. Reads the app's own records. | foundation |
+| [`lighting-hub-waitlist`](lighting-hub-waitlist/) | Example Light: a lighting hub's website before launch. What it does, how it works, the kits, and a waitlist that writes a record. | foundation, widgets |
 
-Each folder has its own `README.md` with the exact commands and what to look
-at.
+## Running one
 
-## Getting `pwf`
-
-The command line is published on npm (Node 22 or newer):
-
-```sh
-npm install -g @pwfabric/cli@rc
-pwf --help
-```
-
-## The foundation pack
-
-Every app stands on a **foundation pack**, the pack that supplies the blocks
-(`navbar`, `heading`, `card`, `repeater`, …) and themes its pages use. It
-lives in
-[pwfabric/foundation](https://github.com/pwfabric/foundation).
-Each example pins it twice in `pwpack.json`: `requires` says which range it
-accepts (`@pwfabric/foundation` `^1.0.0`), and `packs[]` records the exact
-build it was made against, by content hash.
-
-Get the pack once, as `foundation-<version>.pwpack`: download it from the
-foundation's GitHub releases, or build it in a clone (`pnpm install`, then
-`node scripts/export-tgz.mjs --canonical`; it lands in `dist/`). Then install
-it into an example before anything else. This copies it into the app's
-`.pwf/packs/` cache, which `pwf validate`, `pwf dev` and `pwf build` read,
-and re-pins the app to that exact build:
+The command line is on npm (Node 22 or newer). Download
+`foundation-1.0.0.pwpack` (and `widgets-1.0.0.pwpack` for the lighting app)
+from the [packs releases](https://github.com/pwfabric/packs/releases), then:
 
 ```sh
-cd hello-static
-pwf add /path/to/foundation-1.0.0.pwpack
+npm install -g @pwfabric/cli
+cd cafe-menu
+pwf add ../foundation-1.0.0.pwpack
+pwf dev
 ```
 
-For a new app of your own, pass the foundation when you create the app:
+`pwf add` copies the pack into the app's `.pwf/packs/` and checks it against
+the content hash the app pins, so the app runs exactly against the pack it
+was built with. `pwf dev` serves the app with its records and rebuilds on
+change; `pwf build` writes the static app to `.pwf/out`, and
+`pwf run .pwf/out` serves that. Pages are addressed as `/#/<page>`.
+
+## What an example is
+
+Each app serves one need for one kind of user, has only the pages that need
+requires, wears one shell on every page, and has a name that says what it is
+for. Its content agrees with itself across pages and its controls do what
+they say. People, companies, products and places are fictional ("Example …").
+
+- **The app writes every word.** Labels, empty states, errors and the
+  not-found page come from the app (`plan.json` `messages` and its pages);
+  the engine and the packs draw none of their own.
+- **One identity.** Every page wears the app's own theme
+  (`atoms/appearance/theme-<app>/`), with its own dark mode.
+- **A page never fetches through a block.** Data arrives through a page's
+  data sources; records live in `app/content/`, typed in
+  `app/definitions/entities.json`, with access rules in
+  `app/definitions/auth.json`.
+- **Pictures are the app's own.** `media/` holds them and
+  `media/provenance.json` records each one's source and licence.
+
+## Checking them
 
 ```sh
-pwf create my-app --foundation /path/to/foundation-1.0.0.pwpack
+node check.mjs --packs <folder with the .pwpack files>
 ```
 
-or set `PWF_FOUNDATION` to that path once and leave the flag out.
-
-## The commands
-
-| Command | What it does |
-|---|---|
-| `pwf add <pack>` | Installs a pack (folder or `.pwpack`) into `.pwf/packs/` and pins it |
-| `pwf validate` | Checks the folder and the packs it pins; exit 1 on any error |
-| `pwf dev` | Serves the app locally and reloads it on every change |
-| `pwf build` | Writes the runnable app (a static **pwapp** folder) to `.pwf/out/` |
-| `pwf run .pwf/out` | Serves a built pwapp on a local port |
-| `pwf pack` | Writes the deterministic `.pwpack` archive of the folder |
-
-`pwf <command> --help` prints the options of one command.
-
-## Checking all three
-
-```sh
-node check.mjs --foundation /path/to/foundation-1.0.0.pwpack
-```
-
-For each app it copies the folder to a temporary directory and runs
-`pwf add <the foundation>`, `pwf validate` and `pwf build`, failing on any
-non-zero exit.
-
-It runs the published CLI: `@pwfabric/cli` from this folder's `node_modules`
-if you installed it here, otherwise `@pwfabric/cli@rc`, which it installs from
-npm into its temporary directory. To check against another build — an engine
-clone, say — pass `--cli <path to pwf's bin.js>` (or set `PWF_CLI`), e.g.
-`--cli ../pwfabric/packages/cli/dist/bin.js` after `pnpm build` there.
-
-The foundation can also come from `PWF_FOUNDATION`, or, with no flag, from the
-newest `.pwpack` in `../foundation/dist/` (a clone next to this one).
+For each app, in a temporary copy, `check.mjs` runs `pwf add` for every pack
+the app requires, then `pwf validate` and `pwf build`, and fails unless each
+exits 0. CI runs it against the packs built from
+[pwfabric/packs](https://github.com/pwfabric/packs) and the published `pwf`.
 
 ## Licence
 
-Apache License 2.0, see [LICENSE](LICENSE). Copy any of these as the start of
-your own app.
+Apache License 2.0 ([`LICENSE`](LICENSE)), the apps' illustrations included.

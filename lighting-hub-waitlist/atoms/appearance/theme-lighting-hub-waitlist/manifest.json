@@ -1,0 +1,137 @@
+{
+  "id": "theme-lighting-hub-waitlist",
+  "kind": "ui-appearance",
+  "version": "1.0.0",
+  "category": "ui",
+  "name": "Example Light evening",
+  "state": "stable",
+  "description": "A dark evening stage: warm near-black ground, cream ink and one amber light for action; rounded glass shapes and a geometric sans. The same palette in light and dark: the stage is always evening.",
+  "tags": [
+    "theme",
+    "appearance",
+    "dark",
+    "stage"
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#f2a43a",
+      "secondary": "#2b221b",
+      "accent": "#3b2b1c",
+      "background": "#15110e",
+      "card": "#211a15",
+      "text": "#f8efe3",
+      "textMuted": "#cdbca8",
+      "border": "#4a3c31",
+      "error": "#ff9b8a",
+      "success": "#86d6a0",
+      "warning": "#f5c95a",
+      "info": "#9cc8ff",
+      "textOnPrimary": "#1c1207"
+    },
+    "border": {
+      "radius": "14px",
+      "width": "1px",
+      "style": "solid",
+      "radiusLarge": "20px",
+      "radiusSmall": "10px",
+      "radiusXl": "24px",
+      "radius2xl": "28px",
+      "radiusFull": "9999px"
+    },
+    "typography": {
+      "fontFamily": "\"DM Sans\", ui-sans-serif, system-ui, sans-serif",
+      "headingFontFamily": "\"Outfit\", ui-sans-serif, system-ui, sans-serif",
+      "monoFontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "baseFontSize": "17px",
+      "headingWeight": "600",
+      "headingLineHeight": "1.15",
+      "letterSpacing": "-0.015em",
+      "bodyLineHeight": "1.6",
+      "fontSizeSm": "15px",
+      "fontSizeXs": "12px",
+      "fontSizeLg": "19px",
+      "fontSizeXl": "22px",
+      "fontSize2xl": "28px",
+      "fontSize3xl": "36px",
+      "fontSize4xl": "48px",
+      "bodyWeight": "400",
+      "bodyLetterSpacing": "0em"
+    },
+    "spacing": {
+      "base": "1rem",
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "xxl": "3rem"
+    },
+    "shadows": {
+      "card": "0 1px 0 0 rgba(255,236,210,.06)",
+      "button": "none",
+      "sm": "0 1px 2px 0 rgba(0,0,0,.05)",
+      "md": "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1)",
+      "lg": "0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1)",
+      "xl": "0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1)"
+    },
+    "motion": {
+      "durationFast": "150ms",
+      "durationNormal": "200ms",
+      "durationSlow": "300ms",
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "easingBounce": "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "layout": {
+      "gap": "0px",
+      "padding": "0px",
+      "containerMaxWidth": "1200px",
+      "gridGap": "24px",
+      "sectionPaddingY": "clamp(2.5rem, 5vw, 4rem)",
+      "sectionPaddingX": "clamp(1rem, 3vw, 1.5rem)"
+    },
+    "focus": {
+      "ringColor": "#f2a43a",
+      "ringWidth": "2px",
+      "ringOffset": "2px"
+    },
+    "zIndex": {
+      "sticky": 150,
+      "nav": 200,
+      "dropdown": 300,
+      "drawer": 400,
+      "modal": 500,
+      "toast": 540
+    }
+  },
+  "darkTheme": {
+    "colors": {
+      "primary": "#f2a43a",
+      "secondary": "#2b221b",
+      "accent": "#3b2b1c",
+      "background": "#15110e",
+      "card": "#211a15",
+      "text": "#f8efe3",
+      "textMuted": "#cdbca8",
+      "border": "#4a3c31",
+      "error": "#ff9b8a",
+      "success": "#86d6a0",
+      "warning": "#f5c95a",
+      "info": "#9cc8ff",
+      "textOnPrimary": "#1c1207"
+    }
+  },
+  "knowledge": {
+    "purpose": "A dark evening stage: warm near-black ground, cream ink and one amber light for action; rounded glass shapes and a geometric sans. The same palette in light and dark: the stage is always evening.",
+    "useCases": [
+      "The pages of the Example Light evening example app"
+    ],
+    "composesWith": [
+      "platform/persistence",
+      "platform/entities",
+      "platform/navigation"
+    ],
+    "antiPatterns": [
+      "Pinning colours in block props — the theme tokens already cascade"
+    ]
+  }
+}

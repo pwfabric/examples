@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.0",
+  "items": [
+    {
+      "path": "media/batch-brew.svg",
+      "hash": "sha256:a2623580fe006f8a65cf9ae18c170e6b782f2055da71fe4231791acbbcd65683",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/espresso.svg",
+      "hash": "sha256:67abae45c2424c18806ca3cf87e1ce3a322da90652c8e9f45a56ede2ee33f144",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/flat-white.svg",
+      "hash": "sha256:09f4d6b6faa58cd0b8dd76473fd1c74f9b420f561caee0fdf736619ff25c945c",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/oat-cortado.svg",
+      "hash": "sha256:6acca0443c9ae0ef88de22de4f1b2dd7835363c8f77bb744757d985b857bd9f8",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/granola.svg",
+      "hash": "sha256:f8d8c52feba806d47481c51ccc7a25bdac3aff59cfdcee1be54b4f9b472f3b28",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/avocado-toast.svg",
+      "hash": "sha256:ea64fc798aeff5d0724970a8c84b94d5bd638e51cd3b6ba7787572ea40a8ff52",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/eggs-on-toast.svg",
+      "hash": "sha256:14c746c48ee86e1c034586f336300fe3320983215d28e857ba62a1833db75739",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/baked-eggs.svg",
+      "hash": "sha256:e835223c24171fc03c6303fa015f3de42a312a26add509b46b4721f2e6944c66",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/croissant.svg",
+      "hash": "sha256:8565c37dd9becf22cda02df223e08c8e460e2c2986995c28309d93419b39f6c8",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/cardamom-bun.svg",
+      "hash": "sha256:7a119ea2df96fb34eef7c91e0656ac21721713ef07673faaf51b9c68802b6ceb",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/banana-bread.svg",
+      "hash": "sha256:9c131d905da81970d2e35e074c2c96a6e404943ddaf5d817c9f424f74832726c",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/olive-oil-cake.svg",
+      "hash": "sha256:58ca93f250c9318503b6e60f407509d9c609feea992ae8a436e81198f2b63ca8",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/logo.svg",
+      "hash": "sha256:cf8e8d3ec7a8deb065deb737e74c00487b118249a5ddc7bf493cc1327a9e0517",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/cafe-front.svg",
+      "hash": "sha256:72b7c31d06bcdd3847906d95312575a849673c68acde2a04101452fcf0ea36dd",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/map.svg",
+      "hash": "sha256:08df3fd6a4b88bdcd0fa2abc508ed53d37458a70ce774f174791ceb275cb7770",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    }
+  ]
+}
