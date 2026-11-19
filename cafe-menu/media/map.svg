@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect width="800" height="450" fill="#f1e4d1"/>
+<path d="M0 290 C160 270 260 320 420 292 S700 245 800 262 L800 322 C700 302 560 360 420 352 S160 332 0 352 Z" fill="#b9cfd6"/>
+<rect x="0" y="150" width="800" height="50" fill="#fbf4e8" stroke="#e3d2ba" stroke-width="3"/>
+<rect x="470" y="150" width="50" height="300" fill="#fbf4e8" stroke="#e3d2ba" stroke-width="3"/>
+<rect x="460" y="286" width="70" height="72" fill="#e3d2ba"/>
+<rect x="470" y="294" width="50" height="56" fill="#fbf4e8"/>
+<rect x="30" y="30" width="300" height="100" rx="10" fill="#e9d8c0" stroke="#c9b293" stroke-width="2"/>
+<rect x="545" y="372" width="200" height="66" rx="10" fill="#5b3a29"/>
+<path d="M150 176 H495 V400 H540" fill="none" stroke="#b0743f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 18"/>
+<circle cx="150" cy="176" r="12" fill="#b0743f"/>
+<g font-family="Georgia, 'Times New Roman', serif" font-weight="700">
+<text x="180" y="94" font-size="36" text-anchor="middle" fill="#2b1d14">Station</text>
+<text x="200" y="236" font-size="30" fill="#2b1d14">Station Road</text>
+<text x="560" y="250" font-size="30" fill="#2b1d14">Mill Lane</text>
+<text x="645" y="416" font-size="30" text-anchor="middle" fill="#fbf4e8">Café</text>
+<text x="60" y="335" font-size="28" fill="#3e5a63">river</text>
+</g>
+</svg>

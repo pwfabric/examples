@@ -1,0 +1,713 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "visit",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-cafe-menu"
+  },
+  "title": "Visit",
+  "description": "Opening hours, the address and phone number of Example Café on Mill Lane, a map, and a note for groups.",
+  "category": "content",
+  "tags": [
+    "menu",
+    "restaurant",
+    "cafe"
+  ],
+  "blocks": [
+    {
+      "id": "cafe",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "cafe-brand",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "keepRow": true,
+            "align": "center",
+            "gap": 10,
+            "padding": 12,
+            "landmark": "header"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-brand-logo",
+              "type": "image",
+              "props": {
+                "src": "pwpack/media/logo.svg",
+                "alt": "Example Café",
+                "height": 28,
+                "width": "auto",
+                "objectFit": "contain",
+                "hideWhenEmpty": true,
+                "priority": true
+              },
+              "style": {
+                "flex": "0 0 auto"
+              }
+            },
+            {
+              "id": "cafe-brand-name",
+              "type": "text",
+              "props": {
+                "content": "Example Café",
+                "fontWeight": "bold",
+                "hideWhenSet": "pwpack/media/logo.svg"
+              },
+              "style": {
+                "flex": "0 1 auto",
+                "fontSize": "var(--pw-font-size-lg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cafe-content",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "landmark": "main"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "--pw-section-inset": "0px",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-main",
+              "type": "container",
+              "props": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "id": "head",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 28,
+                    "gap": 6,
+                    "textAlign": "left"
+                  },
+                  "children": [
+                    {
+                      "id": "head-t",
+                      "type": "heading",
+                      "props": {
+                        "text": "Visit",
+                        "level": "h1",
+                        "textAlign": "left"
+                      }
+                    },
+                    {
+                      "id": "head-s",
+                      "type": "text",
+                      "props": {
+                        "content": "A small café on Mill Lane, five minutes from Exampleton station",
+                        "color": "var(--pw-color-text-muted)",
+                        "textAlign": "left"
+                      }
+                    }
+                  ],
+                  "style": {
+                    "paddingBottom": "4px"
+                  }
+                },
+                {
+                  "id": "front",
+                  "type": "image",
+                  "props": {
+                    "src": "pwpack/media/cafe-front.svg",
+                    "alt": "The café front: a striped awning over the window and a dark door, plants by the terrace",
+                    "width": 800,
+                    "height": 420,
+                    "aspectRatio": "40/21",
+                    "objectFit": "cover",
+                    "borderRadius": "var(--pw-border-radius-lg, 18px)",
+                    "loading": "eager",
+                    "priority": true
+                  },
+                  "style": {
+                    "width": "100%",
+                    "height": "auto"
+                  }
+                },
+                {
+                  "id": "h-hours",
+                  "type": "heading",
+                  "props": {
+                    "text": "Opening hours",
+                    "level": "h2"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-lg)",
+                    "margin": "0",
+                    "marginTop": "24px"
+                  }
+                },
+                {
+                  "id": "hours",
+                  "type": "container",
+                  "props": {
+                    "direction": "column",
+                    "gap": 10
+                  },
+                  "children": [
+                    {
+                      "id": "hours-row-1",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "hours-k-1",
+                          "type": "text",
+                          "props": {
+                            "content": "Monday to Friday",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "hours-v-1",
+                          "type": "text",
+                          "props": {
+                            "content": "7:30–17:00"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "hours-row-2",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "hours-k-2",
+                          "type": "text",
+                          "props": {
+                            "content": "Saturday",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "hours-v-2",
+                          "type": "text",
+                          "props": {
+                            "content": "8:30–17:00"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "hours-row-3",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "hours-k-3",
+                          "type": "text",
+                          "props": {
+                            "content": "Sunday",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "hours-v-3",
+                          "type": "text",
+                          "props": {
+                            "content": "9:00–15:00"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "hours-row-4",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "hours-k-4",
+                          "type": "text",
+                          "props": {
+                            "content": "Breakfast",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "hours-v-4",
+                          "type": "text",
+                          "props": {
+                            "content": "Until 14:30 every day"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "h-where",
+                  "type": "heading",
+                  "props": {
+                    "text": "Finding us",
+                    "level": "h2"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-lg)",
+                    "margin": "0",
+                    "marginTop": "24px"
+                  }
+                },
+                {
+                  "id": "where",
+                  "type": "container",
+                  "props": {
+                    "direction": "column",
+                    "gap": 10
+                  },
+                  "children": [
+                    {
+                      "id": "where-row-1",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "where-k-1",
+                          "type": "text",
+                          "props": {
+                            "content": "Address",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "where-v-1",
+                          "type": "text",
+                          "props": {
+                            "content": "14 Mill Lane, Exampleton"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "where-row-2",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "where-k-2",
+                          "type": "text",
+                          "props": {
+                            "content": "Phone",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "where-v-2",
+                          "type": "text",
+                          "props": {
+                            "content": "01632 960 418"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "where-row-3",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "where-k-3",
+                          "type": "text",
+                          "props": {
+                            "content": "Seats",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "where-v-3",
+                          "type": "text",
+                          "props": {
+                            "content": "24 inside, 8 on the terrace"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "where-row-4",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "where-k-4",
+                          "type": "text",
+                          "props": {
+                            "content": "Step-free",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "where-v-4",
+                          "type": "text",
+                          "props": {
+                            "content": "Yes, through the front door"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "map",
+                  "type": "image",
+                  "props": {
+                    "src": "pwpack/media/map.svg",
+                    "alt": "Sketch map: from Exampleton station walk along Station Road, turn right into Mill Lane and cross the bridge; the café is on your left",
+                    "width": 800,
+                    "height": 450,
+                    "aspectRatio": "16/9",
+                    "objectFit": "cover",
+                    "borderRadius": "var(--pw-border-radius-lg, 18px)",
+                    "loading": "lazy"
+                  },
+                  "style": {
+                    "width": "100%",
+                    "height": "auto"
+                  }
+                },
+                {
+                  "id": "acts",
+                  "type": "container",
+                  "props": {
+                    "direction": "row",
+                    "gap": 12,
+                    "padding": 0,
+                    "wrap": true
+                  },
+                  "children": [
+                    {
+                      "id": "call",
+                      "type": "button",
+                      "props": {
+                        "label": "Call 01632 960 418",
+                        "href": "tel:+441632960418",
+                        "variant": "primary",
+                        "icon": "phone"
+                      }
+                    },
+                    {
+                      "id": "mapfull",
+                      "type": "button",
+                      "props": {
+                        "label": "Open the map in a new tab",
+                        "href": "pwpack/media/map.svg",
+                        "target": "_blank",
+                        "variant": "outline",
+                        "icon": "map-pin"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "groups",
+                  "type": "section",
+                  "props": {},
+                  "children": [
+                    {
+                      "id": "groups-box",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "keepRow": true,
+                        "gap": 12,
+                        "align": "start",
+                        "padding": 16,
+                        "borderRadius": 10,
+                        "backgroundColor": "color-mix(in srgb, var(--pw-color-primary) 8%, transparent)"
+                      },
+                      "children": [
+                        {
+                          "id": "groups-icon",
+                          "type": "icon",
+                          "props": {
+                            "name": "users",
+                            "size": 20,
+                            "color": "var(--pw-color-primary)"
+                          },
+                          "style": {
+                            "flex": "0 0 auto",
+                            "marginTop": "2px"
+                          }
+                        },
+                        {
+                          "id": "groups-body",
+                          "type": "container",
+                          "props": {
+                            "direction": "column",
+                            "gap": 4
+                          },
+                          "style": {
+                            "flex": "1 1 0",
+                            "minWidth": "0"
+                          },
+                          "children": [
+                            {
+                              "id": "groups-title",
+                              "type": "heading",
+                              "props": {
+                                "text": "Coming as a group?",
+                                "level": "h2"
+                              },
+                              "style": {
+                                "fontSize": "var(--pw-font-size-lg, 1.125rem)",
+                                "lineHeight": "1.3",
+                                "margin": "0"
+                              }
+                            },
+                            {
+                              "id": "groups-text",
+                              "type": "text",
+                              "props": {
+                                "content": "For six or more, call 01632 960 418 the day before and we will keep a table for you."
+                              }
+                            },
+                            {
+                              "id": "groups-go",
+                              "type": "button",
+                              "visibleWhen": "{{'' != ''}}",
+                              "props": {
+                                "label": "",
+                                "href": "",
+                                "variant": "secondary",
+                                "icon": ""
+                              },
+                              "style": {
+                                "alignSelf": "flex-start",
+                                "marginTop": "4px"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "style": {
+                    "paddingTop": "16px",
+                    "paddingBottom": "0"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cafe-foot",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "padding": 0,
+            "landmark": "footer"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-legal",
+              "type": "text",
+              "props": {
+                "content": "© 2026 Example Café · 14 Mill Lane, Exampleton",
+                "textAlign": "left",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-xs)",
+                "padding": "16px 0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cafe-bar",
+          "type": "bottom-bar",
+          "props": {
+            "items": [
+              {
+                "label": "Menu",
+                "href": "/menu",
+                "icon": "utensils"
+              },
+              {
+                "label": "Visit",
+                "href": "/visit",
+                "icon": "map-pin"
+              }
+            ],
+            "activeHref": "/visit"
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "knowledge": {
+    "purpose": "Everything a guest needs before coming back: when it is open, where it is, how to call.",
+    "laws": [
+      "Hours and address are label–value rows, never prose",
+      "The phone number is a call link and the map opens full size: the two things a guest does from here",
+      "One callout for the one thing guests ask most",
+      "The hours agree with the menu page"
+    ],
+    "patternsExercised": [
+      "shell-bottombar-flow",
+      "page-header",
+      "key-value-list",
+      "callout"
+    ]
+  }
+}

@@ -1,0 +1,1076 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "home",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-lighting-hub-waitlist"
+  },
+  "title": "Home",
+  "description": "Example Light, a lighting hub for the home: one small hub reads the daylight and your evening, and sets every lamp in the house to match. Join the waitlist for the first kits, shipping March 2027.",
+  "category": "content",
+  "tags": [
+    "lighting",
+    "home",
+    "product"
+  ],
+  "blocks": [
+    {
+      "id": "stage",
+      "type": "section",
+      "props": {
+        "paddingY": 0,
+        "paddingX": 0,
+        "gap": 0,
+        "maxWidth": 4000,
+        "backgroundGradient": {
+          "from": "color-mix(in srgb, var(--pw-color-primary) 22%, var(--pw-color-background))",
+          "to": "var(--pw-color-background)",
+          "type": "radial",
+          "at": "50% 115%"
+        }
+      },
+      "style": {
+        "position": "fixed",
+        "top": "0",
+        "left": "0",
+        "width": "100vw",
+        "height": "100vh",
+        "zIndex": "0",
+        "overflow": "hidden",
+        "pointerEvents": "none"
+      },
+      "children": [
+        {
+          "id": "stage-amber",
+          "type": "section",
+          "props": {
+            "paddingY": 0,
+            "paddingX": 0,
+            "gap": 0,
+            "maxWidth": 4000,
+            "backgroundGradient": {
+              "from": "color-mix(in srgb, var(--pw-color-primary) 22%, transparent)",
+              "to": "transparent",
+              "type": "conic",
+              "at": "50% 50%"
+            }
+          },
+          "style": {
+            "position": "absolute",
+            "top": "-30%",
+            "left": "-25%",
+            "width": "150%",
+            "height": "160%",
+            "borderRadius": "50%",
+            "filter": "blur(80px) saturate(140%)",
+            "opacity": "0.7",
+            "mixBlendMode": "screen",
+            "pointerEvents": "none"
+          }
+        },
+        {
+          "id": "stage-dusk",
+          "type": "section",
+          "props": {
+            "paddingY": 0,
+            "paddingX": 0,
+            "gap": 0,
+            "maxWidth": 4000,
+            "backgroundGradient": {
+              "from": "transparent",
+              "to": "color-mix(in srgb, var(--pw-color-info) 12%, transparent)",
+              "type": "conic",
+              "at": "50% 50%"
+            }
+          },
+          "style": {
+            "position": "absolute",
+            "top": "-30%",
+            "left": "-25%",
+            "width": "150%",
+            "height": "160%",
+            "borderRadius": "50%",
+            "filter": "blur(80px) saturate(140%)",
+            "opacity": "0.7",
+            "mixBlendMode": "screen",
+            "pointerEvents": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nav",
+      "type": "section",
+      "props": {
+        "paddingY": 0,
+        "gap": 0,
+        "maxWidth": 1240,
+        "landmark": "header"
+      },
+      "children": [
+        {
+          "id": "nav-row",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "gap": 16,
+            "align": "center",
+            "justify": "between",
+            "padding": 0,
+            "keepRow": true,
+            "wrap": true
+          },
+          "style": {
+            "paddingTop": "28px",
+            "paddingBottom": "28px"
+          },
+          "children": [
+            {
+              "id": "nav-brand",
+              "type": "link",
+              "props": {
+                "text": "Example Light",
+                "href": "/home",
+                "underline": "none",
+                "fontWeight": "semibold",
+                "color": "inherit"
+              },
+              "style": {
+                "letterSpacing": "0.02em",
+                "flex": "0 0 auto",
+                "minHeight": "44px",
+                "display": "inline-flex",
+                "alignItems": "center"
+              }
+            },
+            {
+              "id": "nav-caps",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "gap": 4,
+                "align": "center",
+                "padding": 6,
+                "keepRow": true,
+                "landmark": "nav",
+                "label": "Main"
+              },
+              "style": {
+                "flex": {
+                  "xs": "1 1 100%",
+                  "md": "0 0 auto"
+                },
+                "borderRadius": "999px",
+                "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
+                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                "backdropFilter": "blur(18px) saturate(140%)",
+                "maxWidth": "100%"
+              },
+              "children": [
+                {
+                  "id": "nav-link",
+                  "type": "link",
+                  "props": {
+                    "text": "{{item.label}}",
+                    "href": "{{item.href}}",
+                    "current": "{{item.active}}",
+                    "underline": "none",
+                    "color": "inherit"
+                  },
+                  "style": {
+                    "borderRadius": "999px",
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "padding": {
+                      "xs": "8px 8px",
+                      "md": "8px 14px"
+                    },
+                    "flex": {
+                      "xs": "1 1 0",
+                      "md": "0 0 auto"
+                    },
+                    "transition": "background-color 160ms ease, color 160ms ease",
+                    "display": "inline-flex",
+                    "alignItems": "center",
+                    "minHeight": "44px",
+                    "justifyContent": "center",
+                    "whiteSpace": "nowrap",
+                    "textAlign": "center",
+                    "width": "100%",
+                    "boxSizing": "border-box"
+                  },
+                  "states": {
+                    "hover": {
+                      "backgroundColor": "rgba(255,255,255,0.08)"
+                    }
+                  }
+                }
+              ],
+              "repeat": "{{state.pillLinks}}",
+              "layout": {
+                "order": {
+                  "xs": 3,
+                  "md": 0
+                }
+              }
+            },
+            {
+              "id": "nav-cta",
+              "type": "button",
+              "props": {
+                "label": "Join the waitlist",
+                "href": "/plans#waitlist",
+                "variant": "ghost"
+              },
+              "style": {
+                "flex": "0 0 auto",
+                "borderRadius": "999px",
+                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                "padding": "10px 18px",
+                "transition": "background-color 160ms ease",
+                "minHeight": "44px"
+              },
+              "states": {
+                "hover": {
+                  "backgroundColor": "rgba(255,255,255,0.08)"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "style": {
+        "position": "relative",
+        "zIndex": "2"
+      }
+    },
+    {
+      "id": "pitch",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "landmark": "main"
+      },
+      "children": [
+        {
+          "id": "hero",
+          "type": "section",
+          "props": {
+            "paddingY": 64
+          },
+          "children": [
+            {
+              "id": "hero-inner",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 16,
+                "align": "start"
+              },
+              "children": [
+                {
+                  "id": "hero-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Light that follows your day",
+                    "level": "h1"
+                  }
+                },
+                {
+                  "id": "hero-sub",
+                  "type": "text",
+                  "props": {
+                    "content": "Example Light is a hub the size of a coaster. It reads the daylight and the shape of your evening, then sets every lamp in the house to the colour and brightness the hour asks for — with no app to open.",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "maxWidth": "65ch",
+                    "margin": "0",
+                    "alignSelf": "flex-start"
+                  }
+                },
+                {
+                  "id": "hero-cta",
+                  "type": "button",
+                  "props": {
+                    "label": "See how it works",
+                    "href": "/how-it-works",
+                    "variant": "primary"
+                  },
+                  "style": {
+                    "flex": "0 0 auto"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hub",
+          "type": "image",
+          "props": {
+            "src": "pwpack/media/hub.svg",
+            "alt": "The Example Light hub, a pale disc the size of a coaster with an amber ring, on a sideboard beside a lit lamp and a plant",
+            "aspectRatio": "16/7",
+            "borderRadius": 24,
+            "priority": true
+          },
+          "style": {
+            "width": "100%"
+          }
+        },
+        {
+          "id": "film",
+          "type": "section",
+          "props": {
+            "paddingY": 48,
+            "gap": 16
+          },
+          "children": [
+            {
+              "id": "film-h",
+              "type": "heading",
+              "props": {
+                "text": "An evening with the hub, in under a minute",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "film-t",
+              "type": "text",
+              "props": {
+                "content": "From 17:00 to 23:00 in Jane Doe’s living room: Evening, Dinner, Reading and Wind down, with nobody touching a switch. The film has no sound.",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "maxWidth": "65ch",
+                "margin": "0",
+                "alignSelf": "flex-start"
+              }
+            },
+            {
+              "id": "film-v",
+              "type": "video",
+              "props": {
+                "src": "pwpack/media/evening-40s.webm",
+                "poster": "pwpack/media/room-dusk.svg",
+                "controls": true,
+                "muted": true,
+                "autoplay": false,
+                "loop": false,
+                "aspectRatio": "4/3",
+                "caption": "The living room from 17:00 to 23:00, sped up. The clock and scene name are in the corner."
+              },
+              "style": {
+                "width": "100%",
+                "maxWidth": "880px",
+                "alignSelf": "center",
+                "margin": "0 auto"
+              }
+            }
+          ]
+        },
+        {
+          "id": "tonight",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 16
+          },
+          "children": [
+            {
+              "id": "tonight-h",
+              "type": "heading",
+              "props": {
+                "text": "Tonight in a beta flat",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "tonight-t",
+              "type": "text",
+              "props": {
+                "content": "What the hub in Jane Doe’s flat reported at 17:30 on Tuesday 17 November.",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "maxWidth": "65ch",
+                "margin": "0",
+                "alignSelf": "flex-start"
+              }
+            },
+            {
+              "id": "tonight-grid",
+              "type": "grid",
+              "props": {
+                "columns": 3,
+                "columnsXs": 1,
+                "gap": 20,
+                "alignItems": "stretch"
+              },
+              "children": [
+                {
+                  "id": "g-now",
+                  "type": "card",
+                  "props": {
+                    "padding": 20,
+                    "gap": 8,
+                    "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
+                    "borderWidth": 1,
+                    "borderColor": "color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                    "glass": "lg"
+                  },
+                  "style": {
+                    "borderRadius": "1.4rem",
+                    "transition": "transform 180ms ease, box-shadow 180ms ease"
+                  },
+                  "states": {
+                    "hover": {
+                      "transform": "translateY(-3px)",
+                      "boxShadow": "0 26px 70px rgba(0,0,0,.5)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "g-now-t",
+                      "type": "heading",
+                      "props": {
+                        "text": "Playing now: Evening",
+                        "level": "h3"
+                      }
+                    },
+                    {
+                      "id": "g-now-b",
+                      "type": "text",
+                      "props": {
+                        "content": "Living room at 2700 K and 40%, since the sun went down. Nobody has touched a switch tonight.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "g-sun",
+                  "type": "card",
+                  "props": {
+                    "padding": 20,
+                    "gap": 8,
+                    "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
+                    "borderWidth": 1,
+                    "borderColor": "color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                    "glass": "lg"
+                  },
+                  "style": {
+                    "borderRadius": "1.4rem",
+                    "transition": "transform 180ms ease, box-shadow 180ms ease"
+                  },
+                  "states": {
+                    "hover": {
+                      "transform": "translateY(-3px)",
+                      "boxShadow": "0 26px 70px rgba(0,0,0,.5)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "g-sun-t",
+                      "type": "heading",
+                      "props": {
+                        "text": "Sunset was at 16:48",
+                        "level": "h3"
+                      }
+                    },
+                    {
+                      "id": "g-sun-b",
+                      "type": "text",
+                      "props": {
+                        "content": "It is dark outside, so the hub keeps the flat warm. At 19:30 every lamp eases from 2700 K down to 2400 K for Dinner.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "g-later",
+                  "type": "card",
+                  "props": {
+                    "padding": 20,
+                    "gap": 8,
+                    "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
+                    "borderWidth": 1,
+                    "borderColor": "color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
+                    "glass": "lg"
+                  },
+                  "style": {
+                    "borderRadius": "1.4rem",
+                    "transition": "transform 180ms ease, box-shadow 180ms ease"
+                  },
+                  "states": {
+                    "hover": {
+                      "transform": "translateY(-3px)",
+                      "boxShadow": "0 26px 70px rgba(0,0,0,.5)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "g-later-t",
+                      "type": "heading",
+                      "props": {
+                        "text": "Still to come tonight",
+                        "level": "h3"
+                      }
+                    },
+                    {
+                      "id": "g-later-b",
+                      "type": "text",
+                      "props": {
+                        "content": "19:30 Dinner at 2400 K · 21:00 Reading at 3000 K · 22:30 Wind down at 1900 K.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ideas",
+          "type": "section",
+          "props": {
+            "paddingY": 48,
+            "gap": 16
+          },
+          "children": [
+            {
+              "id": "ideas-h",
+              "type": "heading",
+              "props": {
+                "text": "Why households want it",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "ideas-grid",
+              "type": "grid",
+              "props": {
+                "columns": 3,
+                "columnsXs": 1,
+                "gap": 20,
+                "alignItems": "stretch"
+              },
+              "children": [
+                {
+                  "id": "i-sun",
+                  "type": "card",
+                  "props": {
+                    "padding": 16,
+                    "gap": 10,
+                    "shadow": "sm"
+                  },
+                  "children": [
+                    {
+                      "id": "i-sun-icon",
+                      "type": "icon",
+                      "props": {
+                        "name": "sun",
+                        "size": 28,
+                        "color": "var(--pw-color-primary)"
+                      }
+                    },
+                    {
+                      "id": "i-sun-heading",
+                      "type": "heading",
+                      "props": {
+                        "text": "Follows the sun",
+                        "level": "h3"
+                      }
+                    },
+                    {
+                      "id": "i-sun-text",
+                      "type": "text",
+                      "props": {
+                        "content": "Crisp 5600 K mornings to a 1900 K glow at night, shifted every day for where you live.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    },
+                    {
+                      "id": "i-sun-link",
+                      "type": "link",
+                      "props": {
+                        "text": "See a day of light",
+                        "href": "/how-it-works#morning",
+                        "color": "var(--pw-color-primary-ink, var(--pw-color-text-on-card, var(--pw-color-primary)))"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "i-blend",
+                  "type": "card",
+                  "props": {
+                    "padding": 16,
+                    "gap": 10,
+                    "shadow": "sm"
+                  },
+                  "children": [
+                    {
+                      "id": "i-blend-icon",
+                      "type": "icon",
+                      "props": {
+                        "name": "layers",
+                        "size": 28,
+                        "color": "var(--pw-color-primary)"
+                      }
+                    },
+                    {
+                      "id": "i-blend-heading",
+                      "type": "heading",
+                      "props": {
+                        "text": "Scenes that blend",
+                        "level": "h3"
+                      }
+                    },
+                    {
+                      "id": "i-blend-text",
+                      "type": "text",
+                      "props": {
+                        "content": "A scene is a change over time: Evening eases into Dinner over twenty minutes, so nobody notices it happen.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    },
+                    {
+                      "id": "i-blend-link",
+                      "type": "link",
+                      "props": {
+                        "text": "See Evening fade in",
+                        "href": "/how-it-works#dusk",
+                        "color": "var(--pw-color-primary-ink, var(--pw-color-text-on-card, var(--pw-color-primary)))"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "i-home",
+                  "type": "card",
+                  "props": {
+                    "padding": 16,
+                    "gap": 10,
+                    "shadow": "sm"
+                  },
+                  "children": [
+                    {
+                      "id": "i-home-icon",
+                      "type": "icon",
+                      "props": {
+                        "name": "shield",
+                        "size": 28,
+                        "color": "var(--pw-color-primary)"
+                      }
+                    },
+                    {
+                      "id": "i-home-heading",
+                      "type": "heading",
+                      "props": {
+                        "text": "Stays in the house",
+                        "level": "h3"
+                      }
+                    },
+                    {
+                      "id": "i-home-text",
+                      "type": "text",
+                      "props": {
+                        "content": "Everything runs on the hub. No account, no cloud, and the lights keep working when the internet does not.",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    },
+                    {
+                      "id": "i-home-link",
+                      "type": "link",
+                      "props": {
+                        "text": "When the internet is down",
+                        "href": "/plans#faq",
+                        "color": "var(--pw-color-primary-ink, var(--pw-color-text-on-card, var(--pw-color-primary)))"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "voice",
+          "type": "card",
+          "props": {
+            "padding": 20,
+            "gap": 12,
+            "shadow": "sm"
+          },
+          "children": [
+            {
+              "id": "voice-quote",
+              "type": "text",
+              "props": {
+                "content": "“With a baby in the house the hall light at night was our worst switch. Now it glows at 1900 K after 22:30 and nobody wakes up properly.”"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-lg)"
+              }
+            },
+            {
+              "id": "voice-person",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "gap": 12,
+                "align": "center",
+                "keepRow": true
+              },
+              "children": [
+                {
+                  "id": "voice-avatar",
+                  "type": "avatar",
+                  "props": {
+                    "name": "Kim Doe",
+                    "size": "md"
+                  },
+                  "style": {
+                    "flex": "0 0 auto"
+                  }
+                },
+                {
+                  "id": "voice-meta",
+                  "type": "container",
+                  "props": {
+                    "direction": "column",
+                    "gap": 2
+                  },
+                  "children": [
+                    {
+                      "id": "voice-name",
+                      "type": "text",
+                      "props": {
+                        "content": "Kim Doe"
+                      },
+                      "style": {
+                        "fontWeight": "600"
+                      }
+                    },
+                    {
+                      "id": "voice-title",
+                      "type": "text",
+                      "props": {
+                        "content": "Beta household, terraced house",
+                        "color": "var(--pw-color-text-muted)"
+                      }
+                    }
+                  ],
+                  "style": {
+                    "flex": "1 1 0",
+                    "minWidth": "0"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "works",
+          "type": "section",
+          "props": {
+            "paddingY": 48,
+            "gap": 20
+          },
+          "children": [
+            {
+              "id": "works-h",
+              "type": "heading",
+              "props": {
+                "text": "Works with lamps from",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "works-t",
+              "type": "text",
+              "props": {
+                "content": "Your own bulbs and strips from these makers join the hub alongside the ones in the kit.",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "maxWidth": "65ch",
+                "margin": "0",
+                "alignSelf": "flex-start"
+              }
+            }
+          ]
+        },
+        {
+          "id": "makers",
+          "type": "repeater",
+          "repeat": "{{state.logoCloud}}",
+          "props": {
+            "items": "{{state.logoCloud}}",
+            "layout": "inline",
+            "gap": 32
+          },
+          "style": {
+            "justifyContent": "center",
+            "rowGap": "20px",
+            "width": "100%"
+          },
+          "children": [
+            {
+              "id": "makers-logo",
+              "type": "image",
+              "props": {
+                "src": "{{item.src}}",
+                "alt": "{{item.alt}}"
+              },
+              "style": {
+                "height": "40px",
+                "width": "auto",
+                "flex": "0 0 auto",
+                "maxWidth": "100%"
+              }
+            }
+          ]
+        },
+        {
+          "id": "call",
+          "type": "section",
+          "props": {
+            "paddingY": 40,
+            "gap": 32,
+            "backgroundColor": "var(--pw-color-card)"
+          },
+          "children": [
+            {
+              "id": "call-inner",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 16,
+                "align": "start"
+              },
+              "children": [
+                {
+                  "id": "call-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Pick a kit, join the waitlist",
+                    "level": "h2"
+                  }
+                },
+                {
+                  "id": "call-t",
+                  "type": "text",
+                  "props": {
+                    "content": "Paid once, no subscription. No payment until your kit ships in March 2027.",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "maxWidth": "65ch",
+                    "margin": "0",
+                    "alignSelf": "flex-start"
+                  }
+                },
+                {
+                  "id": "call-actions",
+                  "type": "container",
+                  "props": {
+                    "direction": "row",
+                    "gap": 12,
+                    "justify": "start",
+                    "wrap": true
+                  },
+                  "children": [
+                    {
+                      "id": "call-b1",
+                      "type": "button",
+                      "props": {
+                        "label": "Compare the kits",
+                        "href": "/plans#kits",
+                        "variant": "primary"
+                      },
+                      "style": {
+                        "whiteSpace": "nowrap",
+                        "flex": "0 0 auto"
+                      }
+                    },
+                    {
+                      "id": "call-b2",
+                      "type": "button",
+                      "props": {
+                        "label": "See how setup works",
+                        "href": "/how-it-works",
+                        "variant": "outline"
+                      },
+                      "style": {
+                        "whiteSpace": "nowrap",
+                        "flex": "0 0 auto"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "style": {
+        "position": "relative",
+        "zIndex": "1",
+        "width": "100%",
+        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+        "marginInline": "auto",
+        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+        "boxSizing": "border-box",
+        "--pw-section-inset": "0px"
+      }
+    },
+    {
+      "id": "foot",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "landmark": "footer"
+      },
+      "style": {
+        "position": "relative",
+        "zIndex": "1",
+        "width": "100%",
+        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+        "marginInline": "auto",
+        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+        "boxSizing": "border-box",
+        "--pw-section-inset": "0px"
+      },
+      "children": [
+        {
+          "id": "foot-s",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 8
+          },
+          "style": {
+            "borderTop": "1px solid var(--pw-color-border)",
+            "marginTop": "24px"
+          },
+          "children": [
+            {
+              "id": "foot-row",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "justify": "between",
+                "gap": 12,
+                "padding": 0,
+                "wrap": true
+              },
+              "children": [
+                {
+                  "id": "foot-c",
+                  "type": "text",
+                  "props": {
+                    "content": "© 2026 Example Light · hello@example.com",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "flex": "0 1 auto",
+                    "minWidth": "0"
+                  }
+                },
+                {
+                  "id": "foot-f",
+                  "type": "text",
+                  "props": {
+                    "content": "Private beta on hub firmware 0.9 · kits ship March 2027",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "flex": "0 1 auto",
+                    "minWidth": "0"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "initialState": {
+          "pillLinks": [
+            {
+              "label": "Home",
+              "href": "/home",
+              "active": true
+            },
+            {
+              "label": "How it works",
+              "href": "/how-it-works",
+              "active": false
+            },
+            {
+              "label": "Kits",
+              "href": "/plans",
+              "active": false
+            }
+          ],
+          "logoCloud": [
+            {
+              "src": "pwpack/media/example-lumen.svg",
+              "alt": "Example Lumen"
+            },
+            {
+              "src": "pwpack/media/example-lamp-co.svg",
+              "alt": "Example Lamp Co."
+            },
+            {
+              "src": "pwpack/media/example-glow.svg",
+              "alt": "Example Glow"
+            },
+            {
+              "src": "pwpack/media/example-bulbworks.svg",
+              "alt": "Example Bulbworks"
+            },
+            {
+              "src": "pwpack/media/example-stripline.svg",
+              "alt": "Example Stripline"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "Understand what the hub does: the claim and the product, an evening with it in forty seconds, tonight’s readouts on glass, three ideas, one voice, the lamps it drives, one call.",
+    "laws": [
+      "The stage is position:fixed and out of flow — content never pays layout cost for the backdrop",
+      "Readability over the lit ground comes from glass panels, never from dimming the whole stage",
+      "The readouts agree with each other and with the film: one evening, one set of scenes and temperatures",
+      "One primary call; the pill nav lights exactly the page in view"
+    ],
+    "patternsExercised": [
+      "stage-backdrop",
+      "paint-layer",
+      "pill-nav",
+      "weave-pitch",
+      "hero",
+      "glass-panel",
+      "feature-card",
+      "testimonial",
+      "logo-cloud",
+      "band-cta"
+    ]
+  }
+}

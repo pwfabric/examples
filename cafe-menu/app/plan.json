@@ -1,0 +1,103 @@
+{
+  "title": "Example Café menu",
+  "locale": "en-GB",
+  "intent": {
+    "purpose": "Diners at a table check dishes, diet tags and prices on their phone before they order.",
+    "audience": "A guest who scanned the QR code on the table",
+    "tone": "Warm and plain",
+    "successCriteria": "A guest finds a dish that suits their diet, what is in it and its price in two taps"
+  },
+  "theme": {
+    "direction": "Warm cream and espresso, rounded corners, large type for a phone held at the table",
+    "paletteHint": "theme-cafe-menu",
+    "status": "applied"
+  },
+  "capabilities": [],
+  "media": [
+    "media/avocado-toast.svg",
+    "media/baked-eggs.svg",
+    "media/banana-bread.svg",
+    "media/batch-brew.svg",
+    "media/cafe-front.svg",
+    "media/cardamom-bun.svg",
+    "media/croissant.svg",
+    "media/eggs-on-toast.svg",
+    "media/espresso.svg",
+    "media/flat-white.svg",
+    "media/granola.svg",
+    "media/logo.svg",
+    "media/map.svg",
+    "media/oat-cortado.svg",
+    "media/olive-oil-cake.svg"
+  ],
+  "customBlocks": [],
+  "surfaces": [
+    {
+      "key": "menu",
+      "name": "Menu",
+      "isEntry": true,
+      "purpose": "Browse one category at a time and narrow it by one or more diets",
+      "keyContent": [],
+      "linksTo": [
+        "dish",
+        "visit"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "dish",
+      "name": "Dish",
+      "isEntry": false,
+      "purpose": "Read one dish: picture, diet, allergens and price",
+      "keyContent": [],
+      "linksTo": [
+        "menu"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "visit",
+      "name": "Visit",
+      "isEntry": false,
+      "purpose": "Opening hours, address, a call link, a sketch map and a note for groups",
+      "keyContent": [],
+      "linksTo": [
+        "menu"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg",
+        "media/cafe-front.svg",
+        "media/map.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    }
+  ],
+  "packs": [],
+  "messages": {
+    "ui.loading": "Loading the menu…",
+    "ui.retry": "Try again",
+    "ui.skipToContent": "Skip to the content",
+    "notFound.title": "Page not found",
+    "notFound.body": "The dish may have come off the menu, or the link is mistyped.",
+    "notFound.home": "Back to the menu",
+    "ui.account.menu": "{name} — account menu",
+    "ui.account.name": "Your account",
+    "ui.account.profile": "Your account",
+    "ui.account.signIn": "Sign in",
+    "ui.account.signOut": "Sign out",
+    "ui.dismiss": "Dismiss",
+    "ui.nav.bottom": "Main"
+  }
+}

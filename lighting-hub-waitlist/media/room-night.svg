@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img"><title>The same room at night: a dark window, the floor lamp low and amber, the pendant almost out</title><defs><linearGradient id="sky-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1424"/><stop offset="1" stop-color="#1d2238"/></linearGradient>
+<radialGradient id="lamp-night" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffb25a" stop-opacity="0.85"/><stop offset="1" stop-color="#ffb25a" stop-opacity="0"/></radialGradient>
+<radialGradient id="pend-night" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffb25a" stop-opacity="0.175"/><stop offset="1" stop-color="#ffb25a" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="900" fill="#2e221b"/>
+<rect x="0" y="0" width="70" height="900" fill="#251b15"/>
+<rect x="110" y="80" width="420" height="440" rx="6" fill="url(#sky-night)"/><circle cx="160" cy="150" r="2.5" fill="#f8efe3" opacity=".8"/><circle cx="260" cy="110" r="2.5" fill="#f8efe3" opacity=".8"/><circle cx="330" cy="200" r="2.5" fill="#f8efe3" opacity=".8"/><circle cx="420" cy="130" r="2.5" fill="#f8efe3" opacity=".8"/><circle cx="210" cy="240" r="2.5" fill="#f8efe3" opacity=".8"/>
+<circle cx="430" cy="160" r="30" fill="#f2ead8" opacity=".85"/>
+<path d="M110 300 h420 M320 80 v440" stroke="#251b15" stroke-width="12"/>
+<rect x="96" y="70" width="448" height="460" rx="8" fill="none" stroke="#251b15" stroke-width="18"/>
+<rect x="0" y="690" width="1200" height="210" fill="#1e1612"/>
+<polygon points="150,690 520,690 680,900 40,900" fill="#000" opacity="0"/>
+<ellipse cx="900" cy="560" rx="330" ry="330" fill="url(#lamp-night)"/>
+<ellipse cx="640" cy="330" rx="240" ry="240" fill="url(#pend-night)"/>
+<line x1="640" y1="0" x2="640" y2="250" stroke="#1a130f" stroke-width="5"/>
+<path d="M590 290 q50 -60 100 0 z" fill="#2a1f19"/><ellipse cx="640" cy="292" rx="42" ry="9" fill="#ffb25a" opacity="0.5"/>
+<rect x="560" y="560" width="520" height="130" rx="34" fill="#262d29"/>
+<rect x="560" y="500" width="520" height="90" rx="34" fill="#1d2320"/>
+<rect x="540" y="560" width="70" height="150" rx="30" fill="#1d2320"/><rect x="1030" y="560" width="70" height="150" rx="30" fill="#1d2320"/>
+<rect x="700" y="545" width="120" height="70" rx="20" fill="#c8663a"/>
+<rect x="250" y="640" width="250" height="18" rx="9" fill="#22170f"/><rect x="280" y="658" width="12" height="70" fill="#22170f"/><rect x="460" y="658" width="12" height="70" fill="#22170f"/>
+<ellipse cx="340" cy="632" rx="34" ry="9" fill="#1c1410"/><ellipse cx="340" cy="628" rx="26" ry="6" fill="#f2a43a" opacity="1"/>
+<rect x="420" y="612" width="40" height="28" rx="6" fill="#e9dfcf"/>
+<line x1="1100" y1="300" x2="1100" y2="700" stroke="#1a130f" stroke-width="6"/><rect x="1070" y="700" width="60" height="10" rx="4" fill="#1a130f"/>
+<path d="M1045 300 h110 l-24 -90 h-62 z" fill="#f6d9a8"/><ellipse cx="1100" cy="300" rx="55" ry="8" fill="#ffb25a" opacity="1"/>
+</svg>

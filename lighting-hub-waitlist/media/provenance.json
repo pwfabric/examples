@@ -1,0 +1,82 @@
+{
+  "formatVersion": "1.0",
+  "items": [
+    {
+      "path": "media/demo-flat-sketch-map.svg",
+      "hash": "sha256:2d1320e321c33eeeaf53589eb264804c0b6e85ade8af0a6cf84614567e163977",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/evening-40s.webm",
+      "hash": "sha256:767289463f4d1c2149f78b7f649e394009d07de888129762a2ca7312861b2b6c",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/example-bulbworks.svg",
+      "hash": "sha256:3bb385ae848b3c12b11a002233683097f3909dd3ec5a90715022a3c7a0c5a490",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/example-glow.svg",
+      "hash": "sha256:41a5cf0fa627498d3269e25eb6ab25dacd2befbbb341faccadbd527d175a3dd9",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/example-lamp-co.svg",
+      "hash": "sha256:2073e8c57d2f328a26e4e19a7581c3085fe9cd432f7c959d456ea35332ec50c3",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/example-lumen.svg",
+      "hash": "sha256:6551a865a985886492a7d3786f1a1c49c9f49dfd1991f7d8622d53b3b23f18f4",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/example-stripline.svg",
+      "hash": "sha256:43351c914e68e3cf0b45ef8b26df9dad1bbfe734ae0d1be0cefd0791b36910f6",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/hub.svg",
+      "hash": "sha256:6713b157d5eab66f6f7bc444209f5acd53c1daa017a566e61926e8fff7e4c5ed",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/room-dusk.svg",
+      "hash": "sha256:7b8b58a6809a2552cfaf2180a6613de295be105d7358938b0edd29b43e22fea4",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/room-morning.svg",
+      "hash": "sha256:539db3d1dff28b2ec2cd3de6c059c4300fa358817abe763e14ca937df60498a7",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/room-night.svg",
+      "hash": "sha256:c68da29429f3c03909fae4adc6e776a7fe4f058df880cc5b5369820327a0958e",
+      "source": "provided",
+      "createdAt": "2026-11-17T12:00:00.000Z",
+      "license": "Apache-2.0"
+    }
+  ]
+}

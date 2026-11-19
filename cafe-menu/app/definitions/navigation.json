@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "links": [
+      {
+        "label": "Menu",
+        "href": "/menu"
+      },
+      {
+        "label": "Visit",
+        "href": "/visit"
+      }
+    ]
+  }
+}

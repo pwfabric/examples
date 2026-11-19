@@ -1,0 +1,44 @@
+{
+  "entities": [
+    {
+      "typeId": "WaitlistEntry",
+      "displayName": "Waitlist entry",
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "kit",
+          "type": "enum",
+          "values": [
+            "studio",
+            "home",
+            "house"
+          ],
+          "required": true
+        },
+        {
+          "name": "message",
+          "type": "text"
+        },
+        {
+          "name": "joinedAt",
+          "type": "date",
+          "server": "createdAt"
+        }
+      ],
+      "unique": [
+        [
+          "email"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "id": "theme-cafe-menu",
+  "kind": "ui-appearance",
+  "version": "1.0.0",
+  "category": "ui",
+  "name": "Example Café",
+  "state": "stable",
+  "description": "Warm cream ground, espresso ink and buttons, rounded corners, large type for a phone held at the table.",
+  "tags": [
+    "theme",
+    "appearance",
+    "light"
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#4a2c1d",
+      "secondary": "#f3e7d6",
+      "accent": "#f3e3cb",
+      "background": "#fbf5ec",
+      "card": "#fffdf8",
+      "text": "#2b1d14",
+      "textMuted": "#6b5444",
+      "border": "#e6d6c0",
+      "error": "#b3261e",
+      "success": "#2f6b2f",
+      "warning": "#8a5a00",
+      "info": "#2f5f8a",
+      "textOnPrimary": "#ffffff"
+    },
+    "border": {
+      "radius": "14px",
+      "width": "1px",
+      "style": "solid",
+      "radiusLarge": "18px",
+      "radiusSmall": "10px",
+      "radiusXl": "22px",
+      "radius2xl": "28px",
+      "radiusFull": "9999px"
+    },
+    "typography": {
+      "fontFamily": "Nunito, ui-sans-serif, system-ui, sans-serif",
+      "headingFontFamily": "Lora, Georgia, serif",
+      "monoFontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "baseFontSize": "17px",
+      "headingWeight": "700",
+      "headingLineHeight": "1.25",
+      "letterSpacing": "0em",
+      "bodyLineHeight": "1.6",
+      "fontSizeSm": "15px",
+      "fontSizeXs": "13px",
+      "fontSizeLg": "19px",
+      "fontSizeXl": "22px",
+      "fontSize2xl": "26px",
+      "fontSize3xl": "30px",
+      "fontSize4xl": "34px",
+      "bodyWeight": "400",
+      "bodyLetterSpacing": "0em"
+    },
+    "spacing": {
+      "base": "1rem",
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "xxl": "3rem"
+    },
+    "shadows": {
+      "card": "0 1px 3px 0 rgba(90,56,37,.08)",
+      "button": "none",
+      "sm": "0 1px 2px 0 rgba(0,0,0,.05)",
+      "md": "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1)",
+      "lg": "0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1)",
+      "xl": "0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1)"
+    },
+    "motion": {
+      "durationFast": "150ms",
+      "durationNormal": "200ms",
+      "durationSlow": "300ms",
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "easingBounce": "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "layout": {
+      "gap": "0px",
+      "padding": "0px",
+      "containerMaxWidth": "720px",
+      "gridGap": "24px",
+      "sectionPaddingY": "clamp(2.5rem, 5vw, 4rem)",
+      "sectionPaddingX": "clamp(1rem, 3vw, 1.5rem)"
+    },
+    "focus": {
+      "ringColor": "#b0743f",
+      "ringWidth": "2px",
+      "ringOffset": "2px"
+    },
+    "zIndex": {
+      "sticky": 150,
+      "nav": 200,
+      "dropdown": 300,
+      "drawer": 400,
+      "modal": 500,
+      "toast": 540
+    }
+  },
+  "knowledge": {
+    "purpose": "Example Café's own look: cream and espresso, soft corners, type sized for reading a menu at the table.",
+    "useCases": [
+      "Every page of the Example Café menu"
+    ],
+    "composesWith": [
+      "platform/persistence",
+      "platform/entities"
+    ],
+    "antiPatterns": [
+      "Pinning colours in block props — the café tokens already cascade"
+    ]
+  },
+  "darkTheme": {
+    "colors": {
+      "primary": "#e8c29a",
+      "secondary": "#33261d",
+      "accent": "#3d2e23",
+      "background": "#1c140f",
+      "card": "#271c15",
+      "text": "#f7ede1",
+      "textMuted": "#cdb9a5",
+      "border": "#4a382b",
+      "error": "#f2a49c",
+      "success": "#9fd49a",
+      "warning": "#f0c36a",
+      "info": "#9cc3e8",
+      "textOnPrimary": "#24170f"
+    },
+    "focus": {
+      "ringColor": "#e8c29a"
+    }
+  }
+}

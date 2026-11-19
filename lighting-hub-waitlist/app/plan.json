@@ -1,0 +1,124 @@
+{
+  "title": "Example Light lighting hub",
+  "locale": "en-GB",
+  "intent": {
+    "purpose": "A household learns what an ambient lighting hub does, sees how setup works, picks a kit and joins the pre-order waitlist.",
+    "audience": "A prospective buyer furnishing a home",
+    "tone": "Calm, warm and exact",
+    "successCriteria": "A visitor understands the hub, sees setup and a day of light, picks a kit and joins the waitlist in three pages"
+  },
+  "theme": {
+    "direction": "Dark evening stage, cream ink, one amber light for action, glass panels",
+    "paletteHint": "theme-lighting-hub-waitlist",
+    "status": "applied"
+  },
+  "capabilities": [],
+  "media": [
+    {
+      "key": "demo-flat-sketch-map"
+    },
+    {
+      "key": "evening-40s"
+    },
+    {
+      "key": "example-bulbworks"
+    },
+    {
+      "key": "example-glow"
+    },
+    {
+      "key": "example-lamp-co"
+    },
+    {
+      "key": "example-lumen"
+    },
+    {
+      "key": "example-stripline"
+    },
+    {
+      "key": "hub"
+    },
+    {
+      "key": "room-dusk"
+    },
+    {
+      "key": "room-morning"
+    },
+    {
+      "key": "room-night"
+    }
+  ],
+  "customBlocks": [],
+  "surfaces": [
+    {
+      "key": "home",
+      "name": "Home",
+      "isEntry": true,
+      "purpose": "The claim and the hub, an evening in 40 seconds, tonight’s readouts, three ideas, a beta voice, the lamp makers, one call",
+      "keyContent": [],
+      "linksTo": [
+        "how-it-works",
+        "plans"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "how-it-works",
+      "name": "How it works",
+      "isEntry": false,
+      "purpose": "Setup in four steps, one room in the morning, at dusk and at night, what the hub does on its own",
+      "keyContent": [],
+      "linksTo": [
+        "home",
+        "plans"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "plans",
+      "name": "Kits",
+      "isEntry": false,
+      "purpose": "Three kits paid once, each with its own button that preselects the kit; beta voices, questions, the waitlist (WaitlistEntry records with the kit), the demo flat",
+      "keyContent": [],
+      "linksTo": [
+        "home",
+        "how-it-works"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    }
+  ],
+  "packs": [],
+  "messages": {
+    "ui.loading": "Loading…",
+    "ui.retry": "Try again",
+    "ui.skipToContent": "Skip to the content",
+    "notFound.title": "We could not find that page",
+    "notFound.body": "The link may be old or mistyped.",
+    "notFound.home": "Go to the home page",
+    "ui.dismiss": "Dismiss",
+    "ui.form.badInput": "Enter it as a number.",
+    "ui.form.checkbox": "Tick this box to join the waitlist.",
+    "ui.form.email": "Write an e-mail address, like name@example.com.",
+    "ui.form.hidden": "{label}, on an earlier step: {message}",
+    "ui.form.max": "Enter {max} or less.",
+    "ui.form.maxLength": "Use no more than {maxLength} characters.",
+    "ui.form.min": "Enter {min} or more.",
+    "ui.form.minLength": "Use at least {minLength} characters.",
+    "ui.form.pattern": "Check the format and try again.",
+    "ui.form.required": "Fill this in.",
+    "ui.form.select": "Choose one of these.",
+    "ui.form.step": "Use steps of {step}.",
+    "ui.form.type": "This does not look right. Check it and try again.",
+    "ui.form.url": "Write a web address, like https://example.com.",
+    "ui.remove": "Remove {name}"
+  }
+}
