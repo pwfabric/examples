@@ -6,7 +6,7 @@ An architecture studio shows its projects and takes enquiries.
 - **Core tasks:** look through the work · open a project · learn how the studio works · send an enquiry.
 - **Shell:** one layout (`app/layout.receipt.json`, the `layout-topbar` pattern): the top bar (Projects, About, Contact; the engine marks the page in view), the page, and the footer with the studio's address and the colour-scheme control (`theme-toggle`: Light, Dark, As your device, kept for the next visit). The not-found page wears it too.
 - **Titles:** `titleTemplate` in `app/plan.json` (`Riverside Library · Example Architects`); the projects page names the studio itself and opts out.
-- **Theme:** `theme-studio-portfolio`, the app's own: paper and ink, a warm off-white ground, near-black type, one brick-red accent, a serif for headings, square corners; a charcoal dark variant with a terracotta accent.
+- **Theme:** `theme-studio-portfolio`, the app's own: paper and ink, a warm off-white ground, near-black type, one brick-red accent, Newsreader for headings (shipped in `media/fonts/`, SIL Open Font License), square corners; a charcoal dark variant with a terracotta accent.
 
 | Page | What it is for |
 |---|---|

@@ -40,7 +40,7 @@
     },
     "typography": {
       "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
-      "headingFontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
+      "headingFontFamily": "Newsreader, \"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
       "monoFontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
       "baseFontSize": "17px",
       "headingWeight": "500",
