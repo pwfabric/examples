@@ -16,267 +16,69 @@
   ],
   "blocks": [
     {
-      "id": "stage",
+      "id": "intro",
       "type": "section",
       "props": {
-        "paddingY": 0,
-        "paddingX": 0,
-        "gap": 0,
-        "maxWidth": 4000,
-        "backgroundGradient": {
-          "from": "color-mix(in srgb, var(--pw-color-primary) 22%, var(--pw-color-background))",
-          "to": "var(--pw-color-background)",
-          "type": "radial",
-          "at": "50% 115%"
-        }
-      },
-      "style": {
-        "position": "fixed",
-        "top": "0",
-        "left": "0",
-        "width": "100vw",
-        "height": "100vh",
-        "zIndex": "0",
-        "overflow": "hidden",
-        "pointerEvents": "none"
+        "paddingY": 40,
+        "gap": 12
       },
       "children": [
         {
-          "id": "stage-amber",
-          "type": "section",
+          "id": "intro-h",
+          "type": "heading",
           "props": {
-            "paddingY": 0,
-            "paddingX": 0,
-            "gap": 0,
-            "maxWidth": 4000,
-            "backgroundGradient": {
-              "from": "color-mix(in srgb, var(--pw-color-primary) 22%, transparent)",
-              "to": "transparent",
-              "type": "conic",
-              "at": "50% 50%"
-            }
-          },
-          "style": {
-            "position": "absolute",
-            "top": "-30%",
-            "left": "-25%",
-            "width": "150%",
-            "height": "160%",
-            "borderRadius": "50%",
-            "filter": "blur(80px) saturate(140%)",
-            "opacity": "0.7",
-            "mixBlendMode": "screen",
-            "pointerEvents": "none"
+            "text": "Kits",
+            "level": "h1"
           }
         },
         {
-          "id": "stage-dusk",
-          "type": "section",
+          "id": "intro-t",
+          "type": "text",
           "props": {
-            "paddingY": 0,
-            "paddingX": 0,
-            "gap": 0,
-            "maxWidth": 4000,
-            "backgroundGradient": {
-              "from": "transparent",
-              "to": "color-mix(in srgb, var(--pw-color-info) 12%, transparent)",
-              "type": "conic",
-              "at": "50% 50%"
-            }
+            "content": "One hub in every kit, paid once. Pick how many lights come with it, then join the waitlist: no payment until your kit ships.",
+            "color": "var(--pw-color-text-muted)"
           },
           "style": {
-            "position": "absolute",
-            "top": "-30%",
-            "left": "-25%",
-            "width": "150%",
-            "height": "160%",
-            "borderRadius": "50%",
-            "filter": "blur(80px) saturate(140%)",
-            "opacity": "0.7",
-            "mixBlendMode": "screen",
-            "pointerEvents": "none"
+            "fontSize": "var(--pw-font-size-lg)",
+            "maxWidth": "65ch",
+            "margin": "0",
+            "alignSelf": "flex-start"
           }
         }
       ]
     },
     {
-      "id": "nav",
+      "id": "kits",
       "type": "section",
       "props": {
-        "paddingY": 0,
-        "gap": 0,
-        "maxWidth": 1240,
-        "landmark": "header"
+        "paddingY": 64,
+        "gap": 32
       },
       "children": [
         {
-          "id": "nav-row",
+          "id": "kits-head",
           "type": "container",
           "props": {
-            "direction": "row",
-            "gap": 16,
-            "align": "center",
-            "justify": "between",
-            "padding": 0,
-            "keepRow": true,
-            "wrap": true
-          },
-          "style": {
-            "paddingTop": "28px",
-            "paddingBottom": "28px"
+            "direction": "column",
+            "gap": 8
           },
           "children": [
             {
-              "id": "nav-brand",
-              "type": "link",
-              "props": {
-                "text": "Example Light",
-                "href": "/home",
-                "underline": "none",
-                "fontWeight": "semibold",
-                "color": "inherit"
-              },
-              "style": {
-                "letterSpacing": "0.02em",
-                "flex": "0 0 auto",
-                "minHeight": "44px",
-                "display": "inline-flex",
-                "alignItems": "center"
-              }
-            },
-            {
-              "id": "nav-caps",
-              "type": "container",
-              "props": {
-                "direction": "row",
-                "gap": 4,
-                "align": "center",
-                "padding": 6,
-                "keepRow": true,
-                "landmark": "nav",
-                "label": "Main"
-              },
-              "style": {
-                "flex": {
-                  "xs": "1 1 100%",
-                  "md": "0 0 auto"
-                },
-                "borderRadius": "999px",
-                "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
-                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
-                "backdropFilter": "blur(18px) saturate(140%)",
-                "maxWidth": "100%"
-              },
-              "children": [
-                {
-                  "id": "nav-link",
-                  "type": "link",
-                  "props": {
-                    "text": "{{item.label}}",
-                    "href": "{{item.href}}",
-                    "current": "{{item.active}}",
-                    "underline": "none",
-                    "color": "inherit"
-                  },
-                  "style": {
-                    "borderRadius": "999px",
-                    "fontSize": "var(--pw-font-size-sm)",
-                    "padding": {
-                      "xs": "8px 8px",
-                      "md": "8px 14px"
-                    },
-                    "flex": {
-                      "xs": "1 1 0",
-                      "md": "0 0 auto"
-                    },
-                    "transition": "background-color 160ms ease, color 160ms ease",
-                    "display": "inline-flex",
-                    "alignItems": "center",
-                    "minHeight": "44px",
-                    "justifyContent": "center",
-                    "whiteSpace": "nowrap",
-                    "textAlign": "center",
-                    "width": "100%",
-                    "boxSizing": "border-box"
-                  },
-                  "states": {
-                    "hover": {
-                      "backgroundColor": "rgba(255,255,255,0.08)"
-                    }
-                  }
-                }
-              ],
-              "repeat": "{{state.pillLinks}}",
-              "layout": {
-                "order": {
-                  "xs": 3,
-                  "md": 0
-                }
-              }
-            },
-            {
-              "id": "nav-cta",
-              "type": "button",
-              "props": {
-                "label": "Join the waitlist",
-                "href": "/plans#waitlist",
-                "variant": "ghost"
-              },
-              "style": {
-                "flex": "0 0 auto",
-                "borderRadius": "999px",
-                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
-                "padding": "10px 18px",
-                "transition": "background-color 160ms ease",
-                "minHeight": "44px"
-              },
-              "states": {
-                "hover": {
-                  "backgroundColor": "rgba(255,255,255,0.08)"
-                }
-              }
-            }
-          ]
-        }
-      ],
-      "style": {
-        "position": "relative",
-        "zIndex": "2"
-      }
-    },
-    {
-      "id": "plans",
-      "type": "container",
-      "props": {
-        "direction": "column",
-        "landmark": "main"
-      },
-      "children": [
-        {
-          "id": "intro",
-          "type": "section",
-          "props": {
-            "paddingY": 40,
-            "gap": 12
-          },
-          "children": [
-            {
-              "id": "intro-h",
+              "id": "kits-h",
               "type": "heading",
               "props": {
-                "text": "Kits",
-                "level": "h1"
+                "text": "Three kits",
+                "level": "h2"
               }
             },
             {
-              "id": "intro-t",
+              "id": "kits-sub",
               "type": "text",
               "props": {
-                "content": "One hub in every kit, paid once. Pick how many lights come with it, then join the waitlist: no payment until your kit ships.",
+                "content": "One hub in every kit and no subscription: everything runs on the hub you own.",
                 "color": "var(--pw-color-text-muted)"
               },
               "style": {
-                "fontSize": "var(--pw-font-size-lg)",
                 "maxWidth": "65ch",
                 "margin": "0",
                 "alignSelf": "flex-start"
@@ -285,709 +87,585 @@
           ]
         },
         {
-          "id": "kits",
-          "type": "section",
+          "id": "kits-grid",
+          "type": "grid",
           "props": {
-            "paddingY": 64,
-            "gap": 32
+            "columns": 3,
+            "gap": 24,
+            "alignItems": "stretch"
           },
           "children": [
             {
-              "id": "kits-head",
-              "type": "container",
+              "id": "kits-p1",
+              "type": "card",
               "props": {
-                "direction": "column",
-                "gap": 8
+                "padding": 20,
+                "gap": 12,
+                "shadow": "sm"
               },
               "children": [
                 {
-                  "id": "kits-h",
+                  "id": "kits-p1-plan",
                   "type": "heading",
                   "props": {
-                    "text": "Three kits",
-                    "level": "h2"
+                    "text": "Studio",
+                    "level": "h3"
                   }
                 },
                 {
-                  "id": "kits-sub",
-                  "type": "text",
+                  "id": "kits-p1-price",
+                  "type": "money",
                   "props": {
-                    "content": "One hub in every kit and no subscription: everything runs on the hub you own.",
-                    "color": "var(--pw-color-text-muted)"
-                  },
-                  "style": {
-                    "maxWidth": "65ch",
-                    "margin": "0",
-                    "alignSelf": "flex-start"
+                    "amount": 249,
+                    "currency": "EUR",
+                    "period": "",
+                    "size": "xl",
+                    "emphasis": "strong",
+                    "whole": true
+                  }
+                },
+                {
+                  "id": "kits-p1-features",
+                  "type": "list",
+                  "props": {
+                    "items": [
+                      "Hub and 4 colour bulbs",
+                      "Up to 2 rooms",
+                      "You set it up in about 20 minutes"
+                    ],
+                    "style": "check"
+                  }
+                },
+                {
+                  "id": "kits-p1-cta",
+                  "type": "button",
+                  "props": {
+                    "label": "Choose Studio",
+                    "href": "/plans?choice=studio#waitlist",
+                    "variant": "outline"
+                  }
+                }
+              ],
+              "layout": {
+                "order": {
+                  "xs": 1,
+                  "sm": 0
+                }
+              }
+            },
+            {
+              "id": "kits-p2",
+              "type": "card",
+              "props": {
+                "padding": 20,
+                "gap": 12,
+                "shadow": "sm",
+                "borderWidth": 2,
+                "borderColor": "var(--pw-color-primary)"
+              },
+              "children": [
+                {
+                  "id": "kits-p2-plan",
+                  "type": "heading",
+                  "props": {
+                    "text": "Home",
+                    "level": "h3"
+                  }
+                },
+                {
+                  "id": "kits-p2-price",
+                  "type": "money",
+                  "props": {
+                    "amount": 549,
+                    "currency": "EUR",
+                    "period": "",
+                    "size": "xl",
+                    "emphasis": "strong",
+                    "whole": true
+                  }
+                },
+                {
+                  "id": "kits-p2-features",
+                  "type": "list",
+                  "props": {
+                    "items": [
+                      "Hub, 8 bulbs, 2 strips, 2 dimmers",
+                      "Up to 6 rooms",
+                      "You set it up in under an hour"
+                    ],
+                    "style": "check"
+                  }
+                },
+                {
+                  "id": "kits-p2-cta",
+                  "type": "button",
+                  "props": {
+                    "label": "Choose Home",
+                    "href": "/plans?choice=home#waitlist",
+                    "variant": "primary"
                   }
                 }
               ]
             },
             {
-              "id": "kits-grid",
-              "type": "grid",
+              "id": "kits-p3",
+              "type": "card",
               "props": {
-                "columns": 3,
-                "gap": 24,
-                "alignItems": "stretch"
+                "padding": 20,
+                "gap": 12,
+                "shadow": "sm"
               },
               "children": [
                 {
-                  "id": "kits-p1",
-                  "type": "card",
+                  "id": "kits-p3-plan",
+                  "type": "heading",
                   "props": {
-                    "padding": 20,
-                    "gap": 12,
-                    "shadow": "sm"
-                  },
-                  "children": [
-                    {
-                      "id": "kits-p1-plan",
-                      "type": "heading",
-                      "props": {
-                        "text": "Studio",
-                        "level": "h3"
-                      }
-                    },
-                    {
-                      "id": "kits-p1-price",
-                      "type": "money",
-                      "props": {
-                        "amount": 249,
-                        "currency": "EUR",
-                        "period": "",
-                        "size": "xl",
-                        "emphasis": "strong",
-                        "whole": true
-                      }
-                    },
-                    {
-                      "id": "kits-p1-features",
-                      "type": "list",
-                      "props": {
-                        "items": [
-                          "Hub and 4 colour bulbs",
-                          "Up to 2 rooms",
-                          "You set it up in about 20 minutes"
-                        ],
-                        "style": "check"
-                      }
-                    },
-                    {
-                      "id": "kits-p1-cta",
-                      "type": "button",
-                      "props": {
-                        "label": "Choose Studio",
-                        "href": "/plans?choice=studio#waitlist",
-                        "variant": "outline"
-                      }
-                    }
-                  ],
-                  "layout": {
-                    "order": {
-                      "xs": 1,
-                      "sm": 0
-                    }
+                    "text": "House",
+                    "level": "h3"
                   }
                 },
                 {
-                  "id": "kits-p2",
-                  "type": "card",
+                  "id": "kits-p3-price",
+                  "type": "money",
                   "props": {
-                    "padding": 20,
-                    "gap": 12,
-                    "shadow": "sm",
-                    "borderWidth": 2,
-                    "borderColor": "var(--pw-color-primary)"
-                  },
-                  "children": [
-                    {
-                      "id": "kits-p2-plan",
-                      "type": "heading",
-                      "props": {
-                        "text": "Home",
-                        "level": "h3"
-                      }
-                    },
-                    {
-                      "id": "kits-p2-price",
-                      "type": "money",
-                      "props": {
-                        "amount": 549,
-                        "currency": "EUR",
-                        "period": "",
-                        "size": "xl",
-                        "emphasis": "strong",
-                        "whole": true
-                      }
-                    },
-                    {
-                      "id": "kits-p2-features",
-                      "type": "list",
-                      "props": {
-                        "items": [
-                          "Hub, 8 bulbs, 2 strips, 2 dimmers",
-                          "Up to 6 rooms",
-                          "You set it up in under an hour"
-                        ],
-                        "style": "check"
-                      }
-                    },
-                    {
-                      "id": "kits-p2-cta",
-                      "type": "button",
-                      "props": {
-                        "label": "Choose Home",
-                        "href": "/plans?choice=home#waitlist",
-                        "variant": "primary"
-                      }
-                    }
-                  ]
+                    "amount": 1090,
+                    "currency": "EUR",
+                    "period": "",
+                    "size": "xl",
+                    "emphasis": "strong",
+                    "whole": true
+                  }
                 },
                 {
-                  "id": "kits-p3",
-                  "type": "card",
+                  "id": "kits-p3-features",
+                  "type": "list",
                   "props": {
-                    "padding": 20,
-                    "gap": 12,
-                    "shadow": "sm"
-                  },
-                  "children": [
-                    {
-                      "id": "kits-p3-plan",
-                      "type": "heading",
-                      "props": {
-                        "text": "House",
-                        "level": "h3"
-                      }
-                    },
-                    {
-                      "id": "kits-p3-price",
-                      "type": "money",
-                      "props": {
-                        "amount": 1090,
-                        "currency": "EUR",
-                        "period": "",
-                        "size": "xl",
-                        "emphasis": "strong",
-                        "whole": true
-                      }
-                    },
-                    {
-                      "id": "kits-p3-features",
-                      "type": "list",
-                      "props": {
-                        "items": [
-                          "Hub, 16 bulbs, 4 strips, 4 dimmers",
-                          "Any number of rooms",
-                          "Our team sets it up in your home"
-                        ],
-                        "style": "check"
-                      }
-                    },
-                    {
-                      "id": "kits-p3-cta",
-                      "type": "button",
-                      "props": {
-                        "label": "Choose House",
-                        "href": "/plans?choice=house#waitlist",
-                        "variant": "outline"
-                      }
-                    }
-                  ],
-                  "layout": {
-                    "order": {
-                      "xs": 1,
-                      "sm": 0
-                    }
+                    "items": [
+                      "Hub, 16 bulbs, 4 strips, 4 dimmers",
+                      "Any number of rooms",
+                      "Our team sets it up in your home"
+                    ],
+                    "style": "check"
+                  }
+                },
+                {
+                  "id": "kits-p3-cta",
+                  "type": "button",
+                  "props": {
+                    "label": "Choose House",
+                    "href": "/plans?choice=house#waitlist",
+                    "variant": "outline"
                   }
                 }
-              ]
+              ],
+              "layout": {
+                "order": {
+                  "xs": 1,
+                  "sm": 0
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voices",
+      "type": "section",
+      "props": {
+        "paddingY": 64,
+        "gap": 32
+      },
+      "children": [
+        {
+          "id": "voices-head",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 8
+          },
+          "children": [
+            {
+              "id": "voices-h",
+              "type": "heading",
+              "props": {
+                "text": "From the private beta",
+                "level": "h2"
+              }
             }
           ]
         },
         {
-          "id": "voices",
-          "type": "section",
+          "id": "voices-grid",
+          "type": "grid",
           "props": {
-            "paddingY": 64,
-            "gap": 32
+            "columns": 2,
+            "columnsXs": 1,
+            "gap": 24,
+            "alignItems": "stretch"
           },
           "children": [
             {
-              "id": "voices-head",
-              "type": "container",
+              "id": "voices-t",
+              "type": "card",
               "props": {
-                "direction": "column",
-                "gap": 8
+                "padding": 20,
+                "gap": 12,
+                "shadow": "sm"
               },
               "children": [
                 {
-                  "id": "voices-h",
-                  "type": "heading",
+                  "id": "voices-t-q",
+                  "type": "text",
                   "props": {
-                    "text": "From the private beta",
-                    "level": "h2"
+                    "content": "“{{item.quote}}”"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-lg)"
                   }
-                }
-              ]
-            },
-            {
-              "id": "voices-grid",
-              "type": "grid",
-              "props": {
-                "columns": 2,
-                "columnsXs": 1,
-                "gap": 24,
-                "alignItems": "stretch"
-              },
-              "children": [
+                },
                 {
-                  "id": "voices-t",
-                  "type": "card",
+                  "id": "voices-t-p",
+                  "type": "container",
                   "props": {
-                    "padding": 20,
+                    "direction": "row",
+                    "keepRow": true,
                     "gap": 12,
-                    "shadow": "sm"
+                    "align": "center"
                   },
                   "children": [
                     {
-                      "id": "voices-t-q",
-                      "type": "text",
+                      "id": "voices-t-a",
+                      "type": "avatar",
                       "props": {
-                        "content": "“{{item.quote}}”"
+                        "name": "{{item.author}}",
+                        "size": "md"
                       },
                       "style": {
-                        "fontSize": "var(--pw-font-size-lg)"
+                        "flex": "0 0 auto"
                       }
                     },
                     {
-                      "id": "voices-t-p",
+                      "id": "voices-t-m",
                       "type": "container",
                       "props": {
-                        "direction": "row",
-                        "keepRow": true,
-                        "gap": 12,
-                        "align": "center"
+                        "direction": "column",
+                        "gap": 2
+                      },
+                      "style": {
+                        "flex": "1 1 0",
+                        "minWidth": "0"
                       },
                       "children": [
                         {
-                          "id": "voices-t-a",
-                          "type": "avatar",
+                          "id": "voices-t-n",
+                          "type": "text",
                           "props": {
-                            "name": "{{item.author}}",
-                            "size": "md"
-                          },
-                          "style": {
-                            "flex": "0 0 auto"
+                            "content": "{{item.author}}",
+                            "fontWeight": "semibold"
                           }
                         },
                         {
-                          "id": "voices-t-m",
-                          "type": "container",
+                          "id": "voices-t-tt",
+                          "type": "text",
                           "props": {
-                            "direction": "column",
-                            "gap": 2
-                          },
-                          "style": {
-                            "flex": "1 1 0",
-                            "minWidth": "0"
-                          },
-                          "children": [
-                            {
-                              "id": "voices-t-n",
-                              "type": "text",
-                              "props": {
-                                "content": "{{item.author}}",
-                                "fontWeight": "semibold"
-                              }
-                            },
-                            {
-                              "id": "voices-t-tt",
-                              "type": "text",
-                              "props": {
-                                "content": "{{item.role}}",
-                                "color": "var(--pw-color-text-muted)"
-                              }
-                            }
-                          ]
+                            "content": "{{item.role}}",
+                            "color": "var(--pw-color-text-muted)"
+                          }
                         }
                       ]
                     }
                   ]
                 }
-              ],
-              "repeat": "{{state.testimonialItems}}"
+              ]
             }
           ],
-          "visibleWhen": "{{state.testimonialItems.length > 0}}"
+          "repeat": "{{state.testimonialItems}}"
+        }
+      ],
+      "visibleWhen": "{{state.testimonialItems.length > 0}}"
+    },
+    {
+      "id": "faq",
+      "type": "section",
+      "props": {
+        "paddingY": 48,
+        "gap": 16
+      },
+      "children": [
+        {
+          "id": "faq-h",
+          "type": "heading",
+          "props": {
+            "text": "Questions people ask",
+            "level": "h2"
+          }
         },
         {
-          "id": "faq",
-          "type": "section",
+          "id": "faq-acc",
+          "type": "accordion",
           "props": {
-            "paddingY": 48,
-            "gap": 16
+            "items": [
+              {
+                "id": "lamps",
+                "title": "Do I need new lamps?",
+                "content": "No. The hub drives the bulbs and strips in the kit and any smart bulb on your home network from the makers on the home page. Your shades and fittings stay."
+              },
+              {
+                "id": "fee",
+                "title": "Is there a monthly fee?",
+                "content": "No. You pay once for the kit. Firmware updates are free."
+              },
+              {
+                "id": "offline",
+                "title": "What happens when the internet is down?",
+                "content": "Nothing changes. The hub keeps the scenes, the sun times and your habits itself; it only goes online to fetch updates."
+              },
+              {
+                "id": "switches",
+                "title": "Can I still use the wall switches?",
+                "content": "Yes. A switch always wins over the hub, and the hub remembers that you wanted it that way."
+              },
+              {
+                "id": "when",
+                "title": "When do kits ship, and when do I pay?",
+                "content": "The first kits ship in March 2027, in the order people joined the waitlist. We ask for payment only when your kit is ready to ship."
+              },
+              {
+                "id": "see",
+                "title": "Can I see it before I buy?",
+                "content": "Yes. The demo flat at 12 Example Street is open on Saturdays from 11:00 to 17:00, lit by a House kit. No booking needed."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "waitlist",
+      "type": "section",
+      "props": {
+        "paddingY": 64,
+        "gap": 32
+      },
+      "children": [
+        {
+          "id": "waitlist-row",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "gap": 48,
+            "align": "stretch",
+            "padding": 0
           },
           "children": [
             {
-              "id": "faq-h",
-              "type": "heading",
+              "id": "waitlist-copy",
+              "type": "container",
               "props": {
-                "text": "Questions people ask",
-                "level": "h2"
+                "direction": "column",
+                "gap": 12,
+                "padding": 0
+              },
+              "children": [
+                {
+                  "id": "waitlist-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Join the waitlist",
+                    "level": "h2"
+                  }
+                },
+                {
+                  "id": "waitlist-t",
+                  "type": "text",
+                  "props": {
+                    "content": "Tell us which kit you have in mind and we will write when it is ready to ship. The first kits ship in March 2027, in the order people joined; no payment until then.",
+                    "color": "var(--pw-color-text-muted)"
+                  }
+                }
+              ],
+              "style": {
+                "flex": "1 1 0",
+                "minWidth": "0",
+                "maxWidth": "420px"
               }
             },
             {
-              "id": "faq-acc",
-              "type": "accordion",
-              "props": {
-                "items": [
-                  {
-                    "id": "lamps",
-                    "title": "Do I need new lamps?",
-                    "content": "No. The hub drives the bulbs and strips in the kit and any smart bulb on your home network from the makers on the home page. Your shades and fittings stay."
-                  },
-                  {
-                    "id": "fee",
-                    "title": "Is there a monthly fee?",
-                    "content": "No. You pay once for the kit. Firmware updates are free."
-                  },
-                  {
-                    "id": "offline",
-                    "title": "What happens when the internet is down?",
-                    "content": "Nothing changes. The hub keeps the scenes, the sun times and your habits itself; it only goes online to fetch updates."
-                  },
-                  {
-                    "id": "switches",
-                    "title": "Can I still use the wall switches?",
-                    "content": "Yes. A switch always wins over the hub, and the hub remembers that you wanted it that way."
-                  },
-                  {
-                    "id": "when",
-                    "title": "When do kits ship, and when do I pay?",
-                    "content": "The first kits ship in March 2027, in the order people joined the waitlist. We ask for payment only when your kit is ready to ship."
-                  },
-                  {
-                    "id": "see",
-                    "title": "Can I see it before I buy?",
-                    "content": "Yes. The demo flat at 12 Example Street is open on Saturdays from 11:00 to 17:00, lit by a House kit. No booking needed."
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "id": "waitlist",
-          "type": "section",
-          "props": {
-            "paddingY": 64,
-            "gap": 32
-          },
-          "children": [
-            {
-              "id": "waitlist-row",
+              "id": "waitlist-side",
               "type": "container",
               "props": {
-                "direction": "row",
-                "gap": 48,
+                "direction": "column",
+                "gap": 12,
                 "align": "stretch",
                 "padding": 0
               },
               "children": [
                 {
-                  "id": "waitlist-copy",
-                  "type": "container",
+                  "id": "waitlist-form",
+                  "type": "form",
                   "props": {
-                    "direction": "column",
+                    "submitLabel": "Join the waitlist",
                     "gap": 12,
-                    "padding": 0
+                    "submittingWhen": "{{state.contactSending}}",
+                    "resetWhen": "{{state.contactSent}}"
                   },
                   "children": [
                     {
-                      "id": "waitlist-h",
-                      "type": "heading",
+                      "id": "waitlist-name",
+                      "type": "input",
                       "props": {
-                        "text": "Join the waitlist",
-                        "level": "h2"
+                        "name": "name",
+                        "label": "Name",
+                        "required": true,
+                        "type": "text"
                       }
                     },
                     {
-                      "id": "waitlist-t",
-                      "type": "text",
+                      "id": "waitlist-email",
+                      "type": "input",
                       "props": {
-                        "content": "Tell us which kit you have in mind and we will write when it is ready to ship. The first kits ship in March 2027, in the order people joined; no payment until then.",
-                        "color": "var(--pw-color-text-muted)"
+                        "name": "email",
+                        "type": "email",
+                        "label": "Email",
+                        "required": true
+                      }
+                    },
+                    {
+                      "id": "waitlist-choice",
+                      "type": "select",
+                      "props": {
+                        "name": "kit",
+                        "label": "Which kit?",
+                        "placeholder": "Choose a kit",
+                        "options": [
+                          {
+                            "label": "Studio — €249",
+                            "value": "studio"
+                          },
+                          {
+                            "label": "Home — €549",
+                            "value": "home"
+                          },
+                          {
+                            "label": "House — €1,090",
+                            "value": "house"
+                          }
+                        ],
+                        "required": true,
+                        "defaultValue": "{{state.choice}}",
+                        "stateKey": "choice"
+                      }
+                    },
+                    {
+                      "id": "waitlist-msg",
+                      "type": "textarea",
+                      "props": {
+                        "name": "message",
+                        "label": "Which rooms would you light first? (optional)",
+                        "rows": 4
                       }
                     }
-                  ],
-                  "style": {
-                    "flex": "1 1 0",
-                    "minWidth": "0",
-                    "maxWidth": "420px"
+                  ]
+                },
+                {
+                  "id": "waitlist-ok",
+                  "type": "alert",
+                  "visibleWhen": "{{state.contactSent}}",
+                  "props": {
+                    "message": "You are on the waitlist. We will write to you when your kit is ready to ship; no payment until then.",
+                    "variant": "success",
+                    "focusOnShow": true
                   }
                 },
                 {
-                  "id": "waitlist-side",
-                  "type": "container",
+                  "id": "waitlist-another",
+                  "type": "button",
+                  "visibleWhen": "{{state.contactSent && state.contactCopy.another != ''}}",
                   "props": {
-                    "direction": "column",
-                    "gap": 12,
-                    "align": "stretch",
-                    "padding": 0
+                    "label": "{{state.contactCopy.another}}",
+                    "variant": "outline",
+                    "action": [
+                      {
+                        "type": "setState",
+                        "key": "contactSent",
+                        "value": false
+                      },
+                      {
+                        "type": "setState",
+                        "key": "choice",
+                        "value": ""
+                      }
+                    ]
                   },
-                  "children": [
-                    {
-                      "id": "waitlist-form",
-                      "type": "form",
-                      "props": {
-                        "submitLabel": "Join the waitlist",
-                        "gap": 12,
-                        "submittingWhen": "{{state.contactSending}}",
-                        "resetWhen": "{{state.contactSent}}"
-                      },
-                      "children": [
-                        {
-                          "id": "waitlist-name",
-                          "type": "input",
-                          "props": {
-                            "name": "name",
-                            "label": "Name",
-                            "required": true,
-                            "type": "text"
-                          }
-                        },
-                        {
-                          "id": "waitlist-email",
-                          "type": "input",
-                          "props": {
-                            "name": "email",
-                            "type": "email",
-                            "label": "Email",
-                            "required": true
-                          }
-                        },
-                        {
-                          "id": "waitlist-choice",
-                          "type": "select",
-                          "props": {
-                            "name": "kit",
-                            "label": "Which kit?",
-                            "placeholder": "Choose a kit",
-                            "options": [
-                              {
-                                "label": "Studio — €249",
-                                "value": "studio"
-                              },
-                              {
-                                "label": "Home — €549",
-                                "value": "home"
-                              },
-                              {
-                                "label": "House — €1,090",
-                                "value": "house"
-                              }
-                            ],
-                            "required": true,
-                            "defaultValue": "{{state.choice}}",
-                            "stateKey": "choice"
-                          }
-                        },
-                        {
-                          "id": "waitlist-msg",
-                          "type": "textarea",
-                          "props": {
-                            "name": "message",
-                            "label": "Which rooms would you light first? (optional)",
-                            "rows": 4
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "id": "waitlist-ok",
-                      "type": "alert",
-                      "visibleWhen": "{{state.contactSent}}",
-                      "props": {
-                        "message": "You are on the waitlist. We will write to you when your kit is ready to ship; no payment until then.",
-                        "variant": "success",
-                        "focusOnShow": true
-                      }
-                    },
-                    {
-                      "id": "waitlist-another",
-                      "type": "button",
-                      "visibleWhen": "{{state.contactSent && state.contactCopy.another != ''}}",
-                      "props": {
-                        "label": "{{state.contactCopy.another}}",
-                        "variant": "outline",
-                        "action": [
-                          {
-                            "type": "setState",
-                            "key": "contactSent",
-                            "value": false
-                          },
-                          {
-                            "type": "setState",
-                            "key": "choice",
-                            "value": ""
-                          }
-                        ]
-                      },
-                      "style": {
-                        "alignSelf": "flex-start"
-                      }
-                    },
-                    {
-                      "id": "waitlist-err",
-                      "type": "alert",
-                      "visibleWhen": "{{state.contactFailed}}",
-                      "props": {
-                        "title": "{{state.contactCopy[state.contactReason] || state.contactCopy.error}}",
-                        "variant": "error",
-                        "focusOnShow": true
-                      }
-                    }
-                  ],
                   "style": {
-                    "flex": "1 1 0",
-                    "minWidth": "0"
+                    "alignSelf": "flex-start"
+                  }
+                },
+                {
+                  "id": "waitlist-err",
+                  "type": "alert",
+                  "visibleWhen": "{{state.contactFailed}}",
+                  "props": {
+                    "title": "{{state.contactCopy[state.contactReason] || state.contactCopy.error}}",
+                    "variant": "error",
+                    "focusOnShow": true
                   }
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "flat",
-          "type": "section",
-          "props": {
-            "paddingY": 48,
-            "gap": 16
-          },
-          "children": [
-            {
-              "id": "flat-h",
-              "type": "heading",
-              "props": {
-                "text": "See it lit in the demo flat",
-                "level": "h2"
-              }
-            },
-            {
-              "id": "flat-t",
-              "type": "text",
-              "props": {
-                "content": "12 Example Street, ground floor, ring “Example Light”. Open Saturdays 11:00 to 17:00, no booking needed; the bus stop on Example Street, at the corner of Example Road, is two minutes away.",
-                "color": "var(--pw-color-text-muted)"
-              },
+              ],
               "style": {
-                "maxWidth": "65ch",
-                "margin": "0",
-                "alignSelf": "flex-start"
-              }
-            },
-            {
-              "id": "flat-map",
-              "type": "image",
-              "props": {
-                "src": "pwpack/media/demo-flat-sketch-map.svg",
-                "alt": "Sketch map: the demo flat at 12 Example Street marked in amber, a short walk from the bus stop, Example Park across the road",
-                "aspectRatio": "12/7",
-                "borderRadius": 20
-              },
-              "style": {
-                "width": "100%",
-                "maxWidth": "880px",
-                "alignSelf": "flex-start",
-                "margin": "0"
+                "flex": "1 1 0",
+                "minWidth": "0"
               }
             }
           ]
         }
-      ],
-      "style": {
-        "position": "relative",
-        "zIndex": "1",
-        "width": "100%",
-        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-        "marginInline": "auto",
-        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-        "boxSizing": "border-box",
-        "--pw-section-inset": "0px"
-      }
+      ]
     },
     {
-      "id": "foot",
-      "type": "container",
+      "id": "flat",
+      "type": "section",
       "props": {
-        "direction": "column",
-        "landmark": "footer"
-      },
-      "style": {
-        "position": "relative",
-        "zIndex": "1",
-        "width": "100%",
-        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-        "marginInline": "auto",
-        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-        "boxSizing": "border-box",
-        "--pw-section-inset": "0px"
+        "paddingY": 48,
+        "gap": 16
       },
       "children": [
         {
-          "id": "foot-s",
-          "type": "section",
+          "id": "flat-h",
+          "type": "heading",
           "props": {
-            "paddingY": 32,
-            "gap": 8
+            "text": "See it lit in the demo flat",
+            "level": "h2"
+          }
+        },
+        {
+          "id": "flat-t",
+          "type": "text",
+          "props": {
+            "content": "12 Example Street, ground floor, ring “Example Light”. Open Saturdays 11:00 to 17:00, no booking needed; the bus stop on Example Street, at the corner of Example Road, is two minutes away.",
+            "color": "var(--pw-color-text-muted)"
           },
           "style": {
-            "borderTop": "1px solid var(--pw-color-border)",
-            "marginTop": "24px"
+            "maxWidth": "65ch",
+            "margin": "0",
+            "alignSelf": "flex-start"
+          }
+        },
+        {
+          "id": "flat-map",
+          "type": "image",
+          "props": {
+            "src": "pwpack/media/demo-flat-sketch-map.svg",
+            "alt": "Sketch map: the demo flat at 12 Example Street marked in amber, a short walk from the bus stop, Example Park across the road",
+            "aspectRatio": "12/7",
+            "borderRadius": 20
           },
-          "children": [
-            {
-              "id": "foot-row",
-              "type": "container",
-              "props": {
-                "direction": "row",
-                "justify": "between",
-                "gap": 12,
-                "padding": 0,
-                "wrap": true
-              },
-              "children": [
-                {
-                  "id": "foot-c",
-                  "type": "text",
-                  "props": {
-                    "content": "© 2026 Example Light · hello@example.com",
-                    "color": "var(--pw-color-text-muted)"
-                  },
-                  "style": {
-                    "fontSize": "var(--pw-font-size-sm)",
-                    "flex": "0 1 auto",
-                    "minWidth": "0"
-                  }
-                },
-                {
-                  "id": "foot-f",
-                  "type": "text",
-                  "props": {
-                    "content": "Private beta on hub firmware 0.9 · kits ship March 2027",
-                    "color": "var(--pw-color-text-muted)"
-                  },
-                  "style": {
-                    "fontSize": "var(--pw-font-size-sm)",
-                    "flex": "0 1 auto",
-                    "minWidth": "0"
-                  }
-                }
-              ]
-            }
-          ]
+          "style": {
+            "width": "100%",
+            "maxWidth": "880px",
+            "alignSelf": "flex-start",
+            "margin": "0"
+          }
         }
       ]
     }
@@ -1006,23 +684,7 @@
           }
         ],
         "initialState": {
-          "pillLinks": [
-            {
-              "label": "Home",
-              "href": "/home",
-              "active": false
-            },
-            {
-              "label": "How it works",
-              "href": "/how-it-works",
-              "active": false
-            },
-            {
-              "label": "Kits",
-              "href": "/plans",
-              "active": true
-            }
-          ],
+          "here": "plans",
           "testimonialItems": [
             {
               "quote": "I stopped touching the switches in the second week. The kitchen is just right at seven, and the living room goes amber when the film starts.",
@@ -1158,10 +820,6 @@
       "The demo flat is a sketch map with its address written out beside it"
     ],
     "patternsExercised": [
-      "stage-backdrop",
-      "paint-layer",
-      "pill-nav",
-      "weave-pitch",
       "band-pricing",
       "band-testimonial",
       "faq",

@@ -15,7 +15,7 @@
  *
  * Which `pwf`: `--cli <path-to-bin.js>`, else the PWF_CLI environment
  * variable, else the published CLI: `@pwfabric/cli` installed in this folder's
- * node_modules if there is one, otherwise `@pwfabric/cli@3` from npm,
+ * node_modules if there is one, otherwise `@pwfabric/cli@^3.5.0` from npm,
  * installed into the temporary directory for this run. To check against an
  * engine clone, pass `--cli ../pwfabric/packages/cli/dist/bin.js` (after
  * `pnpm build` there).
@@ -24,7 +24,8 @@
  * else `../packs/dist/` (a clone of pwfabric/packs next to this one, after
  * `pnpm build` there). The folder holds `<pack>-<version>.pwpack` files, as
  * the packs releases name them; for each pack an app requires, the newest
- * file of that pack is added.
+ * file of that pack within the app's range is added, so apps on two majors of
+ * a pack are checked from one folder.
  *
  * Node built-ins only (and npm, to fetch the published CLI).
  *
@@ -38,7 +39,7 @@ import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 /** The published CLI this check runs when no other is named. */
-const CLI_PACKAGE = '@pwfabric/cli@3'
+const CLI_PACKAGE = '@pwfabric/cli@^3.5.0'
 function parseArgs(argv) {
   const opts = { cli: undefined, packs: undefined, keep: false }
   for (let i = 0; i < argv.length; i++) {
@@ -106,15 +107,29 @@ function findPacks(flag) {
   return { dir, files }
 }
 
-/** The newest `<name>-<version>.pwpack` for the pack `id` (`@pwpack/foundation` → foundation-1.0.0.pwpack). */
-function packFile(packs, id) {
+/**
+ * The newest `<name>-<version>.pwpack` of the pack `id` within the app's
+ * `range` (`@pwpack/foundation`, `^2.0.0` → foundation-2.0.0.pwpack).
+ */
+function packFile(packs, id, range = '*') {
   const name = id.replace(/^@pwpack\//, '')
   const versionOf = (f) => f.slice(name.length + 1, -'.pwpack'.length)
-  const mine = packs.files.filter((f) => f.startsWith(`${name}-`) && /^\d+\.\d+\.\d+$/.test(versionOf(f)))
-  if (mine.length === 0) throw new Error(`no ${name}-<version>.pwpack in ${packs.dir}`)
   const parts = (f) => versionOf(f).split('.').map(Number)
+  const mine = packs.files
+    .filter((f) => f.startsWith(`${name}-`) && /^\d+\.\d+\.\d+$/.test(versionOf(f)))
+    .filter((f) => inRange(parts(f), range))
+  if (mine.length === 0) throw new Error(`no ${name}-<version>.pwpack in ${range} in ${packs.dir}`)
   mine.sort((a, b) => parts(a).reduce((d, x, i) => d || x - parts(b)[i], 0))
   return join(packs.dir, mine[mine.length - 1])
+}
+
+/** Whether `[major, minor, patch]` is in a caret range (`^2.0.0`); any other range admits every version. */
+function inRange(version, range) {
+  const caret = /^\^(\d+)\.(\d+)\.(\d+)$/.exec(range.trim())
+  if (!caret) return true
+  const low = caret.slice(1).map(Number)
+  const atLeast = version.reduce((d, x, i) => d || x - low[i], 0) >= 0
+  return atLeast && (low[0] > 0 ? version[0] === low[0] : version[0] === 0 && version[1] === low[1])
 }
 
 /** Every example app: a directory here with a pwpack.json. */
@@ -146,6 +161,7 @@ function main() {
   const packs = findPacks(opts.packs)
   const list = apps()
   if (list.length === 0) throw new Error(`no example apps found in ${HERE}`)
+  const width = Math.max(...list.map((a) => a.length))
 
   const work = mkdtempSync(join(tmpdir(), 'pwf-examples-'))
   let cli
@@ -169,22 +185,22 @@ function main() {
     copyApp(join(HERE, app), dir)
     let ok = true
     const requires = JSON.parse(readFileSync(join(dir, 'pwpack.json'), 'utf8')).requires ?? []
-    const steps = [...requires.map((r) => ['add', packFile(packs, r.id)]), ['validate'], ['build']]
+    const steps = [...requires.map((r) => ['add', packFile(packs, r.id, r.range)]), ['validate'], ['build']]
     for (const args of steps) {
       const { code, output } = pwf(cli, args, dir)
       const line = `pwf ${args.map((a) => (a.endsWith('.pwpack') ? a.split(/[\\/]/).pop() : a)).join(' ')}`
       if (code === 0) {
-        console.log(`  ✓ ${app.padEnd(14)} ${line}`)
+        console.log(`  ✓ ${app.padEnd(width)} ${line}`)
       } else {
         ok = false
-        console.log(`  ✗ ${app.padEnd(14)} ${line} (exit ${code})`)
+        console.log(`  ✗ ${app.padEnd(width)} ${line} (exit ${code})`)
         console.log(output.trimEnd().split(/\r?\n/).map((l) => `      | ${l}`).join('\n'))
         break
       }
     }
     if (ok && !existsSync(join(dir, '.pwf', 'out', 'index.html'))) {
       ok = false
-      console.log(`  ✗ ${app.padEnd(14)} pwf build exited 0 but wrote no .pwf/out/index.html`)
+      console.log(`  ✗ ${app.padEnd(width)} pwf build exited 0 but wrote no .pwf/out/index.html`)
     }
     if (!ok) failed++
   }

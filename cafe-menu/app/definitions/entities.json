@@ -25,7 +25,16 @@
           "required": true
         },
         {
+          "name": "nameTr",
+          "type": "text",
+          "required": true
+        },
+        {
           "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "descriptionTr",
           "type": "text"
         },
         {
@@ -49,7 +58,17 @@
           "required": true
         },
         {
+          "name": "allergensTr",
+          "type": "text",
+          "required": true
+        },
+        {
           "name": "served",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "servedTr",
           "type": "text",
           "required": true
         },
@@ -65,6 +84,11 @@
         },
         {
           "name": "imageAlt",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "imageAltTr",
           "type": "text",
           "required": true
         }

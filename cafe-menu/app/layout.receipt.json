@@ -1,0 +1,186 @@
+{
+  "blocks": [
+    {
+      "id": "cafe",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "padding": 0
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "cafe-brand",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "keepRow": true,
+            "align": "center",
+            "gap": 10,
+            "padding": 12,
+            "landmark": "header"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "cafe-brand-logo",
+              "type": "image",
+              "props": {
+                "src": "pwpack/media/logo.svg",
+                "alt": "",
+                "height": 30,
+                "width": 30,
+                "objectFit": "contain",
+                "priority": true
+              },
+              "style": {
+                "flex": "0 0 auto"
+              }
+            },
+            {
+              "id": "cafe-brand-name",
+              "type": "text",
+              "props": {
+                "content": "{{t('shell.name')}}",
+                "fontWeight": "bold"
+              },
+              "style": {
+                "flex": "1 1 auto",
+                "minWidth": "0",
+                "fontFamily": "var(--pw-font-family-heading)",
+                "fontSize": "var(--pw-font-size-lg)",
+                "whiteSpace": "nowrap"
+              }
+            },
+            {
+              "id": "cafe-lang",
+              "type": "language-switch",
+              "props": {
+                "labels": {
+                  "en-GB": "EN",
+                  "tr": "TR"
+                },
+                "separator": "rule"
+              },
+              "style": {
+                "flex": "0 0 auto"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cafe-content",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "landmark": "main"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "--pw-section-inset": "0px",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "type": "pw:page"
+            }
+          ]
+        },
+        {
+          "id": "cafe-foot",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 12,
+            "padding": 0,
+            "landmark": "footer",
+            "align": "start"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box",
+            "paddingTop": "24px",
+            "paddingBottom": "16px"
+          },
+          "children": [
+            {
+              "id": "cafe-scheme",
+              "type": "theme-toggle",
+              "props": {
+                "showLabels": true
+              }
+            },
+            {
+              "id": "cafe-legal",
+              "type": "text",
+              "props": {
+                "content": "{{t('shell.legal')}}",
+                "textAlign": "left",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-xs)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cafe-bar",
+          "type": "bottom-bar",
+          "props": {
+            "items": [
+              {
+                "label": "{{t('nav.menu')}}",
+                "href": "/menu",
+                "icon": "utensils"
+              },
+              {
+                "label": "{{t('nav.visit')}}",
+                "href": "/visit",
+                "icon": "map-pin"
+              }
+            ],
+            "activeHref": "{{state.section == 'menu' ? '/menu' : (state.section == 'visit' ? '/visit' : '')}}"
+          },
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "knowledge": {
+    "purpose": "The café's one shell, written once: its mark and name with the language choice, the page in the middle, the colour-scheme choice and the address line, and the bottom bar (Menu, Visit) that marks the page in view.",
+    "patternsExercised": [
+      "shell-bottombar-flow"
+    ]
+  },
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "config": {
+        "initialState": {
+          "section": ""
+        }
+      }
+    }
+  ]
+}
