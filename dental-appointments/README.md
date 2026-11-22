@@ -17,6 +17,21 @@ A patient asks for an appointment; reception signs in, calls them back and marks
 
 **Records and rules.** `app/definitions/entities.json` types three collections: `Service` and `Dentist` (shipped in `app/content/`), and `AppointmentRequest` — the service and the dentist are relations to those records, the day a date, the time of day an enum, the e-mail an `email` field, the consent box must be ticked (`mustBe: true`), and the status an enum the server starts at `new`. `app/definitions/auth.json` lets anyone read the services and the dentists and **create** a request, and only the `reception` role **read and update** requests; registration is closed, so the reception account is the one the clinic makes. `app/data/AppointmentRequest.json` holds four requests to try reception with under `pwf dev` (never published).
 
+**How it's secured.** The rules live with the server, not the page: a visitor can only create a request, and cannot choose its status, because `status` is server-owned (`server: { default: "new" }`) and a server refuses any value for it on create. Tried under `pwf dev`:
+
+```sh
+# a visitor creating a request that claims to be booked: refused
+curl -X POST -H 'content-type: application/json' \n  -d '{"name":"V","phone":"1","service":"<a Service id>","day":"2026-11-30","time":"morning","consent":true,"status":"booked"}' \n  http://127.0.0.1:4600/_host/records/AppointmentRequest
+# → 400 {"error":{"code":"VALIDATION_FAILED","message":"status: is set by the server"}}
+
+# the same request without status: created, status "new"  → 201
+# a visitor changing a request's status:
+curl -X PATCH -H 'content-type: application/json' -d '{"status":"booked"}' \n  http://127.0.0.1:4600/_host/records/AppointmentRequest/<id>
+# → 401 {"error":{"code":"SIGN_IN_REQUIRED",…}}
+```
+
+The reception page hides the list from anyone else, but that is only the view: the server is what refuses.
+
 ```sh
 pwf add ../foundation-2.0.0.pwpack
 pwf dev
