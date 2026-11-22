@@ -1,6 +1,6 @@
 # PWFabric examples
 
-Six complete apps you can build and run with nothing but the `pwf` command
+Two complete apps you can build and run with nothing but the `pwf` command
 line: no account and no hosted service. Each folder is a **pwpack**, the
 source form of a PWFabric app (`pwpack.json`, its pages and records under
 `app/`, its own theme under `atoms/`, its pictures under `media/`), built from
@@ -9,11 +9,7 @@ the open [foundation and widgets packs](https://github.com/pwfabric/packs).
 | App | The need it serves | Packs |
 |---|---|---|
 | [`cafe-menu`](cafe-menu/) | Example Café: the menu a guest opens from the QR code on the table. Dishes by category with diet tags, allergens and prices, and how to find the café. Reads the app's own records. In English and Turkish. | foundation 2 |
-| [`dental-appointments`](dental-appointments/) | Example Dental Clinic: a patient requests an appointment; reception signs in, sees the requests and marks each one booked or declined. Access rules let anyone create a request and only reception read and update them. | foundation 2 |
-| [`equipment-checkout`](equipment-checkout/) | Example Team kit: a small team borrows and returns shared cameras, laptops and lights. Signed in; a filtered equipment list, a page per piece to borrow or return it, and the loan history. Who has what is a loan the server stamps, and only its borrower or the kit keeper closes it. A sidebar layout that folds on a phone. | foundation 2 |
 | [`lighting-hub-waitlist`](lighting-hub-waitlist/) | Example Light: a lighting hub's website before launch. What it does, how it works, the kits, and a waitlist that writes a record. One layout for every page, a daylight and an evening palette with a colour-scheme choice, composed page titles. | foundation 2, widgets 2 |
-| [`meetup-signup`](meetup-signup/) | Example Meetup: a community evening's programme and speakers, a sign-up that closes when the forty places are gone ("3 places left" is a plural message), and the organiser's attendee list. In English and Turkish. | foundation 2 |
-| [`studio-portfolio`](studio-portfolio/) | Example Architects: an architecture studio shows its projects and takes enquiries. A gallery of linked project cards, a page per project, how the studio works, and a contact form that writes a record; the layout responds through breakpoint-valued props. | foundation 2 |
 
 ## Running one
 
