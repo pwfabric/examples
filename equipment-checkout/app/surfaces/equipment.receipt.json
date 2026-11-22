@@ -1,0 +1,479 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "equipment",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-equipment-checkout"
+  },
+  "title": "Equipment",
+  "description": "The team’s shared cameras, laptops, audio and lights: what is in the cupboard and who has the rest.",
+  "category": "app",
+  "tags": [
+    "equipment",
+    "team",
+    "loans"
+  ],
+  "blocks": [
+    {
+      "id": "head",
+      "type": "section",
+      "props": {
+        "paddingY": {
+          "xs": 20,
+          "md": 28
+        },
+        "paddingX": 0,
+        "gap": 6
+      },
+      "children": [
+        {
+          "id": "head-h",
+          "type": "heading",
+          "props": {
+            "text": "Equipment",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "head-t",
+          "type": "text",
+          "props": {
+            "content": "Open a piece of kit to borrow it or to hand it back.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "filters",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": {
+          "xs": "column",
+          "md": "row"
+        },
+        "gap": 12,
+        "align": {
+          "xs": "stretch",
+          "md": "end"
+        }
+      },
+      "children": [
+        {
+          "id": "q",
+          "type": "input",
+          "props": {
+            "type": "search",
+            "name": "q",
+            "label": "Search",
+            "placeholder": "Name or tag, like ET-12",
+            "stateKey": "q",
+            "value": "{{state.q}}",
+            "leadingIcon": "search"
+          },
+          "style": {
+            "flex": "1 1 0",
+            "minWidth": "0"
+          }
+        },
+        {
+          "id": "kind",
+          "type": "segmented-control",
+          "props": {
+            "label": "Kind",
+            "options": [
+              {
+                "label": "All",
+                "value": ""
+              },
+              {
+                "label": "Cameras",
+                "value": "Camera"
+              },
+              {
+                "label": "Laptops",
+                "value": "Laptop"
+              },
+              {
+                "label": "Audio",
+                "value": "Audio"
+              },
+              {
+                "label": "Lighting",
+                "value": "Lighting"
+              }
+            ],
+            "value": "{{state.kind}}",
+            "stateKey": "kind",
+            "wrap": true
+          },
+          "style": {
+            "flex": "0 0 auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "only",
+      "type": "chip",
+      "props": {
+        "label": "Available now",
+        "size": "md",
+        "selected": "{{state.avail == 'yes'}}",
+        "action": {
+          "type": "setState",
+          "key": "avail",
+          "value": "{{state.avail == 'yes' ? '' : 'yes'}}"
+        }
+      },
+      "style": {
+        "alignSelf": "flex-start",
+        "marginTop": "12px"
+      }
+    },
+    {
+      "id": "count",
+      "type": "text",
+      "props": {
+        "content": "{{length(kit) == 1 ? '1 piece shown' : length(kit) + ' pieces shown'}}",
+        "color": "var(--pw-color-text-muted)"
+      },
+      "style": {
+        "marginTop": "12px",
+        "fontSize": "var(--pw-font-size-sm)"
+      },
+      "visibleWhen": "{{!__loading.kit && !__errors.kit}}"
+    },
+    {
+      "id": "wait",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 12
+      },
+      "visibleWhen": "{{__loading.kit && length(kit) == 0}}",
+      "style": {
+        "marginTop": "16px"
+      },
+      "children": [
+        {
+          "id": "wait-s",
+          "type": "spinner",
+          "props": {
+            "size": "sm",
+            "label": "Loading the equipment…",
+            "variant": "muted"
+          }
+        },
+        {
+          "id": "wait-k",
+          "type": "skeleton",
+          "props": {
+            "variant": "rectangle",
+            "width": "100%",
+            "height": 120,
+            "count": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-err",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 12,
+        "align": "start"
+      },
+      "visibleWhen": "{{!!__errors.kit}}",
+      "children": [
+        {
+          "id": "kit-err-a",
+          "type": "alert",
+          "props": {
+            "variant": "error",
+            "title": "{{__errors.kit == 'forbidden' ? 'Your account is not on the team list' : 'The equipment did not load'}}",
+            "message": "{{__errors.kit == 'forbidden' ? 'Ask the office manager to add you to the team, then sign in again.' : 'Check your connection and try again.'}}"
+          }
+        },
+        {
+          "id": "kit-err-b",
+          "type": "button",
+          "props": {
+            "label": "Try again",
+            "variant": "outline",
+            "icon": "refresh-cw",
+            "action": {
+              "type": "refresh",
+              "sourceId": "kit"
+            }
+          },
+          "visibleWhen": "{{__errors.kit != 'forbidden'}}"
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "type": "repeater",
+      "repeat": "{{kit}}",
+      "visibleWhen": "{{!__errors.kit}}",
+      "props": {
+        "items": "{{kit}}",
+        "layout": "card",
+        "columns": 3,
+        "minCellWidth": 250,
+        "gap": 16
+      },
+      "style": {
+        "marginTop": "16px"
+      },
+      "children": [
+        {
+          "id": "tile",
+          "type": "card",
+          "props": {
+            "href": "/item?id={{item.id}}",
+            "padding": 0,
+            "gap": 0,
+            "shadow": "none",
+            "borderWidth": 1
+          },
+          "style": {
+            "overflow": "hidden",
+            "height": "100%"
+          },
+          "states": {
+            "hover": {
+              "borderColor": "var(--pw-color-primary)"
+            }
+          },
+          "children": [
+            {
+              "id": "tile-pic",
+              "type": "image",
+              "props": {
+                "src": "{{item.image}}",
+                "alt": "",
+                "aspectRatio": {
+                  "xs": "16/9",
+                  "md": "4/3"
+                },
+                "objectFit": "contain",
+                "width": "100%",
+                "borderRadius": 0
+              },
+              "style": {
+                "backgroundColor": "#e7ecef"
+              }
+            },
+            {
+              "id": "tile-body",
+              "type": "container",
+              "props": {
+                "padding": 0,
+                "direction": "column",
+                "gap": 6
+              },
+              "style": {
+                "padding": "14px 16px 18px"
+              },
+              "children": [
+                {
+                  "id": "tile-tag",
+                  "type": "text",
+                  "props": {
+                    "content": "{{item.tag}} · {{item.kind}}",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "fontVariantNumeric": "tabular-nums"
+                  }
+                },
+                {
+                  "id": "tile-name",
+                  "type": "heading",
+                  "props": {
+                    "text": "{{item.name}}",
+                    "level": "h2"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-lg)",
+                    "margin": "0"
+                  }
+                },
+                {
+                  "id": "tile-state",
+                  "type": "badge",
+                  "props": {
+                    "text": "{{item.status == 'available' ? 'Available' : (item.dueBack < today() ? 'Overdue' : 'Out')}}",
+                    "status": "{{item.status == 'available' ? 'available' : (item.dueBack < today() ? 'overdue' : 'out')}}",
+                    "variantMap": {
+                      "available": "success",
+                      "out": "warning",
+                      "overdue": "error"
+                    },
+                    "size": "sm"
+                  },
+                  "style": {
+                    "alignSelf": "flex-start"
+                  }
+                },
+                {
+                  "id": "tile-who",
+                  "type": "text",
+                  "props": {
+                    "content": "{{item.holder}} · back by {{date(item.dueBack)}}",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)"
+                  },
+                  "visibleWhen": "{{item.status == 'out'}}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "none",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 8,
+        "align": "start"
+      },
+      "visibleWhen": "{{length(kit) == 0 && !__loading.kit && !__errors.kit}}",
+      "style": {
+        "marginTop": "16px"
+      },
+      "children": [
+        {
+          "id": "none-h",
+          "type": "heading",
+          "props": {
+            "text": "Nothing matches",
+            "level": "h2"
+          },
+          "style": {
+            "fontSize": "var(--pw-font-size-lg)"
+          }
+        },
+        {
+          "id": "none-t",
+          "type": "text",
+          "props": {
+            "content": "Try another kind or another word, or show the kit that is out too.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        },
+        {
+          "id": "none-b",
+          "type": "button",
+          "props": {
+            "label": "Show all equipment",
+            "variant": "outline",
+            "action": [
+              {
+                "type": "setState",
+                "key": "q",
+                "value": ""
+              },
+              {
+                "type": "setState",
+                "key": "kind",
+                "value": ""
+              },
+              {
+                "type": "setState",
+                "key": "avail",
+                "value": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "dataSources": [
+          {
+            "id": "kit",
+            "kind": "entity",
+            "entityType": "Equipment",
+            "query": {
+              "filter": {
+                "and": [
+                  {
+                    "field": "kind",
+                    "operator": "eq",
+                    "value": "{{state.kind}}"
+                  },
+                  {
+                    "field": "status",
+                    "operator": "eq",
+                    "value": "{{state.avail == 'yes' ? 'available' : ''}}"
+                  },
+                  {
+                    "or": [
+                      {
+                        "field": "name",
+                        "operator": "contains",
+                        "value": "{{state.q}}"
+                      },
+                      {
+                        "field": "tag",
+                        "operator": "contains",
+                        "value": "{{upper(state.q)}}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "sort": [
+                {
+                  "field": "tag",
+                  "direction": "asc"
+                }
+              ]
+            }
+          }
+        ],
+        "initialState": {
+          "section": "/",
+          "q": "",
+          "kind": "",
+          "avail": ""
+        },
+        "urlState": [
+          "q",
+          "kind",
+          "avail"
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "See what the team owns and what is in the cupboard now; open a piece to borrow or return it.",
+    "laws": [
+      "Search, kind and Available now combine, and live in the address",
+      "Each tile is a card whose href opens the equipment page",
+      "An item out past its due date says overdue"
+    ],
+    "patternsExercised": [
+      "card-grid",
+      "empty-state"
+    ]
+  }
+}

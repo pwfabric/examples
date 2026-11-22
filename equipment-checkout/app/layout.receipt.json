@@ -1,0 +1,205 @@
+{
+  "blocks": [
+    {
+      "id": "shell",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column"
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "children": [
+        {
+          "id": "bar",
+          "type": "navbar",
+          "layout": {
+            "widthScope": {
+              "xs": "viewport"
+            }
+          },
+          "style": {
+            "position": "sticky",
+            "top": "0",
+            "zIndex": "var(--pw-z-sticky, var(--pw-z-nav))"
+          },
+          "props": {
+            "logoText": "Example Team kit",
+            "logoHref": "/",
+            "links": []
+          }
+        },
+        {
+          "id": "frame",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": {
+              "xs": "column",
+              "md": "row"
+            },
+            "gap": {
+              "xs": 0,
+              "md": 32
+            },
+            "align": {
+              "xs": "stretch",
+              "md": "start"
+            }
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1200px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "side",
+              "type": "container",
+              "props": {
+                "padding": 0,
+                "direction": "column",
+                "gap": 16,
+                "landmark": "aside",
+                "label": "Sections"
+              },
+              "style": {
+                "flex": "0 0 auto",
+                "width": {
+                  "xs": "100%",
+                  "md": "220px"
+                },
+                "position": {
+                  "xs": "static",
+                  "md": "sticky"
+                },
+                "top": "88px",
+                "paddingBlock": {
+                  "xs": "8px",
+                  "md": "28px"
+                },
+                "boxSizing": "border-box"
+              },
+              "children": [
+                {
+                  "id": "nav",
+                  "type": "sidebar",
+                  "props": {
+                    "title": "Kit cupboard",
+                    "activeHref": "{{state.section}}",
+                    "items": [
+                      {
+                        "label": "Equipment",
+                        "href": "/"
+                      },
+                      {
+                        "label": "History",
+                        "href": "/history"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "content",
+              "type": "container",
+              "props": {
+                "padding": 0,
+                "direction": "column",
+                "landmark": "main"
+              },
+              "style": {
+                "flex": "1 1 0",
+                "minWidth": "0",
+                "paddingBottom": "48px"
+              },
+              "children": [
+                {
+                  "type": "pw:page"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "foot",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": {
+              "xs": "column",
+              "md": "row"
+            },
+            "justify": "between",
+            "align": {
+              "xs": "start",
+              "md": "center"
+            },
+            "gap": 12,
+            "landmark": "footer"
+          },
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1200px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "paddingBlock": "20px",
+            "borderTop": "1px solid var(--pw-color-border)",
+            "boxSizing": "border-box"
+          },
+          "children": [
+            {
+              "id": "foot-t",
+              "type": "text",
+              "props": {
+                "content": "Example Team · the kit cupboard is on the second floor, by the meeting room",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-sm)"
+              }
+            },
+            {
+              "id": "foot-scheme",
+              "type": "theme-toggle",
+              "props": {
+                "showSystem": true,
+                "showLabels": false
+              },
+              "style": {
+                "flex": "0 0 auto"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "initialState": {
+          "section": ""
+        }
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "The frame of the team’s kit app: the top bar with the account control, the sidebar (Equipment, History) beside the page, and the footer with the colour-scheme control.",
+    "laws": [
+      "The sidebar marks the section a page seeds in state.section: the equipment page belongs to Equipment",
+      "On a phone the sidebar folds behind one button above the page"
+    ],
+    "patternsExercised": [
+      "layout-docs"
+    ]
+  }
+}

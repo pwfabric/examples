@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "history",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-equipment-checkout"
+  },
+  "title": "History",
+  "description": "Every loan of the team’s equipment, newest first: who took what, when it is due back and when it came back.",
+  "category": "app",
+  "tags": [
+    "equipment",
+    "team",
+    "loans"
+  ],
+  "blocks": [
+    {
+      "id": "head",
+      "type": "section",
+      "props": {
+        "paddingY": {
+          "xs": 20,
+          "md": 28
+        },
+        "paddingX": 0,
+        "gap": 6
+      },
+      "children": [
+        {
+          "id": "head-h",
+          "type": "heading",
+          "props": {
+            "text": "History",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "head-t",
+          "type": "text",
+          "props": {
+            "content": "Every loan, newest first.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "show",
+      "type": "segmented-control",
+      "props": {
+        "label": "Show",
+        "options": [
+          {
+            "label": "All loans",
+            "value": ""
+          },
+          {
+            "label": "Still out",
+            "value": "out"
+          },
+          {
+            "label": "Returned",
+            "value": "returned"
+          }
+        ],
+        "value": "{{state.show}}",
+        "stateKey": "show"
+      },
+      "style": {
+        "alignSelf": "flex-start"
+      }
+    },
+    {
+      "id": "history-err",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 12,
+        "align": "start"
+      },
+      "visibleWhen": "{{!!__errors.history}}",
+      "children": [
+        {
+          "id": "history-err-a",
+          "type": "alert",
+          "props": {
+            "variant": "error",
+            "title": "{{__errors.history == 'forbidden' ? 'Your account is not on the team list' : 'The history did not load'}}",
+            "message": "{{__errors.history == 'forbidden' ? 'Ask the office manager to add you to the team, then sign in again.' : 'Check your connection and try again.'}}"
+          }
+        },
+        {
+          "id": "history-err-b",
+          "type": "button",
+          "props": {
+            "label": "Try again",
+            "variant": "outline",
+            "icon": "refresh-cw",
+            "action": {
+              "type": "refresh",
+              "sourceId": "history"
+            }
+          },
+          "visibleWhen": "{{__errors.history != 'forbidden'}}"
+        }
+      ]
+    },
+    {
+      "id": "table",
+      "type": "table",
+      "visibleWhen": "{{!__errors.history}}",
+      "props": {
+        "data": "{{history}}",
+        "phoneLayout": "cards",
+        "loadingWhen": "{{__loading.history && length(history) == 0}}",
+        "loadingRows": 5,
+        "emptyText": "{{state.show == 'out' ? 'Everything is back in the cupboard.' : 'No loans yet.'}}",
+        "columns": [
+          {
+            "key": "equipmentName",
+            "header": "Equipment",
+            "type": "link",
+            "hrefTemplate": "/item?id={equipment}"
+          },
+          {
+            "key": "borrower",
+            "header": "Who"
+          },
+          {
+            "key": "borrowedAt",
+            "header": "Borrowed",
+            "type": "date"
+          },
+          {
+            "key": "dueBack",
+            "header": "Back by",
+            "type": "date"
+          },
+          {
+            "key": "returnedAt",
+            "header": "Returned",
+            "type": "date"
+          },
+          {
+            "key": "status",
+            "header": "Now",
+            "type": "badge",
+            "badgeLabelMap": {
+              "out": "Out",
+              "returned": "Returned"
+            },
+            "badgeColorMap": {
+              "out": "warning",
+              "returned": "success"
+            }
+          }
+        ]
+      },
+      "style": {
+        "marginTop": "16px"
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "dataSources": [
+          {
+            "id": "history",
+            "kind": "entity",
+            "entityType": "Loan",
+            "query": {
+              "filter": {
+                "field": "status",
+                "operator": "eq",
+                "value": "{{state.show}}"
+              },
+              "sort": [
+                {
+                  "field": "borrowedAt",
+                  "direction": "desc"
+                }
+              ]
+            }
+          }
+        ],
+        "initialState": {
+          "section": "/history",
+          "show": ""
+        },
+        "urlState": [
+          "show"
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "Who took what and whether it came back: every Loan record, newest first, narrowed to those still out or returned.",
+    "laws": [
+      "Each equipment name links to its page",
+      "On a phone each row is a card of label–value pairs"
+    ],
+    "patternsExercised": [
+      "data-table"
+    ]
+  }
+}

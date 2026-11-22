@@ -1,0 +1,68 @@
+{
+  "formatVersion": "1.0",
+  "items": [
+    {
+      "path": "media/audio-recorder.svg",
+      "hash": "sha256:d6fec281c31f9b5b7fadffa5784d62cdb1e71eee168705e0cbafe6e9d93e549e",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/laptop-graphite.svg",
+      "hash": "sha256:0eca39260d351b3c014a88fdf2caf3b1503e19bc72f0170d39c504ade414ed63",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/laptop-large.svg",
+      "hash": "sha256:7d1e00dbfaafd3ed70409b855f942794ba0a84d2ee4be37461478ea84facfe64",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/laptop-silver.svg",
+      "hash": "sha256:ae94c6b5f3ff9634ba99bcf433512bc5f37bb878d3c95c9a1a6cc37f507ec60a",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/led-panels.svg",
+      "hash": "sha256:e8b70f54c1c185af33a222083ab12ba22f34c110dc2f8af8acd2e5f208a45f09",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/microphones.svg",
+      "hash": "sha256:d5405c9425855ecbb9722ee1211f2a133e4f50ab364a5c85e48d3b1181ce89b8",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/mirrorless-camera.svg",
+      "hash": "sha256:e36d96b6d66b7a852aed419aae36a80de108f7f26a1b4a38dc2f79918894d4a2",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/tripod.svg",
+      "hash": "sha256:ad314279cd2d448afc217766604c8dc8ece24632e16fd2f5c71bda7d4e7ad905",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/video-camera.svg",
+      "hash": "sha256:df4bf3472654afdf5cc964b3901c7fde4e43420c2bc915014b6586463b15f8dd",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    }
+  ]
+}

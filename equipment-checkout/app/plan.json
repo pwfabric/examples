@@ -1,0 +1,94 @@
+{
+  "title": "Example Team kit",
+  "titleTemplate": "%s · Example Team kit",
+  "locale": "en-GB",
+  "intent": {
+    "purpose": "A small team borrows and returns shared equipment (cameras, laptops, audio, lights).",
+    "audience": "A member of Example Team who needs a camera or a laptop for a day or a week",
+    "tone": "Brief and practical, like a note on the cupboard door",
+    "successCriteria": "A member finds a free piece of kit, borrows it with a return date, and marks it returned; anyone sees who has what"
+  },
+  "theme": {
+    "direction": "Calm utility: cool grey ground, ink-blue type, a teal accent, rounded but compact controls; a slate dark variant",
+    "paletteHint": "theme-equipment-checkout",
+    "status": "applied"
+  },
+  "capabilities": [],
+  "media": [
+    {
+      "key": "audio-recorder"
+    },
+    {
+      "key": "laptop-graphite"
+    },
+    {
+      "key": "laptop-large"
+    },
+    {
+      "key": "laptop-silver"
+    },
+    {
+      "key": "led-panels"
+    },
+    {
+      "key": "microphones"
+    },
+    {
+      "key": "mirrorless-camera"
+    },
+    {
+      "key": "tripod"
+    },
+    {
+      "key": "video-camera"
+    }
+  ],
+  "customBlocks": [],
+  "packs": [],
+  "messages": {
+    "ui.loading": "Loading…",
+    "ui.retry": "Try again",
+    "ui.skipToContent": "Skip to the content",
+    "ui.menu.open": "Open the menu",
+    "ui.menu.close": "Close the menu",
+    "ui.nav.main": "Main",
+    "ui.sidebar.menu": "Sections",
+    "ui.tree.expand": "Open {label}",
+    "ui.tree.collapse": "Close {label}",
+    "ui.colorScheme": "Colour scheme",
+    "ui.colorScheme.light": "Light",
+    "ui.colorScheme.dark": "Dark",
+    "ui.colorScheme.system": "As your device",
+    "ui.form.required": "Fill this in.",
+    "ui.form.maxLength": "Use no more than {maxLength} characters.",
+    "ui.form.min": "Pick {min} or later.",
+    "ui.form.type": "This does not look right. Check it and try again.",
+    "ui.form.hidden": "{label}, on an earlier step: {message}",
+    "ui.dismiss": "Dismiss",
+    "gate.title": "Example Team kit",
+    "gate.body": "Sign in with your team account to borrow and return the shared equipment.",
+    "gate.email": "Work e-mail",
+    "gate.password": "Password",
+    "gate.signIn": "Sign in",
+    "gate.provider.password": "Sign in with e-mail",
+    "gate.noProvider": "Signing in is not set up yet. Ask the office manager.",
+    "session.unreachable": "We could not reach the sign-in service. Check your connection and try again.",
+    "session.unexpected": "Something went wrong while signing in. Try again.",
+    "session.failed": "Signing in did not work. Try again.",
+    "session.refused": "That e-mail and password do not match a team account.",
+    "account.signIn": "Sign in",
+    "account.signOut": "Sign out",
+    "account.profile": "Your account",
+    "account.greeting": "Signed in as {name}",
+    "pill.region": "Your session",
+    "pill.signedIn": "Signed in as {name}",
+    "pill.signIn": "Sign in",
+    "pill.signOut": "Sign out",
+    "auth.error.generic": "Signing in did not work. Try again.",
+    "auth.error.unknown": "Signing in did not work ({code}). Try again.",
+    "auth.error.expired": "That sign-in took too long. Start again.",
+    "notFound.title": "Not found",
+    "notFound.body": "There is no page at this address.",
+    "notFound.home": "See all equipment"
+  }
+}

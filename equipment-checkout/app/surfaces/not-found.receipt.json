@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "not-found",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-equipment-checkout"
+  },
+  "title": "Not found",
+  "description": "This address is not a page of the Example Team kit app.",
+  "category": "app",
+  "tags": [
+    "equipment",
+    "team",
+    "loans"
+  ],
+  "blocks": [
+    {
+      "id": "lost",
+      "type": "section",
+      "props": {
+        "paddingY": {
+          "xs": 32,
+          "md": 56
+        },
+        "gap": 12
+      },
+      "children": [
+        {
+          "id": "lost-h",
+          "type": "heading",
+          "props": {
+            "text": "Not found",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "lost-t",
+          "type": "text",
+          "props": {
+            "content": "There is no page or piece of kit at this address. It may have been retired, or the link is mistyped.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        },
+        {
+          "id": "lost-b",
+          "type": "button",
+          "props": {
+            "label": "See all equipment",
+            "href": "/",
+            "variant": "primary"
+          },
+          "style": {
+            "alignSelf": "flex-start"
+          }
+        }
+      ]
+    }
+  ],
+  "knowledge": {
+    "purpose": "An unknown address or equipment id, inside the app’s frame.",
+    "laws": [
+      "One h1 and the way back"
+    ],
+    "patternsExercised": []
+  }
+}

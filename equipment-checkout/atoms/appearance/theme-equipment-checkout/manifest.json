@@ -1,0 +1,138 @@
+{
+  "id": "theme-equipment-checkout",
+  "kind": "ui-appearance",
+  "version": "1.0.0",
+  "category": "ui",
+  "name": "Example Team kit",
+  "state": "stable",
+  "description": "Calm utility: a cool grey ground, ink-blue type, one teal accent, compact rounded controls; a slate dark variant.",
+  "tags": [
+    "theme",
+    "appearance",
+    "light",
+    "dark",
+    "app"
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#0f6b66",
+      "secondary": "#e6ecef",
+      "accent": "#dcefed",
+      "background": "#f3f6f8",
+      "card": "#ffffff",
+      "text": "#18232d",
+      "textMuted": "#4f5d69",
+      "border": "#d3dce2",
+      "error": "#b3261e",
+      "success": "#2f6b3f",
+      "warning": "#8a5a00",
+      "info": "#2f5f8a",
+      "textOnPrimary": "#ffffff"
+    },
+    "border": {
+      "radius": "10px",
+      "width": "1px",
+      "style": "solid",
+      "radiusLarge": "14px",
+      "radiusSmall": "6px",
+      "radiusXl": "18px",
+      "radius2xl": "22px",
+      "radiusFull": "9999px"
+    },
+    "typography": {
+      "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "headingFontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "monoFontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "baseFontSize": "16px",
+      "headingWeight": "650",
+      "headingLineHeight": "1.2",
+      "letterSpacing": "-0.01em",
+      "bodyLineHeight": "1.6",
+      "fontSizeSm": "15px",
+      "fontSizeXs": "12px",
+      "fontSizeLg": "19px",
+      "fontSizeXl": "22px",
+      "fontSize2xl": "28px",
+      "fontSize3xl": "30px",
+      "fontSize4xl": "36px",
+      "bodyWeight": "400",
+      "bodyLetterSpacing": "0em"
+    },
+    "spacing": {
+      "base": "1rem",
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "xxl": "3rem"
+    },
+    "shadows": {
+      "card": "none",
+      "button": "none",
+      "sm": "0 1px 2px 0 rgba(0,0,0,.05)",
+      "md": "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1)",
+      "lg": "0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1)",
+      "xl": "0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1)"
+    },
+    "motion": {
+      "durationFast": "150ms",
+      "durationNormal": "200ms",
+      "durationSlow": "300ms",
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "easingBounce": "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "layout": {
+      "gap": "0px",
+      "padding": "0px",
+      "containerMaxWidth": "1200px",
+      "gridGap": "24px",
+      "sectionPaddingY": "clamp(2.5rem, 5vw, 4rem)",
+      "sectionPaddingX": "clamp(1rem, 3vw, 1.5rem)"
+    },
+    "focus": {
+      "ringColor": "#0f6b66",
+      "ringWidth": "2px",
+      "ringOffset": "2px"
+    },
+    "zIndex": {
+      "sticky": 150,
+      "nav": 200,
+      "dropdown": 300,
+      "drawer": 400,
+      "modal": 500,
+      "toast": 540
+    }
+  },
+  "darkTheme": {
+    "colors": {
+      "primary": "#5cc8bf",
+      "secondary": "#1f2a33",
+      "accent": "#173634",
+      "background": "#11181e",
+      "card": "#18222a",
+      "text": "#e7edf1",
+      "textMuted": "#a3b1bc",
+      "border": "#2f3c47",
+      "error": "#ff9b8a",
+      "success": "#86d6a0",
+      "warning": "#f5c95a",
+      "info": "#9cc8ff",
+      "textOnPrimary": "#06201e"
+    }
+  },
+  "knowledge": {
+    "purpose": "Calm utility: a cool grey ground, ink-blue type, one teal accent, compact rounded controls; a slate dark variant.",
+    "useCases": [
+      "The pages of the Example Team kit example app"
+    ],
+    "composesWith": [
+      "platform/persistence",
+      "platform/entities",
+      "platform/navigation"
+    ],
+    "antiPatterns": [
+      "Pinning colours in block props — the theme tokens already cascade"
+    ]
+  }
+}
