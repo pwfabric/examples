@@ -1,0 +1,185 @@
+{
+  "blocks": [
+    {
+      "id": "bar",
+      "type": "container",
+      "props": {
+        "direction": "row",
+        "justify": "end",
+        "align": "center",
+        "gap": 16,
+        "padding": 0,
+        "keepRow": true,
+        "backgroundColor": "var(--pw-color-secondary)",
+        "borderRadius": 0
+      },
+      "children": [
+        {
+          "id": "bar-lang",
+          "type": "language-switch",
+          "props": {
+            "separator": "rule",
+            "labels": {
+              "en-GB": "English",
+              "tr": "Türkçe"
+            }
+          }
+        },
+        {
+          "id": "bar-scheme",
+          "type": "theme-toggle",
+          "props": {
+            "showLabels": false
+          }
+        }
+      ],
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      },
+      "style": {
+        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+        "paddingBlock": "4px"
+      }
+    },
+    {
+      "id": "nav",
+      "type": "navbar",
+      "props": {
+        "logoSrc": "pwpack/media/logo.svg",
+        "logoText": "Example Meetup",
+        "logoHref": "/",
+        "alignment": "right",
+        "links": [
+          {
+            "label": "{{t('nav.programme')}}",
+            "href": "/"
+          },
+          {
+            "label": "{{t('nav.speakers')}}",
+            "href": "/speakers"
+          }
+        ],
+        "showCTA": true,
+        "ctaLabel": "{{t('cta.signup')}}",
+        "ctaHref": "/signup"
+      },
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      }
+    },
+    {
+      "id": "main",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "landmark": "main"
+      },
+      "children": [
+        {
+          "type": "pw:page"
+        }
+      ],
+      "style": {
+        "width": "100%",
+        "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+        "marginInline": "auto",
+        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+        "boxSizing": "border-box",
+        "--pw-section-inset": "0px"
+      }
+    },
+    {
+      "id": "foot",
+      "type": "section",
+      "props": {
+        "landmark": "footer",
+        "paddingY": 28,
+        "paddingX": 0,
+        "gap": 0,
+        "backgroundColor": "var(--pw-color-secondary)"
+      },
+      "children": [
+        {
+          "id": "foot-in",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 10,
+            "padding": 0
+          },
+          "children": [
+            {
+              "id": "foot-row",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "gap": 16,
+                "padding": 0,
+                "wrap": true,
+                "align": "center",
+                "justify": "between"
+              },
+              "children": [
+                {
+                  "id": "foot-where",
+                  "type": "text",
+                  "props": {
+                    "content": "{{t('foot.where')}}",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "flex": "1 1 320px",
+                    "minWidth": "0"
+                  }
+                },
+                {
+                  "id": "foot-organiser",
+                  "type": "link",
+                  "props": {
+                    "href": "/attendees",
+                    "text": "{{t('foot.organiser')}}",
+                    "underline": "always",
+                    "fontSize": 14
+                  }
+                }
+              ]
+            },
+            {
+              "id": "foot-legal",
+              "type": "text",
+              "props": {
+                "content": "{{t('foot.legal')}}",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-xs)"
+              }
+            }
+          ],
+          "style": {
+            "width": "100%",
+            "maxWidth": "var(--pw-layout-container-max-width, 1080px)",
+            "marginInline": "auto",
+            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
+            "boxSizing": "border-box"
+          }
+        }
+      ],
+      "layout": {
+        "widthScope": {
+          "xs": "viewport"
+        }
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "The meetup’s one shell: a slim bar with the language and colour-scheme choices, the top bar (Programme, Speakers, and Sign up), the page, and a footer with where it meets and the organiser’s way in.",
+    "patternsExercised": [
+      "shell-topnav"
+    ]
+  }
+}

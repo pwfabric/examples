@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "not-found",
+  "version": "1.0.0",
+  "kind": "surface",
+  "title": "{{t('notFound.title')}}",
+  "description": "{{t('notFound.description')}}",
+  "blocks": [
+    {
+      "id": "missing",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "gap": 12,
+        "padding": 0,
+        "align": "start"
+      },
+      "children": [
+        {
+          "id": "missing-t",
+          "type": "heading",
+          "props": {
+            "text": "{{t('notFound.title')}}",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "missing-s",
+          "type": "text",
+          "props": {
+            "content": "{{t('notFound.body')}}",
+            "color": "var(--pw-color-text-muted)"
+          }
+        },
+        {
+          "id": "missing-home",
+          "type": "button",
+          "props": {
+            "label": "{{t('notFound.home')}}",
+            "href": "/",
+            "variant": "primary"
+          }
+        }
+      ],
+      "style": {
+        "paddingBlock": "48px"
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "The in-shell page an unknown address meets, with the way back to the programme."
+  }
+}
