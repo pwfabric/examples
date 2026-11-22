@@ -87,9 +87,9 @@
     },
     {
       "path": "media/logo.svg",
-      "hash": "sha256:cf8e8d3ec7a8deb065deb737e74c00487b118249a5ddc7bf493cc1327a9e0517",
+      "hash": "sha256:9b8ab6d603f67bf2535e3c7ce0b9bea16bcb3909acfa7e5f04d6f50e2f98dd05",
       "source": "provided",
-      "createdAt": "2026-11-17T12:00:00.000Z",
+      "createdAt": "2026-11-22T12:00:00.000Z",
       "license": "Apache-2.0"
     },
     {
@@ -105,6 +105,34 @@
       "source": "provided",
       "createdAt": "2026-11-17T12:00:00.000Z",
       "license": "Apache-2.0"
+    },
+    {
+      "path": "media/fonts/lora-latin-ext.woff2",
+      "hash": "sha256:2a2d9c22c9863086a23f5013fede1428585321812b25f2662542c39d02967c5e",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "OFL-1.1"
+    },
+    {
+      "path": "media/fonts/lora-latin.woff2",
+      "hash": "sha256:ddb8c66035104e233fc024669183aad3738b6daa16deee2ebb1241bd0f98ace1",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "OFL-1.1"
+    },
+    {
+      "path": "media/fonts/nunito-latin-ext.woff2",
+      "hash": "sha256:2c8d792869818ecb253a46bc3c63c7013df7aac2f69291c3c85e5cdc94160960",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "OFL-1.1"
+    },
+    {
+      "path": "media/fonts/nunito-latin.woff2",
+      "hash": "sha256:ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "OFL-1.1"
     }
   ]
 }
