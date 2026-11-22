@@ -94,6 +94,20 @@
       "usesMedia": [],
       "usesCustomBlocks": [],
       "status": "applied"
+    },
+    {
+      "key": "not-found",
+      "name": "Not found",
+      "isEntry": false,
+      "purpose": "The page an unknown address meets, on the same stage, with the way home",
+      "keyContent": [],
+      "linksTo": [
+        "home"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [],
+      "usesCustomBlocks": [],
+      "status": "applied"
     }
   ],
   "packs": [],

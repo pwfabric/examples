@@ -1,6 +1,6 @@
 # PWFabric examples
 
-Two complete apps you can build and run with nothing but the `pwf` command
+Four complete apps you can build and run with nothing but the `pwf` command
 line: no account and no hosted service. Each folder is a **pwpack**, the
 source form of a PWFabric app (`pwpack.json`, its pages and records under
 `app/`, its own theme under `atoms/`, its pictures under `media/`), built from
@@ -8,19 +8,21 @@ the open [foundation and widgets packs](https://github.com/pwfabric/packs).
 
 | App | The need it serves | Packs |
 |---|---|---|
-| [`cafe-menu`](cafe-menu/) | Example Café: the menu a guest opens from the QR code on the table. Dishes by category with diet tags, allergens and prices, and how to find the café. Reads the app's own records. | foundation |
-| [`lighting-hub-waitlist`](lighting-hub-waitlist/) | Example Light: a lighting hub's website before launch. What it does, how it works, the kits, and a waitlist that writes a record. | foundation, widgets |
+| [`cafe-menu`](cafe-menu/) | Example Café: the menu a guest opens from the QR code on the table. Dishes by category with diet tags, allergens and prices, and how to find the café. Reads the app's own records. In English and Turkish. | foundation 2 |
+| [`dental-appointments`](dental-appointments/) | Example Dental Clinic: a patient requests an appointment; reception signs in, sees the requests and marks each one booked or declined. Access rules let anyone create a request and only reception read and update them. | foundation 2 |
+| [`lighting-hub-waitlist`](lighting-hub-waitlist/) | Example Light: a lighting hub's website before launch. What it does, how it works, the kits, and a waitlist that writes a record. | foundation 1, widgets 1 |
+| [`meetup-signup`](meetup-signup/) | Example Meetup: a community evening's programme and speakers, a sign-up that closes when the forty places are gone ("3 places left" is a plural message), and the organiser's attendee list. In English and Turkish. | foundation 2 |
 
 ## Running one
 
-The command line is on npm (Node 22 or newer). Download
-`foundation-1.0.0.pwpack` (and `widgets-1.0.0.pwpack` for the lighting app)
-from the [packs releases](https://github.com/pwfabric/packs/releases), then:
+The command line is on npm (Node 22 or newer; `pwf` 3.5 or newer). Download
+`foundation-2.0.0.pwpack` (for the lighting app, `foundation-1.0.0.pwpack` and
+`widgets-1.0.0.pwpack`) from the [packs releases](https://github.com/pwfabric/packs/releases), then:
 
 ```sh
 npm install -g @pwfabric/cli
 cd cafe-menu
-pwf add ../foundation-1.0.0.pwpack
+pwf add ../foundation-2.0.0.pwpack
 pwf dev
 ```
 
@@ -41,7 +43,8 @@ they say. People, companies, products and places are fictional ("Example …").
   not-found page come from the app (`plan.json` `messages` and its pages);
   the engine and the packs draw none of their own.
 - **One identity.** Every page wears the app's own theme
-  (`atoms/appearance/theme-<app>/`), with its own dark mode.
+  (`atoms/appearance/theme-<app>/`), with its own dark mode, and one shell,
+  written once where the app has a layout (`app/layout.receipt.json`).
 - **A page never fetches through a block.** Data arrives through a page's
   data sources; records live in `app/content/`, typed in
   `app/definitions/entities.json`, with access rules in
@@ -57,7 +60,8 @@ node check.mjs --packs <folder with the .pwpack files>
 
 For each app, in a temporary copy, `check.mjs` runs `pwf add` for every pack
 the app requires, then `pwf validate` and `pwf build`, and fails unless each
-exits 0. CI runs it against the packs built from
+exits 0. The packs folder may hold several versions of a pack: each app gets
+the newest within its range. CI runs it against the packs built from
 [pwfabric/packs](https://github.com/pwfabric/packs) and the published `pwf`.
 
 ## Licence
