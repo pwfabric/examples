@@ -108,59 +108,161 @@
       ]
     },
     {
-      "id": "table",
-      "type": "table",
-      "visibleWhen": "{{!__errors.history}}",
+      "id": "hist-wait",
+      "type": "container",
       "props": {
-        "data": "{{history}}",
-        "phoneLayout": "cards",
-        "loadingWhen": "{{__loading.history && length(history) == 0}}",
-        "loadingRows": 5,
-        "emptyText": "{{state.show == 'out' ? 'Everything is back in the cupboard.' : 'No loans yet.'}}",
-        "columns": [
-          {
-            "key": "equipmentName",
-            "header": "Equipment",
-            "type": "link",
-            "hrefTemplate": "/item?id={equipment}"
-          },
-          {
-            "key": "borrower",
-            "header": "Who"
-          },
-          {
-            "key": "borrowedAt",
-            "header": "Borrowed",
-            "type": "date"
-          },
-          {
-            "key": "dueBack",
-            "header": "Back by",
-            "type": "date"
-          },
-          {
-            "key": "returnedAt",
-            "header": "Returned",
-            "type": "date"
-          },
-          {
-            "key": "status",
-            "header": "Now",
-            "type": "badge",
-            "badgeLabelMap": {
-              "out": "Out",
-              "returned": "Returned"
-            },
-            "badgeColorMap": {
-              "out": "warning",
-              "returned": "success"
-            }
-          }
-        ]
+        "padding": 0,
+        "direction": "column",
+        "gap": 8
       },
+      "visibleWhen": "{{__loading.history && length(history) == 0}}",
       "style": {
         "marginTop": "16px"
-      }
+      },
+      "children": [
+        {
+          "id": "hist-wait-k",
+          "type": "skeleton",
+          "props": {
+            "variant": "rectangle",
+            "width": "100%",
+            "height": 64,
+            "count": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "rows",
+      "type": "repeater",
+      "repeat": "{{history}}",
+      "visibleWhen": "{{!__errors.history}}",
+      "props": {
+        "items": "{{history}}",
+        "layout": "row",
+        "gap": 0
+      },
+      "style": {
+        "marginTop": "16px",
+        "borderTop": "1px solid var(--pw-color-border)"
+      },
+      "children": [
+        {
+          "id": "row",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": {
+              "xs": "column",
+              "md": "row"
+            },
+            "gap": {
+              "xs": 4,
+              "md": 16
+            },
+            "align": {
+              "xs": "start",
+              "md": "center"
+            }
+          },
+          "style": {
+            "paddingBlock": "12px",
+            "borderBottom": "1px solid var(--pw-color-border)"
+          },
+          "children": [
+            {
+              "id": "row-what",
+              "type": "container",
+              "props": {
+                "padding": 0,
+                "direction": "column",
+                "gap": 2
+              },
+              "style": {
+                "flex": "1 1 0",
+                "minWidth": "0"
+              },
+              "children": [
+                {
+                  "id": "row-name",
+                  "type": "link",
+                  "props": {
+                    "text": "{{find(kit, 'id', item.equipment).name}} ({{find(kit, 'id', item.equipment).tag}})",
+                    "href": "/item?id={{item.equipment}}",
+                    "fontWeight": "semibold",
+                    "color": "var(--pw-color-text)",
+                    "underline": "hover"
+                  }
+                },
+                {
+                  "id": "row-when",
+                  "type": "text",
+                  "props": {
+                    "content": "{{item.borrower}} · borrowed {{date(item.borrowedAt)}} · back by {{date(item.dueBack)}}{{item.status == 'returned' ? ' · returned ' + date(item.returnedAt) : ''}}",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)"
+                  }
+                },
+                {
+                  "id": "row-note",
+                  "type": "text",
+                  "props": {
+                    "content": "{{item.note}}",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "fontSize": "var(--pw-font-size-sm)",
+                    "fontStyle": "italic"
+                  },
+                  "visibleWhen": "{{!!item.note}}"
+                }
+              ]
+            },
+            {
+              "id": "row-now",
+              "type": "badge",
+              "props": {
+                "text": "{{item.status == 'returned' ? 'Returned' : (item.dueBack < today() ? 'Overdue' : 'Out')}}",
+                "status": "{{item.status == 'returned' ? 'returned' : (item.dueBack < today() ? 'overdue' : 'out')}}",
+                "variantMap": {
+                  "returned": "success",
+                  "out": "warning",
+                  "overdue": "error"
+                },
+                "size": "sm"
+              },
+              "style": {
+                "flex": "0 0 auto"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hist-none",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 6
+      },
+      "visibleWhen": "{{length(history) == 0 && !__loading.history && !__errors.history}}",
+      "style": {
+        "marginTop": "16px"
+      },
+      "children": [
+        {
+          "id": "hist-none-t",
+          "type": "text",
+          "props": {
+            "content": "{{state.show == 'out' ? 'Everything is back in the cupboard.' : (state.show == 'returned' ? 'Nothing has been returned yet.' : 'Nobody has borrowed anything yet.')}}",
+            "color": "var(--pw-color-text-muted)"
+          }
+        }
+      ]
     }
   ],
   "capabilities": [
@@ -186,6 +288,11 @@
                 }
               ]
             }
+          },
+          {
+            "id": "kit",
+            "kind": "entity",
+            "entityType": "Equipment"
           }
         ],
         "initialState": {
@@ -201,8 +308,9 @@
   "knowledge": {
     "purpose": "Who took what and whether it came back: every Loan record, newest first, narrowed to those still out or returned.",
     "laws": [
-      "Each equipment name links to its page",
-      "On a phone each row is a card of label–value pairs"
+      "Each equipment name links to its page; the name is read from the Equipment record, never stored on the loan",
+      "Who borrowed is the name the server stamped on the loan",
+      "On a phone each row stacks"
     ],
     "patternsExercised": [
       "data-table"

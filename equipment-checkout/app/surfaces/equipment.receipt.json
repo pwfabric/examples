@@ -137,14 +137,14 @@
       "id": "count",
       "type": "text",
       "props": {
-        "content": "{{length(kit) == 1 ? '1 piece shown' : length(kit) + ' pieces shown'}}",
+        "content": "{{length(open) == 0 ? 'Everything is in the cupboard.' : (length(open) == 1 ? '1 piece is out on loan.' : length(open) + ' pieces are out on loan.')}}",
         "color": "var(--pw-color-text-muted)"
       },
       "style": {
         "marginTop": "12px",
         "fontSize": "var(--pw-font-size-sm)"
       },
-      "visibleWhen": "{{!__loading.kit && !__errors.kit}}"
+      "visibleWhen": "{{!__loading.open && !__errors.open}}"
     },
     {
       "id": "wait",
@@ -235,6 +235,7 @@
         {
           "id": "tile",
           "type": "card",
+          "visibleWhen": "{{state.avail != 'yes' || !find(open, 'equipment', item.id)}}",
           "props": {
             "href": "/item?id={{item.id}}",
             "padding": 0,
@@ -310,8 +311,8 @@
                   "id": "tile-state",
                   "type": "badge",
                   "props": {
-                    "text": "{{item.status == 'available' ? 'Available' : (item.dueBack < today() ? 'Overdue' : 'Out')}}",
-                    "status": "{{item.status == 'available' ? 'available' : (item.dueBack < today() ? 'overdue' : 'out')}}",
+                    "text": "{{!find(open, 'equipment', item.id) ? 'Available' : (find(open, 'equipment', item.id).dueBack < today() ? 'Overdue' : 'Out')}}",
+                    "status": "{{!find(open, 'equipment', item.id) ? 'available' : (find(open, 'equipment', item.id).dueBack < today() ? 'overdue' : 'out')}}",
                     "variantMap": {
                       "available": "success",
                       "out": "warning",
@@ -327,13 +328,13 @@
                   "id": "tile-who",
                   "type": "text",
                   "props": {
-                    "content": "{{item.holder}} · back by {{date(item.dueBack)}}",
+                    "content": "{{find(open, 'equipment', item.id).borrower}} · back by {{date(find(open, 'equipment', item.id).dueBack)}}",
                     "color": "var(--pw-color-text-muted)"
                   },
                   "style": {
                     "fontSize": "var(--pw-font-size-sm)"
                   },
-                  "visibleWhen": "{{item.status == 'out'}}"
+                  "visibleWhen": "{{!!find(open, 'equipment', item.id)}}"
                 }
               ]
             }
@@ -421,11 +422,6 @@
                     "value": "{{state.kind}}"
                   },
                   {
-                    "field": "status",
-                    "operator": "eq",
-                    "value": "{{state.avail == 'yes' ? 'available' : ''}}"
-                  },
-                  {
                     "or": [
                       {
                         "field": "name",
@@ -448,6 +444,18 @@
                 }
               ]
             }
+          },
+          {
+            "id": "open",
+            "kind": "entity",
+            "entityType": "Loan",
+            "query": {
+              "filter": {
+                "field": "status",
+                "operator": "eq",
+                "value": "out"
+              }
+            }
           }
         ],
         "initialState": {
@@ -468,6 +476,7 @@
     "purpose": "See what the team owns and what is in the cupboard now; open a piece to borrow or return it.",
     "laws": [
       "Search, kind and Available now combine, and live in the address",
+      "Whether a piece is out is not stored on it: it is out while a Loan for it is open, and the open loan says who has it (the borrower name the server stamped) and until when",
       "Each tile is a card whose href opens the equipment page",
       "An item out past its due date says overdue"
     ],

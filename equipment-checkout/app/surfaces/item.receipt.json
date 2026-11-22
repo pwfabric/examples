@@ -195,7 +195,7 @@
     {
       "id": "borrow",
       "type": "card",
-      "visibleWhen": "{{length(item) > 0 && item.0.status == 'available'}}",
+      "visibleWhen": "{{length(item) > 0 && !__loading.openLoan && !__errors.openLoan && length(openLoan) == 0}}",
       "props": {
         "padding": 20,
         "gap": 12,
@@ -242,15 +242,6 @@
                 "type": "hidden",
                 "name": "equipment",
                 "value": "{{item.0.id}}"
-              }
-            },
-            {
-              "id": "b-eqn",
-              "type": "input",
-              "props": {
-                "type": "hidden",
-                "name": "equipmentName",
-                "value": "{{item.0.name}} ({{item.0.tag}})"
               }
             },
             {
@@ -301,7 +292,7 @@
       "visibleWhen": "{{state.borrowFailed || state.markFailed}}",
       "props": {
         "variant": "error",
-        "title": "{{state.borrowReason == 'forbidden' || state.markReason == 'forbidden' ? 'Your account may look but not borrow. Ask the office manager to add you to the team.' : 'That did not go through. Check your connection and try again.'}}",
+        "title": "{{state.borrowReason == 'forbidden' ? 'Your account may look but not borrow. Ask the office manager to add you to the team.' : (state.markReason == 'forbidden' || state.markReason == 'error' ? 'Only the person who borrowed it, or the kit keeper, can mark it returned.' : 'That did not go through. Check your connection and try again.')}}",
         "focusOnShow": true
       },
       "style": {
@@ -311,7 +302,7 @@
     {
       "id": "out",
       "type": "card",
-      "visibleWhen": "{{length(item) > 0 && item.0.status == 'out'}}",
+      "visibleWhen": "{{length(item) > 0 && length(openLoan) > 0}}",
       "props": {
         "padding": 20,
         "gap": 12,
@@ -326,7 +317,7 @@
           "id": "out-h",
           "type": "heading",
           "props": {
-            "text": "{{item.0.dueBack < today() ? 'Overdue' : 'Out on loan'}}",
+            "text": "{{openLoan.0.dueBack < today() ? 'Overdue' : 'Out on loan'}}",
             "level": "h2"
           },
           "style": {
@@ -337,14 +328,14 @@
           "id": "out-t",
           "type": "text",
           "props": {
-            "content": "{{item.0.holder}} has it{{item.0.dueBack < today() ? ', due back on ' : ', back by '}}{{date(item.0.dueBack, 'full')}}{{openLoan.0.note ? ': ' + openLoan.0.note : '.'}}"
+            "content": "{{openLoan.0.owner == me.id ? 'You have' : openLoan.0.borrower + ' has'}} it{{openLoan.0.dueBack < today() ? ', due back on ' : ', back by '}}{{date(openLoan.0.dueBack, 'full')}}{{openLoan.0.note ? ': ' + openLoan.0.note : '.'}}"
           }
         },
         {
           "id": "out-help",
           "type": "text",
           "props": {
-            "content": "Put it back in {{item.0.location}}, then mark it returned so the next person can borrow it.",
+            "content": "{{openLoan.0.owner == me.id || includes(me.roles, 'keeper') ? 'Put it back in ' + item.0.location + ', then mark it returned so the next person can borrow it.' : 'Ask ' + openLoan.0.borrower + ' when it will be back, or the kit keeper if it is needed sooner.'}}",
             "color": "var(--pw-color-text-muted)"
           }
         },
@@ -358,29 +349,18 @@
             "action": [
               {
                 "type": "write",
-                "sourceId": "item",
-                "op": "update",
-                "id": "{{item.0.id}}",
-                "values": {
-                  "status": "available",
-                  "holder": "",
-                  "dueBack": null
-                },
-                "statusKeys": {
-                  "loading": "returning",
-                  "success": "returned",
-                  "error": "markFailed",
-                  "reason": "markReason"
-                }
-              },
-              {
-                "type": "write",
                 "sourceId": "openLoan",
                 "op": "update",
                 "id": "{{openLoan.0.id}}",
                 "values": {
                   "status": "returned",
                   "returnedAt": "{{today()}}"
+                },
+                "statusKeys": {
+                  "loading": "returning",
+                  "success": "returned",
+                  "error": "markFailed",
+                  "reason": "markReason"
                 }
               },
               {
@@ -393,14 +373,15 @@
           },
           "style": {
             "alignSelf": "flex-start"
-          }
+          },
+          "visibleWhen": "{{openLoan.0.owner == me.id || includes(me.roles, 'keeper')}}"
         }
       ]
     },
     {
       "id": "return-ok",
       "type": "alert",
-      "visibleWhen": "{{state.returned && item.0.status == 'available'}}",
+      "visibleWhen": "{{state.returned && length(openLoan) == 0}}",
       "props": {
         "variant": "success",
         "title": "Marked as returned. Thank you.",
@@ -569,7 +550,7 @@
         ],
         "behaviors": [
           {
-            "id": "borrow-marks-out",
+            "id": "borrow-clears-return",
             "event": "form:submit",
             "targetBlockId": "borrow-form",
             "actions": [
@@ -577,21 +558,6 @@
                 "type": "setState",
                 "key": "returned",
                 "value": false
-              },
-              {
-                "type": "write",
-                "sourceId": "item",
-                "op": "update",
-                "id": "{{item.0.id}}",
-                "values": {
-                  "status": "out",
-                  "holder": "{{me.name || me.email}}",
-                  "dueBack": "{{state.due}}"
-                },
-                "statusKeys": {
-                  "error": "markFailed",
-                  "reason": "markReason"
-                }
               }
             ]
           }
@@ -619,11 +585,12 @@
     }
   ],
   "knowledge": {
-    "purpose": "One piece of kit by the id in the address: what it is and where it lives, then borrow it (a Loan record, and the item marked out) or mark it returned (the item and its open loan updated), and its last loans.",
+    "purpose": "One piece of kit by the id in the address: what it is and where it lives, then borrow it (a Loan record) or mark it returned (its open Loan closed), and its last loans.",
     "laws": [
-      "Borrowing creates a Loan stamped by the server with the borrower and the time, and marks the item out with the borrower and the date",
-      "Returning marks the item available and closes its open loan with today’s date",
-      "Only the team role may read and change the records (auth.json); another account is told so in the app’s words",
+      "Borrowing creates a Loan; the server stamps who (owner, borrower name) and when; the page sends only the item, the date and the note",
+      "The item is out while it has an open Loan; the Equipment record never changes",
+      "Only the borrower (update own) or the keeper role closes a loan; the button shows only to them, and the server enforces it",
+      "Equipment is read-only to the team; only the keeper role writes it",
       "An unknown id draws the not-found page at the same address"
     ],
     "patternsExercised": [

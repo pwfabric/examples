@@ -7,9 +7,6 @@
       "kind": "Camera",
       "location": "Shelf A1",
       "description": "A 24-megapixel body with the 24–70 mm zoom, two batteries and a 128 GB card. Charges over USB-C.",
-      "status": "available",
-      "holder": "",
-      "dueBack": null,
       "image": "pwpack/media/mirrorless-camera.svg",
       "imageAlt": "A black mirrorless camera with a zoom lens, from the front"
     },
@@ -20,9 +17,6 @@
       "kind": "Camera",
       "location": "Shelf A1",
       "description": "4K video camera with a flip-out screen and a top handle. Two batteries; the charger is in the bag.",
-      "status": "out",
-      "holder": "Sam Example",
-      "dueBack": "2026-11-20",
       "image": "pwpack/media/video-camera.svg",
       "imageAlt": "A compact video camera with a flip-out screen, from the side"
     },
@@ -33,9 +27,6 @@
       "kind": "Camera",
       "location": "Cupboard B",
       "description": "Aluminium tripod up to 1.6 m with a fluid head and its own carry bag. Takes both cameras.",
-      "status": "available",
-      "holder": "",
-      "dueBack": null,
       "image": "pwpack/media/tripod.svg",
       "imageAlt": "A tripod with a fluid video head and a long pan handle"
     },
@@ -46,9 +37,6 @@
       "kind": "Laptop",
       "location": "Shelf C2",
       "description": "16 GB memory, 512 GB disk, the office printer already set up. The charger is in the sleeve.",
-      "status": "available",
-      "holder": "",
-      "dueBack": null,
       "image": "pwpack/media/laptop-silver.svg",
       "imageAlt": "A silver 14-inch laptop, open, its screen showing a blue desktop"
     },
@@ -59,9 +47,6 @@
       "kind": "Laptop",
       "location": "Shelf C2",
       "description": "16 GB memory, 512 GB disk. The one with the slide software for client visits.",
-      "status": "out",
-      "holder": "Robin Example",
-      "dueBack": "2026-11-27",
       "image": "pwpack/media/laptop-graphite.svg",
       "imageAlt": "A dark graphite 14-inch laptop, open, its screen showing a green desktop"
     },
@@ -72,9 +57,6 @@
       "kind": "Laptop",
       "location": "Shelf C3",
       "description": "32 GB memory and the video editor installed. Heavy: take the padded bag.",
-      "status": "available",
-      "holder": "",
-      "dueBack": null,
       "image": "pwpack/media/laptop-large.svg",
       "imageAlt": "A 16-inch laptop, open, a video timeline on its screen"
     },
@@ -85,9 +67,6 @@
       "kind": "Audio",
       "location": "Drawer D1",
       "description": "Two built-in microphones and two inputs for the wireless pair. Takes AA batteries; spares are in the drawer.",
-      "status": "available",
-      "holder": "",
-      "dueBack": null,
       "image": "pwpack/media/audio-recorder.svg",
       "imageAlt": "A handheld field audio recorder with two crossed microphones on top"
     },
@@ -98,9 +77,6 @@
       "kind": "Audio",
       "location": "Drawer D1",
       "description": "Two clip-on transmitters and one receiver for the camera or the recorder. Charge them the night before.",
-      "status": "out",
-      "holder": "Alex Example",
-      "dueBack": "2026-11-24",
       "image": "pwpack/media/microphones.svg",
       "imageAlt": "Two small wireless microphone transmitters and a receiver"
     },
@@ -111,9 +87,6 @@
       "kind": "Lighting",
       "location": "Cupboard B",
       "description": "Two warm-to-cool panels on short stands, with their mains adapters and a battery each.",
-      "status": "available",
-      "holder": "",
-      "dueBack": null,
       "image": "pwpack/media/led-panels.svg",
       "imageAlt": "Two flat LED light panels on short stands, glowing warm white"
     }

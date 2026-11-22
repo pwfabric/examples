@@ -3,8 +3,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d01",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e01",
-      "equipmentName": "Mirrorless camera (ET-01)",
       "borrower": "Alex Example",
+      "owner": "member-alex",
       "borrowedAt": "2026-11-02T09:12:00.000Z",
       "dueBack": "2026-11-04",
       "note": "Client interview in Example Quay",
@@ -14,8 +14,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d02",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e13",
-      "equipmentName": "Laptop 16″ for video (ET-13)",
       "borrower": "Sam Example",
+      "owner": "member-sam",
       "borrowedAt": "2026-11-05T14:30:00.000Z",
       "dueBack": "2026-11-12",
       "note": "Editing the open-day film",
@@ -25,8 +25,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d03",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e21",
-      "equipmentName": "Field audio recorder (ET-21)",
       "borrower": "Robin Example",
+      "owner": "member-robin",
       "borrowedAt": "2026-11-09T08:45:00.000Z",
       "dueBack": "2026-11-10",
       "note": "",
@@ -36,8 +36,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d04",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e03",
-      "equipmentName": "Tripod with video head (ET-03)",
       "borrower": "Sam Example",
+      "owner": "member-sam",
       "borrowedAt": "2026-11-12T10:05:00.000Z",
       "dueBack": "2026-11-13",
       "note": "Site visit",
@@ -47,8 +47,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d05",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e02",
-      "equipmentName": "Compact video camera (ET-02)",
       "borrower": "Sam Example",
+      "owner": "member-sam",
       "borrowedAt": "2026-11-16T09:30:00.000Z",
       "dueBack": "2026-11-20",
       "note": "Workshop filming",
@@ -58,8 +58,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d06",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e22",
-      "equipmentName": "Wireless microphone pair (ET-22)",
       "borrower": "Alex Example",
+      "owner": "member-alex",
       "borrowedAt": "2026-11-19T16:10:00.000Z",
       "dueBack": "2026-11-24",
       "note": "",
@@ -69,8 +69,8 @@
     {
       "id": "9b2d4e61-0c3f-4a58-b7e9-1f2a3b4c5d07",
       "equipment": "3c9e0f52-71a4-4b6d-8e2f-5a0b1c2d3e12",
-      "equipmentName": "Laptop 14″, graphite (ET-12)",
       "borrower": "Robin Example",
+      "owner": "member-robin",
       "borrowedAt": "2026-11-20T11:00:00.000Z",
       "dueBack": "2026-11-27",
       "note": "Client visits all week",

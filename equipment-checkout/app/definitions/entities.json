@@ -36,25 +36,6 @@
           "required": true
         },
         {
-          "name": "status",
-          "type": "enum",
-          "values": [
-            "available",
-            "out"
-          ],
-          "server": {
-            "default": "available"
-          }
-        },
-        {
-          "name": "holder",
-          "type": "text"
-        },
-        {
-          "name": "dueBack",
-          "type": "date"
-        },
-        {
           "name": "image",
           "type": "text",
           "required": true
@@ -77,11 +58,6 @@
       "fields": [
         {
           "name": "equipment",
-          "type": "text",
-          "required": true
-        },
-        {
-          "name": "equipmentName",
           "type": "text",
           "required": true
         },
