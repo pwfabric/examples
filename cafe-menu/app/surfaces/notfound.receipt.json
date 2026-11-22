@@ -3,11 +3,8 @@
   "id": "notfound",
   "version": "1.0.0",
   "kind": "surface",
-  "appearance": {
-    "use": "theme-cafe-menu"
-  },
-  "title": "Page not found",
-  "description": "This page or dish is not on Example Café's menu.",
+  "title": "{{t('notfound.title')}}",
+  "description": "{{t('notfound.description')}}",
   "category": "content",
   "tags": [
     "menu",
@@ -16,201 +13,63 @@
   ],
   "blocks": [
     {
-      "id": "cafe",
+      "id": "cafe-main",
       "type": "container",
       "props": {
-        "direction": "column",
-        "padding": 0
-      },
-      "layout": {
-        "widthScope": {
-          "xs": "viewport"
-        }
+        "direction": "column"
       },
       "children": [
         {
-          "id": "cafe-brand",
+          "id": "missing",
           "type": "container",
           "props": {
-            "direction": "row",
-            "keepRow": true,
-            "align": "center",
+            "direction": "column",
             "gap": 10,
-            "padding": 12,
-            "landmark": "header"
-          },
-          "style": {
-            "width": "100%",
-            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-            "marginInline": "auto",
-            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-            "boxSizing": "border-box"
+            "align": "center",
+            "padding": 32
           },
           "children": [
             {
-              "id": "cafe-brand-logo",
-              "type": "image",
+              "id": "missing-icon",
+              "type": "icon",
               "props": {
-                "src": "pwpack/media/logo.svg",
-                "alt": "Example Café",
-                "height": 28,
-                "width": "auto",
-                "objectFit": "contain",
-                "hideWhenEmpty": true,
-                "priority": true
-              },
-              "style": {
-                "flex": "0 0 auto"
+                "name": "utensils",
+                "size": 36,
+                "color": "var(--pw-color-text-muted)"
               }
             },
             {
-              "id": "cafe-brand-name",
-              "type": "text",
+              "id": "missing-title",
+              "type": "heading",
               "props": {
-                "content": "Example Café",
-                "fontWeight": "bold",
-                "hideWhenSet": "pwpack/media/logo.svg"
+                "text": "{{t('notfound.missing-title.text')}}",
+                "level": "h1",
+                "textAlign": "center"
               },
               "style": {
-                "flex": "0 1 auto",
-                "fontSize": "var(--pw-font-size-lg)"
+                "fontSize": "var(--pw-font-size-xl, 1.25rem)",
+                "margin": "0"
               }
-            }
-          ]
-        },
-        {
-          "id": "cafe-content",
-          "type": "container",
-          "props": {
-            "direction": "column",
-            "landmark": "main"
-          },
-          "style": {
-            "width": "100%",
-            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-            "marginInline": "auto",
-            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-            "--pw-section-inset": "0px",
-            "boxSizing": "border-box"
-          },
-          "children": [
+            },
             {
-              "id": "cafe-main",
-              "type": "container",
-              "props": {
-                "direction": "column"
-              },
-              "children": [
-                {
-                  "id": "missing",
-                  "type": "container",
-                  "props": {
-                    "direction": "column",
-                    "gap": 10,
-                    "align": "center",
-                    "padding": 32
-                  },
-                  "children": [
-                    {
-                      "id": "missing-icon",
-                      "type": "icon",
-                      "props": {
-                        "name": "utensils",
-                        "size": 36,
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    },
-                    {
-                      "id": "missing-title",
-                      "type": "heading",
-                      "props": {
-                        "text": "Page not found",
-                        "level": "h1",
-                        "textAlign": "center"
-                      },
-                      "style": {
-                        "fontSize": "var(--pw-font-size-xl, 1.25rem)",
-                        "margin": "0"
-                      }
-                    },
-                    {
-                      "id": "missing-body",
-                      "type": "text",
-                      "props": {
-                        "content": "The dish may have come off the menu, or the link is mistyped. Everything we serve today is on the menu.",
-                        "color": "var(--pw-color-text-muted)",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "id": "missing-cta",
-                      "type": "button",
-                      "props": {
-                        "label": "Back to the menu",
-                        "href": "/menu",
-                        "variant": "outline"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "cafe-foot",
-          "type": "container",
-          "props": {
-            "direction": "column",
-            "padding": 0,
-            "landmark": "footer"
-          },
-          "style": {
-            "width": "100%",
-            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-            "marginInline": "auto",
-            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-            "boxSizing": "border-box"
-          },
-          "children": [
-            {
-              "id": "cafe-legal",
+              "id": "missing-body",
               "type": "text",
               "props": {
-                "content": "© 2026 Example Café · 14 Mill Lane, Exampleton",
-                "textAlign": "left",
-                "color": "var(--pw-color-text-muted)"
-              },
-              "style": {
-                "fontSize": "var(--pw-font-size-xs)",
-                "padding": "16px 0"
+                "content": "{{t('notfound.missing-body.content')}}",
+                "color": "var(--pw-color-text-muted)",
+                "textAlign": "center"
               }
-            }
-          ]
-        },
-        {
-          "id": "cafe-bar",
-          "type": "bottom-bar",
-          "props": {
-            "items": [
-              {
-                "label": "Menu",
+            },
+            {
+              "id": "missing-cta",
+              "type": "button",
+              "props": {
+                "label": "{{t('notFound.home')}}",
                 "href": "/menu",
-                "icon": "utensils"
-              },
-              {
-                "label": "Visit",
-                "href": "/visit",
-                "icon": "map-pin"
+                "variant": "outline"
               }
-            ],
-            "activeHref": ""
-          },
-          "layout": {
-            "widthScope": {
-              "xs": "viewport"
             }
-          }
+          ]
         }
       ]
     }

@@ -1,14 +1,14 @@
 {
   "id": "@pwpack/local/cafe-menu",
-  "version": "1.0.0",
-  "formatVersion": "1.0",
+  "version": "1.1.0",
+  "formatVersion": "1.2",
   "engines": {
-    "pwfabric": ">=3.0.0 <4"
+    "pwfabric": ">=3.5.0 <4"
   },
   "requires": [
     {
       "id": "@pwpack/foundation",
-      "range": "^1.0.0"
+      "range": "^2.0.0"
     }
   ],
   "license": {
@@ -27,8 +27,8 @@
   "packs": [
     {
       "id": "@pwpack/foundation",
-      "version": "1.0.0",
-      "hash": "sha256:88344a3158ef7db54ebf25d3885719efd8668031bdace9921470f6397cdc5f31"
+      "version": "2.0.0",
+      "hash": "sha256:bcb2e415dfd38170ae8ab5cd2589b358b7fcf43c6267aea77f6497359d14db64"
     }
   ]
 }

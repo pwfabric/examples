@@ -3,11 +3,8 @@
   "id": "dish",
   "version": "1.0.0",
   "kind": "surface",
-  "appearance": {
-    "use": "theme-cafe-menu"
-  },
-  "title": "{{length(dish) > 0 ? dish.0.name : 'Dish'}}",
-  "description": "{{dish.0.name}} at Example Café: {{dish.0.description}}.",
+  "title": "{{length(dish) > 0 ? t('dish.name', dish.0) : t('dish.title')}}",
+  "description": "{{t('dish.meta', dish.0)}}",
   "category": "content",
   "tags": [
     "menu",
@@ -16,477 +13,394 @@
   ],
   "blocks": [
     {
-      "id": "cafe",
+      "id": "cafe-main",
       "type": "container",
       "props": {
-        "direction": "column",
-        "padding": 0
-      },
-      "layout": {
-        "widthScope": {
-          "xs": "viewport"
-        }
+        "direction": "column"
       },
       "children": [
         {
-          "id": "cafe-brand",
+          "id": "wait",
           "type": "container",
+          "visibleWhen": "{{__loading.dish && length(dish) == 0}}",
           "props": {
             "direction": "row",
-            "keepRow": true,
-            "align": "center",
-            "gap": 10,
-            "padding": 12,
-            "landmark": "header"
+            "gap": 24,
+            "padding": 0,
+            "wrap": true,
+            "align": "start"
           },
           "style": {
-            "width": "100%",
-            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-            "marginInline": "auto",
-            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-            "boxSizing": "border-box"
+            "marginTop": "52px"
           },
           "children": [
             {
-              "id": "cafe-brand-logo",
-              "type": "image",
+              "id": "wait-pic",
+              "type": "skeleton",
               "props": {
-                "src": "pwpack/media/logo.svg",
-                "alt": "Example Café",
-                "height": 28,
-                "width": "auto",
-                "objectFit": "contain",
-                "hideWhenEmpty": true,
-                "priority": true
+                "variant": "rectangle",
+                "width": "100%",
+                "height": 360
               },
               "style": {
-                "flex": "0 0 auto"
+                "flex": "0 1 360px",
+                "width": "360px",
+                "maxWidth": "100%"
               }
             },
             {
-              "id": "cafe-brand-name",
-              "type": "text",
+              "id": "wait-facts",
+              "type": "container",
               "props": {
-                "content": "Example Café",
-                "fontWeight": "bold",
-                "hideWhenSet": "pwpack/media/logo.svg"
+                "direction": "column",
+                "gap": 12,
+                "padding": 0
               },
               "style": {
-                "flex": "0 1 auto",
-                "fontSize": "var(--pw-font-size-lg)"
-              }
+                "flex": "1 1 280px",
+                "minWidth": "0"
+              },
+              "children": [
+                {
+                  "id": "wait-s",
+                  "type": "spinner",
+                  "props": {
+                    "size": "sm",
+                    "label": "{{t('dish.wait-s.label')}}",
+                    "variant": "muted"
+                  }
+                },
+                {
+                  "id": "wait-t",
+                  "type": "skeleton",
+                  "props": {
+                    "variant": "text",
+                    "lines": 6
+                  }
+                }
+              ]
             }
           ]
         },
         {
-          "id": "cafe-content",
+          "id": "err",
           "type": "container",
+          "visibleWhen": "{{!!__errorCodes.dish}}",
           "props": {
             "direction": "column",
-            "landmark": "main"
+            "gap": 12,
+            "padding": 0,
+            "align": "start"
           },
           "style": {
-            "width": "100%",
-            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-            "marginInline": "auto",
-            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-            "--pw-section-inset": "0px",
-            "boxSizing": "border-box"
+            "marginTop": "24px"
           },
           "children": [
             {
-              "id": "cafe-main",
+              "id": "err-h",
+              "type": "heading",
+              "props": {
+                "text": "{{t('dish.err-h.text')}}",
+                "level": "h1"
+              }
+            },
+            {
+              "id": "err-t",
+              "type": "text",
+              "props": {
+                "content": "{{t('dish.err-t.content')}}",
+                "color": "var(--pw-color-text-muted)"
+              }
+            },
+            {
+              "id": "err-nav",
               "type": "container",
               "props": {
-                "direction": "column"
+                "direction": "row",
+                "gap": 12,
+                "padding": 0,
+                "wrap": true
               },
               "children": [
                 {
-                  "id": "wait",
-                  "type": "container",
-                  "visibleWhen": "{{__loading.dish && length(dish) == 0}}",
+                  "id": "err-retry",
+                  "type": "button",
                   "props": {
-                    "direction": "row",
-                    "gap": 24,
-                    "padding": 0,
-                    "wrap": true,
-                    "align": "start"
-                  },
-                  "style": {
-                    "marginTop": "52px"
-                  },
-                  "children": [
-                    {
-                      "id": "wait-pic",
-                      "type": "skeleton",
-                      "props": {
-                        "variant": "rectangle",
-                        "width": "100%",
-                        "height": 360
-                      },
-                      "style": {
-                        "flex": "0 1 360px",
-                        "width": "360px",
-                        "maxWidth": "100%"
-                      }
-                    },
-                    {
-                      "id": "wait-facts",
-                      "type": "container",
-                      "props": {
-                        "direction": "column",
-                        "gap": 12,
-                        "padding": 0
-                      },
-                      "style": {
-                        "flex": "1 1 280px",
-                        "minWidth": "0"
-                      },
-                      "children": [
-                        {
-                          "id": "wait-s",
-                          "type": "spinner",
-                          "props": {
-                            "size": "sm",
-                            "label": "Loading the dish…",
-                            "variant": "muted"
-                          }
-                        },
-                        {
-                          "id": "wait-t",
-                          "type": "skeleton",
-                          "props": {
-                            "variant": "text",
-                            "lines": 6
-                          }
-                        }
-                      ]
+                    "label": "{{t('ui.retry')}}",
+                    "variant": "primary",
+                    "icon": "refresh-cw",
+                    "action": {
+                      "type": "refresh",
+                      "sourceId": "dish"
                     }
-                  ]
+                  }
                 },
                 {
-                  "id": "err",
-                  "type": "container",
-                  "visibleWhen": "{{!!__errorCodes.dish}}",
+                  "id": "err-menu",
+                  "type": "button",
                   "props": {
-                    "direction": "column",
-                    "gap": 12,
-                    "padding": 0,
-                    "align": "start"
-                  },
-                  "style": {
-                    "marginTop": "24px"
+                    "label": "{{t('notFound.home')}}",
+                    "variant": "outline",
+                    "href": "/menu?{{slice((state.vegan == 'yes' ? '&vegan=yes' : '') + (state.vegetarian == 'yes' ? '&vegetarian=yes' : '') + (state.glutenFree == 'yes' ? '&glutenFree=yes' : ''), 1)}}"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "back",
+          "type": "button",
+          "visibleWhen": "{{length(dish) > 0}}",
+          "props": {
+            "label": "{{dish.0.category == 'Coffee' ? t('dish.back.coffee') : (dish.0.category == 'Breakfast' ? t('dish.back.breakfast') : t('dish.back.bakery'))}}",
+            "href": "/menu?category={{dish.0.category}}{{(state.vegan == 'yes' ? '&vegan=yes' : '') + (state.vegetarian == 'yes' ? '&vegetarian=yes' : '') + (state.glutenFree == 'yes' ? '&glutenFree=yes' : '')}}",
+            "variant": "ghost",
+            "size": "medium",
+            "icon": "arrow-left"
+          },
+          "style": {
+            "alignSelf": "flex-start",
+            "marginTop": "8px",
+            "marginInlineStart": "-12px"
+          }
+        },
+        {
+          "id": "rec",
+          "type": "container",
+          "visibleWhen": "{{length(dish) > 0}}",
+          "props": {
+            "direction": "row",
+            "gap": 24,
+            "padding": 0,
+            "wrap": true,
+            "align": "start"
+          },
+          "style": {
+            "marginTop": "8px"
+          },
+          "children": [
+            {
+              "id": "pic",
+              "type": "image",
+              "props": {
+                "src": "{{dish.0.image}}",
+                "alt": "{{t('dish.imageAlt', dish.0)}}",
+                "width": 360,
+                "height": 360,
+                "aspectRatio": "1/1",
+                "objectFit": "cover",
+                "align": "left",
+                "borderRadius": "var(--pw-border-radius-lg, 18px)",
+                "loading": "eager",
+                "priority": true
+              },
+              "style": {
+                "flex": "0 1 360px",
+                "maxWidth": "100%",
+                "height": "auto"
+              }
+            },
+            {
+              "id": "rec-facts",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 0,
+                "padding": 0,
+                "align": "stretch"
+              },
+              "style": {
+                "flex": "1 1 280px",
+                "minWidth": "0"
+              },
+              "children": [
+                {
+                  "id": "head",
+                  "type": "section",
+                  "props": {
+                    "paddingY": 28,
+                    "gap": 6,
+                    "textAlign": "left"
                   },
                   "children": [
                     {
-                      "id": "err-h",
+                      "id": "head-t",
                       "type": "heading",
                       "props": {
-                        "text": "This dish did not load",
-                        "level": "h1"
+                        "text": "{{t('dish.name', dish.0)}}",
+                        "level": "h1",
+                        "textAlign": "left"
                       }
                     },
                     {
-                      "id": "err-t",
+                      "id": "head-s",
                       "type": "text",
                       "props": {
-                        "content": "Check your connection and try again, or go back to the menu.",
-                        "color": "var(--pw-color-text-muted)"
+                        "content": "{{t('dish.description', dish.0)}}",
+                        "color": "var(--pw-color-text-muted)",
+                        "textAlign": "left"
                       }
-                    },
+                    }
+                  ],
+                  "style": {
+                    "paddingTop": "0",
+                    "paddingBottom": "4px"
+                  }
+                },
+                {
+                  "id": "facts",
+                  "type": "container",
+                  "props": {
+                    "direction": "column",
+                    "gap": 10
+                  },
+                  "children": [
                     {
-                      "id": "err-nav",
+                      "id": "facts-row-1",
                       "type": "container",
                       "props": {
                         "direction": "row",
                         "gap": 12,
-                        "padding": 0,
-                        "wrap": true
+                        "align": "baseline",
+                        "keepRow": true
                       },
                       "children": [
                         {
-                          "id": "err-retry",
-                          "type": "button",
+                          "id": "facts-k-1",
+                          "type": "text",
                           "props": {
-                            "label": "Try again",
-                            "variant": "primary",
-                            "icon": "refresh-cw",
-                            "action": {
-                              "type": "refresh",
-                              "sourceId": "dish"
-                            }
+                            "content": "{{t('facts.price')}}",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
                           }
                         },
                         {
-                          "id": "err-menu",
-                          "type": "button",
+                          "id": "facts-v-1",
+                          "type": "text",
                           "props": {
-                            "label": "Back to the menu",
-                            "variant": "outline",
-                            "href": "/menu?{{slice((state.vegan == 'yes' ? '&vegan=yes' : '') + (state.vegetarian == 'yes' ? '&vegetarian=yes' : '') + (state.glutenFree == 'yes' ? '&glutenFree=yes' : ''), 1)}}"
+                            "content": "{{currency(dish.0.price, 'GBP')}}"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
                           }
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "id": "back",
-                  "type": "button",
-                  "visibleWhen": "{{length(dish) > 0}}",
-                  "props": {
-                    "label": "Back to {{lower(dish.0.category)}}",
-                    "href": "/menu?category={{dish.0.category}}{{(state.vegan == 'yes' ? '&vegan=yes' : '') + (state.vegetarian == 'yes' ? '&vegetarian=yes' : '') + (state.glutenFree == 'yes' ? '&glutenFree=yes' : '')}}",
-                    "variant": "ghost",
-                    "size": "medium",
-                    "icon": "arrow-left"
-                  },
-                  "style": {
-                    "alignSelf": "flex-start",
-                    "marginTop": "8px",
-                    "marginInlineStart": "-12px"
-                  }
-                },
-                {
-                  "id": "rec",
-                  "type": "container",
-                  "visibleWhen": "{{length(dish) > 0}}",
-                  "props": {
-                    "direction": "row",
-                    "gap": 24,
-                    "padding": 0,
-                    "wrap": true,
-                    "align": "start"
-                  },
-                  "style": {
-                    "marginTop": "8px"
-                  },
-                  "children": [
-                    {
-                      "id": "pic",
-                      "type": "image",
-                      "props": {
-                        "src": "{{dish.0.image}}",
-                        "alt": "{{dish.0.imageAlt}}",
-                        "width": 360,
-                        "height": 360,
-                        "aspectRatio": "1/1",
-                        "objectFit": "cover",
-                        "align": "left",
-                        "borderRadius": "var(--pw-border-radius-lg, 18px)",
-                        "loading": "eager",
-                        "priority": true
-                      },
-                      "style": {
-                        "flex": "0 1 360px",
-                        "maxWidth": "100%",
-                        "height": "auto"
-                      }
                     },
                     {
-                      "id": "rec-facts",
+                      "id": "facts-row-2",
                       "type": "container",
                       "props": {
-                        "direction": "column",
-                        "gap": 0,
-                        "padding": 0,
-                        "align": "stretch"
-                      },
-                      "style": {
-                        "flex": "1 1 280px",
-                        "minWidth": "0"
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
                       },
                       "children": [
                         {
-                          "id": "head",
-                          "type": "section",
+                          "id": "facts-k-2",
+                          "type": "text",
                           "props": {
-                            "paddingY": 28,
-                            "gap": 6,
-                            "textAlign": "left"
+                            "content": "{{t('facts.diet')}}",
+                            "color": "var(--pw-color-text-muted)"
                           },
-                          "children": [
-                            {
-                              "id": "head-t",
-                              "type": "heading",
-                              "props": {
-                                "text": "{{dish.0.name}}",
-                                "level": "h1",
-                                "textAlign": "left"
-                              }
-                            },
-                            {
-                              "id": "head-s",
-                              "type": "text",
-                              "props": {
-                                "content": "{{dish.0.description}}",
-                                "color": "var(--pw-color-text-muted)",
-                                "textAlign": "left"
-                              }
-                            }
-                          ],
                           "style": {
-                            "paddingTop": "0",
-                            "paddingBottom": "4px"
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
                           }
                         },
                         {
-                          "id": "facts",
-                          "type": "container",
+                          "id": "facts-v-2",
+                          "type": "text",
                           "props": {
-                            "direction": "column",
-                            "gap": 10
+                            "content": "{{(dish.0.vegan ? t('diet.vegan') : (dish.0.vegetarian ? t('diet.vegetarian') : t('diet.notVegetarian'))) + (dish.0.glutenFree ? t('diet.andGlutenFree') : '')}}"
                           },
-                          "children": [
-                            {
-                              "id": "facts-row-1",
-                              "type": "container",
-                              "props": {
-                                "direction": "row",
-                                "gap": 12,
-                                "align": "baseline",
-                                "keepRow": true
-                              },
-                              "children": [
-                                {
-                                  "id": "facts-k-1",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "Price",
-                                    "color": "var(--pw-color-text-muted)"
-                                  },
-                                  "style": {
-                                    "flex": "0 0 min(11rem, 40%)",
-                                    "minWidth": "0"
-                                  }
-                                },
-                                {
-                                  "id": "facts-v-1",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "{{currency(dish.0.price, 'GBP')}}"
-                                  },
-                                  "style": {
-                                    "fontWeight": "600",
-                                    "flex": "1 1 0",
-                                    "minWidth": "0",
-                                    "overflowWrap": "anywhere"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "id": "facts-row-2",
-                              "type": "container",
-                              "props": {
-                                "direction": "row",
-                                "gap": 12,
-                                "align": "baseline",
-                                "keepRow": true
-                              },
-                              "children": [
-                                {
-                                  "id": "facts-k-2",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "Diet",
-                                    "color": "var(--pw-color-text-muted)"
-                                  },
-                                  "style": {
-                                    "flex": "0 0 min(11rem, 40%)",
-                                    "minWidth": "0"
-                                  }
-                                },
-                                {
-                                  "id": "facts-v-2",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "{{(dish.0.vegan ? 'Vegan' : (dish.0.vegetarian ? 'Vegetarian' : 'Not vegetarian')) + (dish.0.glutenFree ? ', gluten-free' : '')}}"
-                                  },
-                                  "style": {
-                                    "fontWeight": "600",
-                                    "flex": "1 1 0",
-                                    "minWidth": "0",
-                                    "overflowWrap": "anywhere"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "id": "facts-row-3",
-                              "type": "container",
-                              "props": {
-                                "direction": "row",
-                                "gap": 12,
-                                "align": "baseline",
-                                "keepRow": true
-                              },
-                              "children": [
-                                {
-                                  "id": "facts-k-3",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "Allergens",
-                                    "color": "var(--pw-color-text-muted)"
-                                  },
-                                  "style": {
-                                    "flex": "0 0 min(11rem, 40%)",
-                                    "minWidth": "0"
-                                  }
-                                },
-                                {
-                                  "id": "facts-v-3",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "{{dish.0.allergens}}"
-                                  },
-                                  "style": {
-                                    "fontWeight": "600",
-                                    "flex": "1 1 0",
-                                    "minWidth": "0",
-                                    "overflowWrap": "anywhere"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "id": "facts-row-4",
-                              "type": "container",
-                              "props": {
-                                "direction": "row",
-                                "gap": 12,
-                                "align": "baseline",
-                                "keepRow": true
-                              },
-                              "children": [
-                                {
-                                  "id": "facts-k-4",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "Served",
-                                    "color": "var(--pw-color-text-muted)"
-                                  },
-                                  "style": {
-                                    "flex": "0 0 min(11rem, 40%)",
-                                    "minWidth": "0"
-                                  }
-                                },
-                                {
-                                  "id": "facts-v-4",
-                                  "type": "text",
-                                  "props": {
-                                    "content": "{{dish.0.served}}"
-                                  },
-                                  "style": {
-                                    "fontWeight": "600",
-                                    "flex": "1 1 0",
-                                    "minWidth": "0",
-                                    "overflowWrap": "anywhere"
-                                  }
-                                }
-                              ]
-                            }
-                          ]
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "facts-row-3",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "facts-k-3",
+                          "type": "text",
+                          "props": {
+                            "content": "{{t('dish.facts-k-3.content')}}",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "facts-v-3",
+                          "type": "text",
+                          "props": {
+                            "content": "{{t('dish.allergens', dish.0)}}"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "facts-row-4",
+                      "type": "container",
+                      "props": {
+                        "direction": "row",
+                        "gap": 12,
+                        "align": "baseline",
+                        "keepRow": true
+                      },
+                      "children": [
+                        {
+                          "id": "facts-k-4",
+                          "type": "text",
+                          "props": {
+                            "content": "{{t('dish.facts-k-4.content')}}",
+                            "color": "var(--pw-color-text-muted)"
+                          },
+                          "style": {
+                            "flex": "0 0 min(11rem, 40%)",
+                            "minWidth": "0"
+                          }
+                        },
+                        {
+                          "id": "facts-v-4",
+                          "type": "text",
+                          "props": {
+                            "content": "{{t('dish.served', dish.0)}}"
+                          },
+                          "style": {
+                            "fontWeight": "600",
+                            "flex": "1 1 0",
+                            "minWidth": "0",
+                            "overflowWrap": "anywhere"
+                          }
                         }
                       ]
                     }
@@ -495,61 +409,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "cafe-foot",
-          "type": "container",
-          "props": {
-            "direction": "column",
-            "padding": 0,
-            "landmark": "footer"
-          },
-          "style": {
-            "width": "100%",
-            "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-            "marginInline": "auto",
-            "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-            "boxSizing": "border-box"
-          },
-          "children": [
-            {
-              "id": "cafe-legal",
-              "type": "text",
-              "props": {
-                "content": "© 2026 Example Café · 14 Mill Lane, Exampleton",
-                "textAlign": "left",
-                "color": "var(--pw-color-text-muted)"
-              },
-              "style": {
-                "fontSize": "var(--pw-font-size-xs)",
-                "padding": "16px 0"
-              }
-            }
-          ]
-        },
-        {
-          "id": "cafe-bar",
-          "type": "bottom-bar",
-          "props": {
-            "items": [
-              {
-                "label": "Menu",
-                "href": "/menu",
-                "icon": "utensils"
-              },
-              {
-                "label": "Visit",
-                "href": "/visit",
-                "icon": "map-pin"
-              }
-            ],
-            "activeHref": "/menu"
-          },
-          "layout": {
-            "widthScope": {
-              "xs": "viewport"
-            }
-          }
         }
       ]
     }
@@ -578,7 +437,8 @@
           "id": "",
           "vegan": "",
           "vegetarian": "",
-          "glutenFree": ""
+          "glutenFree": "",
+          "section": "menu"
         }
       }
     }
@@ -597,5 +457,8 @@
       "page-header",
       "key-value-list"
     ]
+  },
+  "path": {
+    "tr": "yemek"
   }
 }

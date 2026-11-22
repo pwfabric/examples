@@ -16,267 +16,69 @@
   ],
   "blocks": [
     {
-      "id": "stage",
+      "id": "intro",
       "type": "section",
       "props": {
-        "paddingY": 0,
-        "paddingX": 0,
-        "gap": 0,
-        "maxWidth": 4000,
-        "backgroundGradient": {
-          "from": "color-mix(in srgb, var(--pw-color-primary) 22%, var(--pw-color-background))",
-          "to": "var(--pw-color-background)",
-          "type": "radial",
-          "at": "50% 115%"
-        }
-      },
-      "style": {
-        "position": "fixed",
-        "top": "0",
-        "left": "0",
-        "width": "100vw",
-        "height": "100vh",
-        "zIndex": "0",
-        "overflow": "hidden",
-        "pointerEvents": "none"
+        "paddingY": 40,
+        "gap": 12
       },
       "children": [
         {
-          "id": "stage-amber",
-          "type": "section",
+          "id": "intro-h",
+          "type": "heading",
           "props": {
-            "paddingY": 0,
-            "paddingX": 0,
-            "gap": 0,
-            "maxWidth": 4000,
-            "backgroundGradient": {
-              "from": "color-mix(in srgb, var(--pw-color-primary) 22%, transparent)",
-              "to": "transparent",
-              "type": "conic",
-              "at": "50% 50%"
-            }
-          },
-          "style": {
-            "position": "absolute",
-            "top": "-30%",
-            "left": "-25%",
-            "width": "150%",
-            "height": "160%",
-            "borderRadius": "50%",
-            "filter": "blur(80px) saturate(140%)",
-            "opacity": "0.7",
-            "mixBlendMode": "screen",
-            "pointerEvents": "none"
+            "text": "How it works",
+            "level": "h1"
           }
         },
         {
-          "id": "stage-dusk",
-          "type": "section",
+          "id": "intro-t",
+          "type": "text",
           "props": {
-            "paddingY": 0,
-            "paddingX": 0,
-            "gap": 0,
-            "maxWidth": 4000,
-            "backgroundGradient": {
-              "from": "transparent",
-              "to": "color-mix(in srgb, var(--pw-color-info) 12%, transparent)",
-              "type": "conic",
-              "at": "50% 50%"
-            }
+            "content": "From the box to your first evening in under an hour, then a house that keeps itself lit.",
+            "color": "var(--pw-color-text-muted)"
           },
           "style": {
-            "position": "absolute",
-            "top": "-30%",
-            "left": "-25%",
-            "width": "150%",
-            "height": "160%",
-            "borderRadius": "50%",
-            "filter": "blur(80px) saturate(140%)",
-            "opacity": "0.7",
-            "mixBlendMode": "screen",
-            "pointerEvents": "none"
+            "fontSize": "var(--pw-font-size-lg)",
+            "maxWidth": "65ch",
+            "margin": "0",
+            "alignSelf": "flex-start"
           }
         }
       ]
     },
     {
-      "id": "nav",
+      "id": "setup",
       "type": "section",
       "props": {
-        "paddingY": 0,
-        "gap": 0,
-        "maxWidth": 1240,
-        "landmark": "header"
+        "paddingY": 64,
+        "gap": 32
       },
       "children": [
         {
-          "id": "nav-row",
+          "id": "setup-head",
           "type": "container",
           "props": {
-            "direction": "row",
-            "gap": 16,
-            "align": "center",
-            "justify": "between",
-            "padding": 0,
-            "keepRow": true,
-            "wrap": true
-          },
-          "style": {
-            "paddingTop": "28px",
-            "paddingBottom": "28px"
+            "direction": "column",
+            "gap": 8
           },
           "children": [
             {
-              "id": "nav-brand",
-              "type": "link",
-              "props": {
-                "text": "Example Light",
-                "href": "/home",
-                "underline": "none",
-                "fontWeight": "semibold",
-                "color": "inherit"
-              },
-              "style": {
-                "letterSpacing": "0.02em",
-                "flex": "0 0 auto",
-                "minHeight": "44px",
-                "display": "inline-flex",
-                "alignItems": "center"
-              }
-            },
-            {
-              "id": "nav-caps",
-              "type": "container",
-              "props": {
-                "direction": "row",
-                "gap": 4,
-                "align": "center",
-                "padding": 6,
-                "keepRow": true,
-                "landmark": "nav",
-                "label": "Main"
-              },
-              "style": {
-                "flex": {
-                  "xs": "1 1 100%",
-                  "md": "0 0 auto"
-                },
-                "borderRadius": "999px",
-                "backgroundColor": "color-mix(in srgb, var(--pw-color-card) 72%, transparent)",
-                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
-                "backdropFilter": "blur(18px) saturate(140%)",
-                "maxWidth": "100%"
-              },
-              "children": [
-                {
-                  "id": "nav-link",
-                  "type": "link",
-                  "props": {
-                    "text": "{{item.label}}",
-                    "href": "{{item.href}}",
-                    "current": "{{item.active}}",
-                    "underline": "none",
-                    "color": "inherit"
-                  },
-                  "style": {
-                    "borderRadius": "999px",
-                    "fontSize": "var(--pw-font-size-sm)",
-                    "padding": {
-                      "xs": "8px 8px",
-                      "md": "8px 14px"
-                    },
-                    "flex": {
-                      "xs": "1 1 0",
-                      "md": "0 0 auto"
-                    },
-                    "transition": "background-color 160ms ease, color 160ms ease",
-                    "display": "inline-flex",
-                    "alignItems": "center",
-                    "minHeight": "44px",
-                    "justifyContent": "center",
-                    "whiteSpace": "nowrap",
-                    "textAlign": "center",
-                    "width": "100%",
-                    "boxSizing": "border-box"
-                  },
-                  "states": {
-                    "hover": {
-                      "backgroundColor": "rgba(255,255,255,0.08)"
-                    }
-                  }
-                }
-              ],
-              "repeat": "{{state.pillLinks}}",
-              "layout": {
-                "order": {
-                  "xs": 3,
-                  "md": 0
-                }
-              }
-            },
-            {
-              "id": "nav-cta",
-              "type": "button",
-              "props": {
-                "label": "Join the waitlist",
-                "href": "/plans#waitlist",
-                "variant": "ghost"
-              },
-              "style": {
-                "flex": "0 0 auto",
-                "borderRadius": "999px",
-                "border": "1px solid color-mix(in srgb, var(--pw-color-text) 16%, transparent)",
-                "padding": "10px 18px",
-                "transition": "background-color 160ms ease",
-                "minHeight": "44px"
-              },
-              "states": {
-                "hover": {
-                  "backgroundColor": "rgba(255,255,255,0.08)"
-                }
-              }
-            }
-          ]
-        }
-      ],
-      "style": {
-        "position": "relative",
-        "zIndex": "2"
-      }
-    },
-    {
-      "id": "how",
-      "type": "container",
-      "props": {
-        "direction": "column",
-        "landmark": "main"
-      },
-      "children": [
-        {
-          "id": "intro",
-          "type": "section",
-          "props": {
-            "paddingY": 40,
-            "gap": 12
-          },
-          "children": [
-            {
-              "id": "intro-h",
+              "id": "setup-h",
               "type": "heading",
               "props": {
-                "text": "How it works",
-                "level": "h1"
+                "text": "Setting up takes four steps",
+                "level": "h2"
               }
             },
             {
-              "id": "intro-t",
+              "id": "setup-sub",
               "type": "text",
               "props": {
-                "content": "From the box to your first evening in under an hour, then a house that keeps itself lit.",
+                "content": "No electrician and no account. The hub learns the house as you go.",
                 "color": "var(--pw-color-text-muted)"
               },
               "style": {
-                "fontSize": "var(--pw-font-size-lg)",
                 "maxWidth": "65ch",
                 "margin": "0",
                 "alignSelf": "flex-start"
@@ -285,641 +87,517 @@
           ]
         },
         {
-          "id": "setup",
-          "type": "section",
+          "id": "setup-steps",
+          "type": "grid",
           "props": {
-            "paddingY": 64,
-            "gap": 32
+            "columns": 4,
+            "columnsXs": 1,
+            "gap": 24
           },
           "children": [
             {
-              "id": "setup-head",
+              "id": "setup-steps-x1",
               "type": "container",
               "props": {
-                "direction": "column",
-                "gap": 8
+                "direction": "row",
+                "keepRow": true,
+                "gap": 12,
+                "align": "start"
               },
               "children": [
                 {
-                  "id": "setup-h",
-                  "type": "heading",
+                  "id": "setup-steps-x2",
+                  "type": "badge",
                   "props": {
-                    "text": "Setting up takes four steps",
-                    "level": "h2"
+                    "text": "1",
+                    "variant": "default",
+                    "rounded": true
+                  },
+                  "style": {
+                    "flex": "0 0 auto"
                   }
                 },
                 {
-                  "id": "setup-sub",
+                  "id": "setup-steps-x3",
                   "type": "text",
                   "props": {
-                    "content": "No electrician and no account. The hub learns the house as you go.",
+                    "content": "Plug the hub into any socket. It finds every lamp, strip and bulb on your home network by itself.",
                     "color": "var(--pw-color-text-muted)"
                   },
                   "style": {
-                    "maxWidth": "65ch",
-                    "margin": "0",
-                    "alignSelf": "flex-start"
+                    "flex": "1 1 0",
+                    "minWidth": "0"
                   }
                 }
               ]
             },
             {
-              "id": "setup-steps",
-              "type": "grid",
-              "props": {
-                "columns": 4,
-                "columnsXs": 1,
-                "gap": 24
-              },
-              "children": [
-                {
-                  "id": "setup-steps-x1",
-                  "type": "container",
-                  "props": {
-                    "direction": "row",
-                    "keepRow": true,
-                    "gap": 12,
-                    "align": "start"
-                  },
-                  "children": [
-                    {
-                      "id": "setup-steps-x2",
-                      "type": "badge",
-                      "props": {
-                        "text": "1",
-                        "variant": "default",
-                        "rounded": true
-                      },
-                      "style": {
-                        "flex": "0 0 auto"
-                      }
-                    },
-                    {
-                      "id": "setup-steps-x3",
-                      "type": "text",
-                      "props": {
-                        "content": "Plug the hub into any socket. It finds every lamp, strip and bulb on your home network by itself.",
-                        "color": "var(--pw-color-text-muted)"
-                      },
-                      "style": {
-                        "flex": "1 1 0",
-                        "minWidth": "0"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "id": "setup-steps-x4",
-                  "type": "container",
-                  "props": {
-                    "direction": "row",
-                    "keepRow": true,
-                    "gap": 12,
-                    "align": "start"
-                  },
-                  "children": [
-                    {
-                      "id": "setup-steps-x5",
-                      "type": "badge",
-                      "props": {
-                        "text": "2",
-                        "variant": "default",
-                        "rounded": true
-                      },
-                      "style": {
-                        "flex": "0 0 auto"
-                      }
-                    },
-                    {
-                      "id": "setup-steps-x6",
-                      "type": "text",
-                      "props": {
-                        "content": "Walk through each room once with the hub’s setup page open on your phone, so the hub knows which light sits where.",
-                        "color": "var(--pw-color-text-muted)"
-                      },
-                      "style": {
-                        "flex": "1 1 0",
-                        "minWidth": "0"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "id": "setup-steps-x7",
-                  "type": "container",
-                  "props": {
-                    "direction": "row",
-                    "keepRow": true,
-                    "gap": 12,
-                    "align": "start"
-                  },
-                  "children": [
-                    {
-                      "id": "setup-steps-x8",
-                      "type": "badge",
-                      "props": {
-                        "text": "3",
-                        "variant": "default",
-                        "rounded": true
-                      },
-                      "style": {
-                        "flex": "0 0 auto"
-                      }
-                    },
-                    {
-                      "id": "setup-steps-x9",
-                      "type": "text",
-                      "props": {
-                        "content": "Pick a morning and an evening you like; the hub reads your latitude and fills in every hour between.",
-                        "color": "var(--pw-color-text-muted)"
-                      },
-                      "style": {
-                        "flex": "1 1 0",
-                        "minWidth": "0"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "id": "setup-steps-x10",
-                  "type": "container",
-                  "props": {
-                    "direction": "row",
-                    "keepRow": true,
-                    "gap": 12,
-                    "align": "start"
-                  },
-                  "children": [
-                    {
-                      "id": "setup-steps-x11",
-                      "type": "badge",
-                      "props": {
-                        "text": "4",
-                        "variant": "default",
-                        "rounded": true
-                      },
-                      "style": {
-                        "flex": "0 0 auto"
-                      }
-                    },
-                    {
-                      "id": "setup-steps-x12",
-                      "type": "text",
-                      "props": {
-                        "content": "Live with it for a week. Each dimmer you touch teaches the hub what you actually want.",
-                        "color": "var(--pw-color-text-muted)"
-                      },
-                      "style": {
-                        "flex": "1 1 0",
-                        "minWidth": "0"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "morning",
-          "type": "section",
-          "props": {
-            "paddingY": 64,
-            "gap": 32
-          },
-          "children": [
-            {
-              "id": "morning-row",
+              "id": "setup-steps-x4",
               "type": "container",
               "props": {
                 "direction": "row",
-                "gap": 48,
-                "align": "center"
+                "keepRow": true,
+                "gap": 12,
+                "align": "start"
               },
               "children": [
                 {
-                  "id": "morning-media",
-                  "type": "image",
+                  "id": "setup-steps-x5",
+                  "type": "badge",
                   "props": {
-                    "src": "pwpack/media/room-morning.svg",
-                    "alt": "The living room at eight in the morning: cool daylight through the window, every lamp off",
-                    "aspectRatio": "4/3",
-                    "objectFit": "cover",
-                    "borderRadius": 12
-                  }
-                },
-                {
-                  "id": "morning-copy",
-                  "type": "container",
-                  "props": {
-                    "direction": "column",
-                    "gap": 16,
-                    "maxWidth": 460
+                    "text": "2",
+                    "variant": "default",
+                    "rounded": true
                   },
-                  "children": [
-                    {
-                      "id": "morning-h",
-                      "type": "heading",
-                      "props": {
-                        "text": "Morning: the lamps stay off",
-                        "level": "h2"
-                      }
-                    },
-                    {
-                      "id": "morning-t",
-                      "type": "text",
-                      "props": {
-                        "content": "At eight there is daylight enough. The hub keeps every lamp off and only lifts the hall to a cool 5600 K if the sky is grey.",
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    },
-                    {
-                      "id": "morning-b",
-                      "type": "button",
-                      "props": {
-                        "label": "Compare the kits",
-                        "href": "/plans#kits",
-                        "variant": "outline"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "dusk",
-          "type": "section",
-          "props": {
-            "paddingY": 64,
-            "gap": 32
-          },
-          "children": [
-            {
-              "id": "dusk-row",
-              "type": "container",
-              "props": {
-                "direction": "row",
-                "gap": 48,
-                "align": "center"
-              },
-              "children": [
-                {
-                  "id": "dusk-media",
-                  "type": "image",
-                  "props": {
-                    "src": "pwpack/media/room-dusk.svg",
-                    "alt": "The same room at dusk: an orange sky, the floor lamp and the pendant warming up",
-                    "aspectRatio": "4/3",
-                    "objectFit": "cover",
-                    "borderRadius": 12
+                  "style": {
+                    "flex": "0 0 auto"
                   }
                 },
                 {
-                  "id": "dusk-copy",
-                  "type": "container",
-                  "props": {
-                    "direction": "column",
-                    "gap": 16,
-                    "maxWidth": 460
-                  },
-                  "children": [
-                    {
-                      "id": "dusk-h",
-                      "type": "heading",
-                      "props": {
-                        "text": "Dusk: Evening fades in",
-                        "level": "h2"
-                      }
-                    },
-                    {
-                      "id": "dusk-t",
-                      "type": "text",
-                      "props": {
-                        "content": "As the sun sets the floor lamp and the pendant warm up together to 2700 K, over twenty minutes, so the room never jumps.",
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    },
-                    {
-                      "id": "dusk-b",
-                      "type": "button",
-                      "props": {
-                        "label": "Watch an evening",
-                        "href": "/home#film",
-                        "variant": "outline"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "night",
-          "type": "section",
-          "props": {
-            "paddingY": 64,
-            "gap": 32
-          },
-          "children": [
-            {
-              "id": "night-row",
-              "type": "container",
-              "props": {
-                "direction": "row",
-                "gap": 48,
-                "align": "center"
-              },
-              "children": [
-                {
-                  "id": "night-media",
-                  "type": "image",
-                  "props": {
-                    "src": "pwpack/media/room-night.svg",
-                    "alt": "The same room at night: a dark window, the floor lamp low and amber, the pendant almost out",
-                    "aspectRatio": "4/3",
-                    "objectFit": "cover",
-                    "borderRadius": 12
-                  }
-                },
-                {
-                  "id": "night-copy",
-                  "type": "container",
-                  "props": {
-                    "direction": "column",
-                    "gap": 16,
-                    "maxWidth": 460
-                  },
-                  "children": [
-                    {
-                      "id": "night-h",
-                      "type": "heading",
-                      "props": {
-                        "text": "Night: Wind down",
-                        "level": "h2"
-                      }
-                    },
-                    {
-                      "id": "night-t",
-                      "type": "text",
-                      "props": {
-                        "content": "From 22:30 the pendant goes almost out and the floor lamp settles at an amber 1900 K: light enough to find your way to bed, too low to read by. Reading, at 3000 K, is the hour before, from 21:00.",
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    },
-                    {
-                      "id": "night-b",
-                      "type": "button",
-                      "props": {
-                        "label": "Join the waitlist",
-                        "href": "/plans#waitlist",
-                        "variant": "outline"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "onits",
-          "type": "section",
-          "props": {
-            "paddingY": 64,
-            "gap": 32
-          },
-          "children": [
-            {
-              "id": "onits-head",
-              "type": "container",
-              "props": {
-                "direction": "column",
-                "gap": 8
-              },
-              "children": [
-                {
-                  "id": "onits-h",
-                  "type": "heading",
-                  "props": {
-                    "text": "What the hub does on its own",
-                    "level": "h2"
-                  }
-                },
-                {
-                  "id": "onits-sub",
+                  "id": "setup-steps-x6",
                   "type": "text",
                   "props": {
-                    "content": "Once it knows your rooms, there is nothing left to set.",
+                    "content": "Walk through each room once with the hub’s setup page open on your phone, so the hub knows which light sits where.",
                     "color": "var(--pw-color-text-muted)"
                   },
                   "style": {
-                    "maxWidth": "65ch",
-                    "margin": "0",
-                    "alignSelf": "flex-start"
+                    "flex": "1 1 0",
+                    "minWidth": "0"
                   }
                 }
               ]
             },
             {
-              "id": "onits-grid",
-              "type": "grid",
+              "id": "setup-steps-x7",
+              "type": "container",
               "props": {
-                "columns": 3,
-                "gap": 24
+                "direction": "row",
+                "keepRow": true,
+                "gap": 12,
+                "align": "start"
               },
               "children": [
                 {
-                  "id": "onits-f1",
-                  "type": "card",
+                  "id": "setup-steps-x8",
+                  "type": "badge",
                   "props": {
-                    "padding": 16,
-                    "gap": 10,
-                    "shadow": "sm"
+                    "text": "3",
+                    "variant": "default",
+                    "rounded": true
                   },
-                  "children": [
-                    {
-                      "id": "onits-f1-icon",
-                      "type": "icon",
-                      "props": {
-                        "name": "clock",
-                        "size": 28,
-                        "color": "var(--pw-color-primary)"
-                      }
-                    },
-                    {
-                      "id": "onits-f1-h",
-                      "type": "heading",
-                      "props": {
-                        "text": "Wakes the house slowly",
-                        "level": "h3"
-                      }
-                    },
-                    {
-                      "id": "onits-f1-t",
-                      "type": "text",
-                      "props": {
-                        "content": "On a dark winter morning the bedroom lamp rises over fifteen minutes before your alarm, so the first light is never a switch.",
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    }
-                  ]
+                  "style": {
+                    "flex": "0 0 auto"
+                  }
                 },
                 {
-                  "id": "onits-f2",
-                  "type": "card",
+                  "id": "setup-steps-x9",
+                  "type": "text",
                   "props": {
-                    "padding": 16,
-                    "gap": 10,
-                    "shadow": "sm"
+                    "content": "Pick a morning and an evening you like; the hub reads your latitude and fills in every hour between.",
+                    "color": "var(--pw-color-text-muted)"
                   },
-                  "children": [
-                    {
-                      "id": "onits-f2-icon",
-                      "type": "icon",
-                      "props": {
-                        "name": "home",
-                        "size": 28,
-                        "color": "var(--pw-color-primary)"
-                      }
-                    },
-                    {
-                      "id": "onits-f2-h",
-                      "type": "heading",
-                      "props": {
-                        "text": "Knows when you are out",
-                        "level": "h3"
-                      }
-                    },
-                    {
-                      "id": "onits-f2-t",
-                      "type": "text",
-                      "props": {
-                        "content": "When the house is empty after dark it plays your usual evening in two rooms, so the windows look lived in.",
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    }
-                  ]
+                  "style": {
+                    "flex": "1 1 0",
+                    "minWidth": "0"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "setup-steps-x10",
+              "type": "container",
+              "props": {
+                "direction": "row",
+                "keepRow": true,
+                "gap": 12,
+                "align": "start"
+              },
+              "children": [
+                {
+                  "id": "setup-steps-x11",
+                  "type": "badge",
+                  "props": {
+                    "text": "4",
+                    "variant": "default",
+                    "rounded": true
+                  },
+                  "style": {
+                    "flex": "0 0 auto"
+                  }
                 },
                 {
-                  "id": "onits-f3",
-                  "type": "card",
+                  "id": "setup-steps-x12",
+                  "type": "text",
                   "props": {
-                    "padding": 16,
-                    "gap": 10,
-                    "shadow": "sm"
+                    "content": "Live with it for a week. Each dimmer you touch teaches the hub what you actually want.",
+                    "color": "var(--pw-color-text-muted)"
                   },
-                  "children": [
-                    {
-                      "id": "onits-f3-icon",
-                      "type": "icon",
-                      "props": {
-                        "name": "refresh-cw",
-                        "size": 28,
-                        "color": "var(--pw-color-primary)"
-                      }
-                    },
-                    {
-                      "id": "onits-f3-h",
-                      "type": "heading",
-                      "props": {
-                        "text": "Keeps learning",
-                        "level": "h3"
-                      }
-                    },
-                    {
-                      "id": "onits-f3-t",
-                      "type": "text",
-                      "props": {
-                        "content": "Every switch you flip is a vote. After a month the scenes are yours, and you never edited one.",
-                        "color": "var(--pw-color-text-muted)"
-                      }
-                    }
-                  ]
+                  "style": {
+                    "flex": "1 1 0",
+                    "minWidth": "0"
+                  }
                 }
               ]
             }
           ]
         }
-      ],
-      "style": {
-        "position": "relative",
-        "zIndex": "1",
-        "width": "100%",
-        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-        "marginInline": "auto",
-        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-        "boxSizing": "border-box",
-        "--pw-section-inset": "0px"
-      }
+      ]
     },
     {
-      "id": "foot",
-      "type": "container",
+      "id": "morning",
+      "type": "section",
       "props": {
-        "direction": "column",
-        "landmark": "footer"
-      },
-      "style": {
-        "position": "relative",
-        "zIndex": "1",
-        "width": "100%",
-        "maxWidth": "var(--pw-layout-container-max-width, 1280px)",
-        "marginInline": "auto",
-        "paddingInline": "max(16px, var(--pw-layout-surface-padding, 24px))",
-        "boxSizing": "border-box",
-        "--pw-section-inset": "0px"
+        "paddingY": 64,
+        "gap": 32
       },
       "children": [
         {
-          "id": "foot-s",
-          "type": "section",
+          "id": "morning-row",
+          "type": "container",
           "props": {
-            "paddingY": 32,
-            "gap": 8
-          },
-          "style": {
-            "borderTop": "1px solid var(--pw-color-border)",
-            "marginTop": "24px"
+            "direction": "row",
+            "gap": 48,
+            "align": "center"
           },
           "children": [
             {
-              "id": "foot-row",
+              "id": "morning-media",
+              "type": "image",
+              "props": {
+                "src": "pwpack/media/room-morning.svg",
+                "alt": "The living room at eight in the morning: cool daylight through the window, every lamp off",
+                "aspectRatio": "4/3",
+                "objectFit": "cover",
+                "borderRadius": 12
+              }
+            },
+            {
+              "id": "morning-copy",
               "type": "container",
               "props": {
-                "direction": "row",
-                "justify": "between",
-                "gap": 12,
-                "padding": 0,
-                "wrap": true
+                "direction": "column",
+                "gap": 16,
+                "maxWidth": 460
               },
               "children": [
                 {
-                  "id": "foot-c",
-                  "type": "text",
+                  "id": "morning-h",
+                  "type": "heading",
                   "props": {
-                    "content": "© 2026 Example Light · hello@example.com",
-                    "color": "var(--pw-color-text-muted)"
-                  },
-                  "style": {
-                    "fontSize": "var(--pw-font-size-sm)",
-                    "flex": "0 1 auto",
-                    "minWidth": "0"
+                    "text": "Morning: the lamps stay off",
+                    "level": "h2"
                   }
                 },
                 {
-                  "id": "foot-f",
+                  "id": "morning-t",
                   "type": "text",
                   "props": {
-                    "content": "Private beta on hub firmware 0.9 · kits ship March 2027",
+                    "content": "At eight there is daylight enough. The hub keeps every lamp off and only lifts the hall to a cool 5600 K if the sky is grey.",
                     "color": "var(--pw-color-text-muted)"
-                  },
-                  "style": {
-                    "fontSize": "var(--pw-font-size-sm)",
-                    "flex": "0 1 auto",
-                    "minWidth": "0"
+                  }
+                },
+                {
+                  "id": "morning-b",
+                  "type": "button",
+                  "props": {
+                    "label": "Compare the kits",
+                    "href": "/plans#kits",
+                    "variant": "outline"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dusk",
+      "type": "section",
+      "props": {
+        "paddingY": 64,
+        "gap": 32
+      },
+      "children": [
+        {
+          "id": "dusk-row",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "gap": 48,
+            "align": "center"
+          },
+          "children": [
+            {
+              "id": "dusk-media",
+              "type": "image",
+              "props": {
+                "src": "pwpack/media/room-dusk.svg",
+                "alt": "The same room at dusk: an orange sky, the floor lamp and the pendant warming up",
+                "aspectRatio": "4/3",
+                "objectFit": "cover",
+                "borderRadius": 12
+              }
+            },
+            {
+              "id": "dusk-copy",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 16,
+                "maxWidth": 460
+              },
+              "children": [
+                {
+                  "id": "dusk-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Dusk: Evening fades in",
+                    "level": "h2"
+                  }
+                },
+                {
+                  "id": "dusk-t",
+                  "type": "text",
+                  "props": {
+                    "content": "As the sun sets the floor lamp and the pendant warm up together to 2700 K, over twenty minutes, so the room never jumps.",
+                    "color": "var(--pw-color-text-muted)"
+                  }
+                },
+                {
+                  "id": "dusk-b",
+                  "type": "button",
+                  "props": {
+                    "label": "Watch an evening",
+                    "href": "/home#film",
+                    "variant": "outline"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "night",
+      "type": "section",
+      "props": {
+        "paddingY": 64,
+        "gap": 32
+      },
+      "children": [
+        {
+          "id": "night-row",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "gap": 48,
+            "align": "center"
+          },
+          "children": [
+            {
+              "id": "night-media",
+              "type": "image",
+              "props": {
+                "src": "pwpack/media/room-night.svg",
+                "alt": "The same room at night: a dark window, the floor lamp low and amber, the pendant almost out",
+                "aspectRatio": "4/3",
+                "objectFit": "cover",
+                "borderRadius": 12
+              }
+            },
+            {
+              "id": "night-copy",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 16,
+                "maxWidth": 460
+              },
+              "children": [
+                {
+                  "id": "night-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Night: Wind down",
+                    "level": "h2"
+                  }
+                },
+                {
+                  "id": "night-t",
+                  "type": "text",
+                  "props": {
+                    "content": "From 22:30 the pendant goes almost out and the floor lamp settles at an amber 1900 K: light enough to find your way to bed, too low to read by. Reading, at 3000 K, is the hour before, from 21:00.",
+                    "color": "var(--pw-color-text-muted)"
+                  }
+                },
+                {
+                  "id": "night-b",
+                  "type": "button",
+                  "props": {
+                    "label": "Join the waitlist",
+                    "href": "/plans#waitlist",
+                    "variant": "outline"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "onits",
+      "type": "section",
+      "props": {
+        "paddingY": 64,
+        "gap": 32
+      },
+      "children": [
+        {
+          "id": "onits-head",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 8
+          },
+          "children": [
+            {
+              "id": "onits-h",
+              "type": "heading",
+              "props": {
+                "text": "What the hub does on its own",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "onits-sub",
+              "type": "text",
+              "props": {
+                "content": "Once it knows your rooms, there is nothing left to set.",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "maxWidth": "65ch",
+                "margin": "0",
+                "alignSelf": "flex-start"
+              }
+            }
+          ]
+        },
+        {
+          "id": "onits-grid",
+          "type": "grid",
+          "props": {
+            "columns": 3,
+            "gap": 24
+          },
+          "children": [
+            {
+              "id": "onits-f1",
+              "type": "card",
+              "props": {
+                "padding": 16,
+                "gap": 10,
+                "shadow": "sm"
+              },
+              "children": [
+                {
+                  "id": "onits-f1-icon",
+                  "type": "icon",
+                  "props": {
+                    "name": "clock",
+                    "size": 28,
+                    "color": "var(--pw-color-primary)"
+                  }
+                },
+                {
+                  "id": "onits-f1-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Wakes the house slowly",
+                    "level": "h3"
+                  }
+                },
+                {
+                  "id": "onits-f1-t",
+                  "type": "text",
+                  "props": {
+                    "content": "On a dark winter morning the bedroom lamp rises over fifteen minutes before your alarm, so the first light is never a switch.",
+                    "color": "var(--pw-color-text-muted)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "onits-f2",
+              "type": "card",
+              "props": {
+                "padding": 16,
+                "gap": 10,
+                "shadow": "sm"
+              },
+              "children": [
+                {
+                  "id": "onits-f2-icon",
+                  "type": "icon",
+                  "props": {
+                    "name": "home",
+                    "size": 28,
+                    "color": "var(--pw-color-primary)"
+                  }
+                },
+                {
+                  "id": "onits-f2-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Knows when you are out",
+                    "level": "h3"
+                  }
+                },
+                {
+                  "id": "onits-f2-t",
+                  "type": "text",
+                  "props": {
+                    "content": "When the house is empty after dark it plays your usual evening in two rooms, so the windows look lived in.",
+                    "color": "var(--pw-color-text-muted)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "onits-f3",
+              "type": "card",
+              "props": {
+                "padding": 16,
+                "gap": 10,
+                "shadow": "sm"
+              },
+              "children": [
+                {
+                  "id": "onits-f3-icon",
+                  "type": "icon",
+                  "props": {
+                    "name": "refresh-cw",
+                    "size": 28,
+                    "color": "var(--pw-color-primary)"
+                  }
+                },
+                {
+                  "id": "onits-f3-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Keeps learning",
+                    "level": "h3"
+                  }
+                },
+                {
+                  "id": "onits-f3-t",
+                  "type": "text",
+                  "props": {
+                    "content": "Every switch you flip is a vote. After a month the scenes are yours, and you never edited one.",
+                    "color": "var(--pw-color-text-muted)"
                   }
                 }
               ]
@@ -935,23 +613,7 @@
       "required": false,
       "config": {
         "initialState": {
-          "pillLinks": [
-            {
-              "label": "Home",
-              "href": "/home",
-              "active": false
-            },
-            {
-              "label": "How it works",
-              "href": "/how-it-works",
-              "active": true
-            },
-            {
-              "label": "Kits",
-              "href": "/plans",
-              "active": false
-            }
-          ]
+          "here": "how-it-works"
         }
       }
     }
@@ -965,10 +627,6 @@
       "The pill nav is the same capsule as on every page; the page in view is lit"
     ],
     "patternsExercised": [
-      "stage-backdrop",
-      "paint-layer",
-      "pill-nav",
-      "weave-pitch",
       "band-process",
       "band-split-media",
       "band-feature-grid"

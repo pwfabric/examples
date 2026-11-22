@@ -1,5 +1,6 @@
 {
   "title": "Example Light lighting hub",
+  "titleTemplate": "%s · Example Light",
   "locale": "en-GB",
   "intent": {
     "purpose": "A household learns what an ambient lighting hub does, sees how setup works, picks a kit and joins the pre-order waitlist.",
@@ -8,7 +9,7 @@
     "successCriteria": "A visitor understands the hub, sees setup and a day of light, picks a kit and joins the waitlist in three pages"
   },
   "theme": {
-    "direction": "Dark evening stage, cream ink, one amber light for action, glass panels",
+    "direction": "An evening stage by default, cream ink, one amber light for action, glass panels; a warm daylight variant for visitors who choose light",
     "paletteHint": "theme-lighting-hub-waitlist",
     "status": "applied"
   },
@@ -94,6 +95,21 @@
       "usesMedia": [],
       "usesCustomBlocks": [],
       "status": "applied"
+    },
+    {
+      "key": "not-found",
+      "name": "Page not found",
+      "isEntry": false,
+      "purpose": "An unknown address, on the same stage, with the ways back",
+      "keyContent": [],
+      "linksTo": [
+        "home",
+        "plans"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [],
+      "usesCustomBlocks": [],
+      "status": "applied"
     }
   ],
   "packs": [],
@@ -119,6 +135,10 @@
     "ui.form.step": "Use steps of {step}.",
     "ui.form.type": "This does not look right. Check it and try again.",
     "ui.form.url": "Write a web address, like https://example.com.",
-    "ui.remove": "Remove {name}"
+    "ui.remove": "Remove {name}",
+    "ui.colorScheme": "Colour scheme",
+    "ui.colorScheme.light": "Daylight",
+    "ui.colorScheme.dark": "Evening",
+    "ui.colorScheme.system": "As your device"
   }
 }

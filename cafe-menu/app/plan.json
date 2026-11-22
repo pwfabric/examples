@@ -1,6 +1,13 @@
 {
   "title": "Example Café menu",
+  "titleTemplate": "%s · Example Café",
+  "description": "The menu a guest opens from the QR code on the table at Example Café: dishes by category with diet tags, allergens and prices, and how to find the café.",
   "locale": "en-GB",
+  "locales": [
+    "en-GB",
+    "tr"
+  ],
+  "defaultLocale": "en-GB",
   "intent": {
     "purpose": "Diners at a table check dishes, diet tags and prices on their phone before they order.",
     "audience": "A guest who scanned the QR code on the table",
@@ -82,22 +89,24 @@
       ],
       "usesCustomBlocks": [],
       "status": "applied"
+    },
+    {
+      "key": "notfound",
+      "name": "Not found",
+      "isEntry": false,
+      "purpose": "The in-shell page an unknown address or dish id meets, with the way back to the menu",
+      "keyContent": [],
+      "linksTo": [
+        "menu"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
     }
   ],
   "packs": [],
-  "messages": {
-    "ui.loading": "Loading the menu…",
-    "ui.retry": "Try again",
-    "ui.skipToContent": "Skip to the content",
-    "notFound.title": "Page not found",
-    "notFound.body": "The dish may have come off the menu, or the link is mistyped.",
-    "notFound.home": "Back to the menu",
-    "ui.account.menu": "{name} — account menu",
-    "ui.account.name": "Your account",
-    "ui.account.profile": "Your account",
-    "ui.account.signIn": "Sign in",
-    "ui.account.signOut": "Sign out",
-    "ui.dismiss": "Dismiss",
-    "ui.nav.bottom": "Main"
-  }
+  "shell": "bottomnav"
 }
