@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "project",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-studio-portfolio"
+  },
+  "title": "{{project.0.name}}",
+  "description": "{{project.0.name}}, {{project.0.place}}: {{project.0.summary}}",
+  "category": "content",
+  "tags": [
+    "architecture",
+    "portfolio"
+  ],
+  "blocks": [
+    {
+      "id": "back",
+      "type": "button",
+      "props": {
+        "label": "All projects",
+        "href": "/",
+        "variant": "ghost",
+        "icon": "arrow-left"
+      },
+      "style": {
+        "alignSelf": "flex-start",
+        "marginTop": "16px"
+      }
+    },
+    {
+      "id": "wait",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 12
+      },
+      "visibleWhen": "{{__loading.project && length(project) == 0}}",
+      "children": [
+        {
+          "id": "wait-s",
+          "type": "spinner",
+          "props": {
+            "size": "sm",
+            "label": "Loading the project…",
+            "variant": "muted"
+          }
+        },
+        {
+          "id": "wait-k",
+          "type": "skeleton",
+          "props": {
+            "variant": "rectangle",
+            "width": "100%",
+            "height": 360
+          }
+        },
+        {
+          "id": "wait-t",
+          "type": "skeleton",
+          "props": {
+            "variant": "text",
+            "lines": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "err",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": 12,
+        "align": "start"
+      },
+      "visibleWhen": "{{!!__errorCodes.project}}",
+      "children": [
+        {
+          "id": "err-h",
+          "type": "heading",
+          "props": {
+            "text": "This project did not load",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "err-t",
+          "type": "text",
+          "props": {
+            "content": "Check your connection and try again, or go back to all projects.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        },
+        {
+          "id": "err-b",
+          "type": "button",
+          "props": {
+            "label": "Try again",
+            "variant": "primary",
+            "icon": "refresh-cw",
+            "action": {
+              "type": "refresh",
+              "sourceId": "project"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rec",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": "column",
+        "gap": {
+          "xs": 20,
+          "md": 32
+        }
+      },
+      "visibleWhen": "{{length(project) > 0}}",
+      "children": [
+        {
+          "id": "rec-head",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": "column",
+            "gap": 8
+          },
+          "style": {
+            "paddingTop": "8px"
+          },
+          "children": [
+            {
+              "id": "rec-kind",
+              "type": "text",
+              "props": {
+                "content": "{{project.0.kind}} · {{project.0.place}}",
+                "color": "var(--pw-color-text-muted)"
+              },
+              "style": {
+                "letterSpacing": "0.02em"
+              }
+            },
+            {
+              "id": "rec-name",
+              "type": "heading",
+              "props": {
+                "text": "{{project.0.name}}",
+                "level": "h1"
+              }
+            },
+            {
+              "id": "rec-sum",
+              "type": "text",
+              "props": {
+                "content": "{{project.0.summary}}"
+              },
+              "style": {
+                "fontSize": "var(--pw-font-size-lg)",
+                "maxWidth": "62ch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "rec-pic",
+          "type": "image",
+          "props": {
+            "src": "{{project.0.image}}",
+            "alt": "{{project.0.imageAlt}}",
+            "aspectRatio": {
+              "xs": "3/2",
+              "lg": "2/1"
+            },
+            "objectFit": "cover",
+            "width": "100%",
+            "borderRadius": "var(--pw-border-radius, 4px)",
+            "loading": "eager",
+            "priority": true
+          }
+        },
+        {
+          "id": "rec-body",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": {
+              "xs": "column",
+              "lg": "row"
+            },
+            "gap": {
+              "xs": 24,
+              "lg": 56
+            },
+            "align": {
+              "xs": "stretch",
+              "lg": "start"
+            }
+          },
+          "children": [
+            {
+              "id": "rec-story",
+              "type": "container",
+              "props": {
+                "padding": 0,
+                "direction": "column",
+                "gap": 12
+              },
+              "style": {
+                "flex": "1 1 0",
+                "minWidth": "0"
+              },
+              "children": [
+                {
+                  "id": "rec-story-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "The project",
+                    "level": "h2"
+                  }
+                },
+                {
+                  "id": "rec-story-t",
+                  "type": "text",
+                  "props": {
+                    "content": "{{project.0.story}}"
+                  },
+                  "style": {
+                    "maxWidth": "62ch"
+                  }
+                },
+                {
+                  "id": "rec-talk",
+                  "type": "button",
+                  "props": {
+                    "label": "Talk to us about a project like this",
+                    "href": "/contact",
+                    "variant": "primary"
+                  },
+                  "style": {
+                    "alignSelf": "flex-start",
+                    "marginTop": "8px"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "rec-facts",
+              "type": "definition-list",
+              "props": {
+                "layout": "stacked",
+                "dividers": true,
+                "items": [
+                  {
+                    "term": "Type",
+                    "description": "{{project.0.kind}}"
+                  },
+                  {
+                    "term": "Place",
+                    "description": "{{project.0.place}}"
+                  },
+                  {
+                    "term": "Client",
+                    "description": "{{project.0.client}}"
+                  },
+                  {
+                    "term": "Floor area",
+                    "description": "{{number(project.0.area)}} m²"
+                  },
+                  {
+                    "term": "Status",
+                    "description": "{{project.0.status == 'On site' ? 'On site, opens in the spring' : 'Completed ' + project.0.year}}"
+                  }
+                ]
+              },
+              "style": {
+                "flex": "0 0 auto",
+                "width": {
+                  "xs": "100%",
+                  "lg": "360px"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "dataSources": [
+          {
+            "id": "project",
+            "kind": "entity",
+            "entityType": "Project",
+            "notFoundWhenEmpty": true,
+            "query": {
+              "filter": {
+                "field": "id",
+                "operator": "eq",
+                "value": "{{state.id}}"
+              }
+            }
+          }
+        ],
+        "initialState": {
+          "id": ""
+        },
+        "urlState": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "One project, opened from its tile: what it is, a picture, the story and the facts, and the way to start a conversation.",
+    "laws": [
+      "The page reads one record by the id in the address; the tab title is the project’s name",
+      "The story and the facts sit side by side on a wide screen and stack below it",
+      "An unknown id draws the app’s not-found page at the same address"
+    ],
+    "patternsExercised": [
+      "page-header",
+      "key-value-list"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "@pwpack/local/studio-portfolio",
+  "version": "1.0.0",
+  "formatVersion": "1.0",
+  "engines": {
+    "pwfabric": ">=3.5.0 <4"
+  },
+  "requires": [
+    {
+      "id": "@pwpack/foundation",
+      "range": "^2.0.0"
+    }
+  ],
+  "license": {
+    "fork": true,
+    "redistribute": true
+  },
+  "app": {
+    "entry": "projects",
+    "surfaceOrder": [
+      "projects",
+      "project",
+      "about",
+      "contact"
+    ],
+    "notFound": "not-found"
+  },
+  "packs": [
+    {
+      "id": "@pwpack/foundation",
+      "version": "2.0.0",
+      "hash": "sha256:fe2343a757219c98d47eef7a085b6b8c0d8e92f171b4fef57e8d223aa746934c"
+    }
+  ]
+}

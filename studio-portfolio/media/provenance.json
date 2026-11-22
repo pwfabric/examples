@@ -1,0 +1,54 @@
+{
+  "formatVersion": "1.0",
+  "items": [
+    {
+      "path": "media/courtyard-school.svg",
+      "hash": "sha256:0d5a3777ae47379928dd77106379074a526ca708087f4d61e5742cf19c4929b4",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/hillside-house.svg",
+      "hash": "sha256:92f29d4ad43d994e626d531137e0a109db7d48572c33b7b9b71968dce58be039",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/market-canopy.svg",
+      "hash": "sha256:bd7f1bbd5a87f8e6a7eef6f2c9818fae738835a45ea21f149f9a1e0a320171ce",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/orchard-row.svg",
+      "hash": "sha256:8460931e4f0957d8bbb87dfb2ff6c9d7ba4be6b054b8122a66cc835dc3a0be31",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/riverside-library.svg",
+      "hash": "sha256:dfe510f0839b76522560914c70adb6b461eb420d58ff8ad5ad7dbe717b19f193",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/ropewalk-studios.svg",
+      "hash": "sha256:e7bb3fb4f38c3cd12fc0ecd1fddde138c00f36e416eb92908dfbfca6880163e2",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "media/studio.svg",
+      "hash": "sha256:f113ab5ad6a11db2bd8956bb900903b6fad1ab4b4c65e224193a187fb6eafd5c",
+      "source": "provided",
+      "createdAt": "2026-11-22T12:00:00.000Z",
+      "license": "Apache-2.0"
+    }
+  ]
+}

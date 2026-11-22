@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "contact",
+  "version": "1.0.0",
+  "kind": "surface",
+  "appearance": {
+    "use": "theme-studio-portfolio"
+  },
+  "title": "Start a conversation",
+  "description": "Write to Example Architects about a house, an extension, housing or a public building. We answer within two working days.",
+  "category": "content",
+  "tags": [
+    "architecture",
+    "portfolio"
+  ],
+  "blocks": [
+    {
+      "id": "intro",
+      "type": "section",
+      "props": {
+        "paddingY": {
+          "xs": 32,
+          "md": 56
+        },
+        "gap": 10
+      },
+      "children": [
+        {
+          "id": "intro-h",
+          "type": "heading",
+          "props": {
+            "text": "Start a conversation",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "intro-t",
+          "type": "text",
+          "props": {
+            "content": "Tell us a little about the building you have in mind. An architect, not a receptionist, answers within two working days.",
+            "color": "var(--pw-color-text-muted)"
+          },
+          "style": {
+            "maxWidth": "62ch",
+            "fontSize": "var(--pw-font-size-lg)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "row",
+      "type": "container",
+      "props": {
+        "padding": 0,
+        "direction": {
+          "xs": "column",
+          "md": "row"
+        },
+        "gap": {
+          "xs": 32,
+          "md": 56
+        },
+        "align": "start"
+      },
+      "children": [
+        {
+          "id": "side",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": "column",
+            "gap": 16
+          },
+          "style": {
+            "flex": {
+              "xs": "1 1 auto",
+              "md": "0 0 300px"
+            },
+            "width": "100%",
+            "minWidth": "0"
+          },
+          "children": [
+            {
+              "id": "side-facts",
+              "type": "definition-list",
+              "props": {
+                "layout": "stacked",
+                "dividers": true,
+                "items": [
+                  {
+                    "term": "Studio",
+                    "description": [
+                      "Top floor, Ropewalk Studios",
+                      "3 Ropewalk Lane, Exampleton"
+                    ]
+                  },
+                  {
+                    "term": "Email",
+                    "description": "studio@example.com"
+                  },
+                  {
+                    "term": "Phone",
+                    "description": "01632 960 418, Monday to Friday 9:00–17:30"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "side-t",
+              "type": "text",
+              "props": {
+                "content": "The first visit to your site is free and comes with no obligation.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "form-col",
+          "type": "container",
+          "props": {
+            "padding": 0,
+            "direction": "column",
+            "gap": 12,
+            "align": "stretch"
+          },
+          "style": {
+            "flex": "1 1 0",
+            "width": "100%",
+            "minWidth": "0"
+          },
+          "children": [
+            {
+              "id": "enquiry",
+              "type": "form",
+              "props": {
+                "submitLabel": "Send",
+                "gap": 14,
+                "submittingWhen": "{{state.sending}}",
+                "resetWhen": "{{state.sent}}"
+              },
+              "children": [
+                {
+                  "id": "f-name",
+                  "type": "input",
+                  "props": {
+                    "name": "name",
+                    "label": "Your name",
+                    "required": true,
+                    "autocomplete": "name",
+                    "maxLength": 120
+                  }
+                },
+                {
+                  "id": "f-email",
+                  "type": "input",
+                  "props": {
+                    "name": "email",
+                    "type": "email",
+                    "label": "Email",
+                    "required": true,
+                    "autocomplete": "email"
+                  }
+                },
+                {
+                  "id": "f-kind",
+                  "type": "select",
+                  "props": {
+                    "name": "kind",
+                    "label": "What is it?",
+                    "placeholder": "Choose one",
+                    "required": true,
+                    "options": [
+                      {
+                        "label": "A new house",
+                        "value": "house"
+                      },
+                      {
+                        "label": "An extension or a refit",
+                        "value": "extension"
+                      },
+                      {
+                        "label": "Housing for a group or a landlord",
+                        "value": "housing"
+                      },
+                      {
+                        "label": "A public building or a workplace",
+                        "value": "public"
+                      },
+                      {
+                        "label": "Something else",
+                        "value": "other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "f-place",
+                  "type": "input",
+                  "props": {
+                    "name": "place",
+                    "label": "Where is the site? (optional)",
+                    "maxLength": 120
+                  }
+                },
+                {
+                  "id": "f-msg",
+                  "type": "textarea",
+                  "props": {
+                    "name": "message",
+                    "label": "Tell us about it",
+                    "required": true,
+                    "rows": 6,
+                    "maxLength": 4000,
+                    "placeholder": "What you need, when you hope to start, and anything that worries you."
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ok",
+              "type": "alert",
+              "visibleWhen": "{{state.sent}}",
+              "props": {
+                "variant": "success",
+                "title": "Thank you, your message has reached us",
+                "message": "An architect will write back within two working days.",
+                "focusOnShow": true
+              }
+            },
+            {
+              "id": "fail",
+              "type": "alert",
+              "visibleWhen": "{{state.failed}}",
+              "props": {
+                "variant": "error",
+                "title": "{{state.reason == 'validation' ? 'Check the fields above, then send it again.' : (state.reason == 'network' ? 'Your message did not leave: check your connection, then send it again.' : 'Your message did not arrive. Try again in a moment, or write to studio@example.com.')}}",
+                "focusOnShow": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "required": false,
+      "config": {
+        "dataSources": [
+          {
+            "id": "enquiries",
+            "kind": "entity",
+            "entityType": "Enquiry",
+            "fallback": []
+          }
+        ],
+        "initialState": {
+          "sending": false,
+          "sent": false,
+          "failed": false,
+          "reason": ""
+        },
+        "behaviors": [
+          {
+            "id": "f-name-edit",
+            "event": "input:change",
+            "targetBlockId": "f-name",
+            "actions": [
+              {
+                "type": "setState",
+                "key": "sent",
+                "value": false
+              },
+              {
+                "type": "setState",
+                "key": "failed",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "f-email-edit",
+            "event": "input:change",
+            "targetBlockId": "f-email",
+            "actions": [
+              {
+                "type": "setState",
+                "key": "sent",
+                "value": false
+              },
+              {
+                "type": "setState",
+                "key": "failed",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "f-kind-edit",
+            "event": "input:change",
+            "targetBlockId": "f-kind",
+            "actions": [
+              {
+                "type": "setState",
+                "key": "sent",
+                "value": false
+              },
+              {
+                "type": "setState",
+                "key": "failed",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "f-place-edit",
+            "event": "input:change",
+            "targetBlockId": "f-place",
+            "actions": [
+              {
+                "type": "setState",
+                "key": "sent",
+                "value": false
+              },
+              {
+                "type": "setState",
+                "key": "failed",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "f-msg-edit",
+            "event": "input:change",
+            "targetBlockId": "f-msg",
+            "actions": [
+              {
+                "type": "setState",
+                "key": "sent",
+                "value": false
+              },
+              {
+                "type": "setState",
+                "key": "failed",
+                "value": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "capability": "platform/entities",
+      "required": false,
+      "config": {
+        "formBindings": [
+          {
+            "formId": "enquiry",
+            "sourceId": "enquiries",
+            "method": "POST",
+            "statusKeys": {
+              "loading": "sending",
+              "success": "sent",
+              "error": "failed",
+              "reason": "reason"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "Take an enquiry: who, how to answer, what kind of building, where, and what they have in mind. Writes one Enquiry record.",
+    "laws": [
+      "Enquiries are create-only for the public: nobody reads them from the app",
+      "The next edit after a result hides it",
+      "The studio’s address and hours sit beside the form on a wide screen and above it on a phone"
+    ],
+    "patternsExercised": [
+      "contact-form",
+      "key-value-list"
+    ]
+  }
+}
