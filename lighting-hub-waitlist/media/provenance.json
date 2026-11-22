@@ -77,6 +77,38 @@
       "source": "provided",
       "createdAt": "2026-11-17T12:00:00.000Z",
       "license": "Apache-2.0"
+    },
+    {
+      "path": "media/fonts/dm-sans-latin-ext-wght-normal.woff2",
+      "hash": "sha256:a5d38fe99f930275684999b462c7123faa063d9e44e73b4b241723d884aa0f49",
+      "source": "provided",
+      "createdAt": "2026-11-22T16:08:45.121Z",
+      "license": "OFL-1.1",
+      "origin": "npm:@fontsource-variable/dm-sans@5.3.0"
+    },
+    {
+      "path": "media/fonts/dm-sans-latin-wght-normal.woff2",
+      "hash": "sha256:9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "source": "provided",
+      "createdAt": "2026-11-22T16:08:45.121Z",
+      "license": "OFL-1.1",
+      "origin": "npm:@fontsource-variable/dm-sans@5.3.0"
+    },
+    {
+      "path": "media/fonts/outfit-latin-ext-wght-normal.woff2",
+      "hash": "sha256:0f53d1c03b3918d744a843b5039001ee31695ca1e255e3914188df81beb461e9",
+      "source": "provided",
+      "createdAt": "2026-11-22T16:08:54.637Z",
+      "license": "OFL-1.1",
+      "origin": "npm:@fontsource-variable/outfit@5.3.0"
+    },
+    {
+      "path": "media/fonts/outfit-latin-wght-normal.woff2",
+      "hash": "sha256:6c18d579fd87c3776be068b762cbc83fde3acb543d49eabd3ade842eb987e887",
+      "source": "provided",
+      "createdAt": "2026-11-22T16:08:54.637Z",
+      "license": "OFL-1.1",
+      "origin": "npm:@fontsource-variable/outfit@5.3.0"
     }
   ]
 }

@@ -13,7 +13,7 @@ Every page stands in one layout (`app/layout.receipt.json`), written once: the e
 | `plans` (Kits) | Choose a kit and join the waitlist | `band-pricing` (whole-euro prices, one button per kit), `band-testimonial`, `faq`, `contact-form` (with the kit choice), a sketch map of the demo flat |
 | `not-found` | An unknown address (not in the page list) | the same stage, capsule and footer |
 
-**Theme:** `theme-lighting-hub-waitlist` (in `atoms/appearance/`): an evening palette (the dark variant: a warm near-black ground, cream ink, one amber light for action, Outfit headings over DM Sans, rounded glass shapes) and a daylight palette (cream ground, espresso ink, deep amber). The page follows the device until the visitor chooses. The `theme-toggle` in the capsule offers Daylight, Evening and As your device, and the choice is kept for the next visit. The lamp makers' wordmarks sit on an evening strip in both.
+**Theme:** `theme-lighting-hub-waitlist` (in `atoms/appearance/`): an evening palette (the dark variant: a warm near-black ground, cream ink, one amber light for action, Outfit headings over DM Sans, both shipped in `media/fonts/` under the SIL Open Font License, rounded glass shapes) and a daylight palette (cream ground, espresso ink, deep amber). The page follows the device until the visitor chooses. The `theme-toggle` in the capsule offers Daylight, Evening and As your device, and the choice is kept for the next visit. The lamp makers' wordmarks sit on an evening strip in both.
 
 **Pictures:** our own SVG illustrations in one flat evening style (the hub, one living room at three times of day, five fictional lamp-maker wordmarks, a sketch map) and a 41-second film rendered from the same drawings, recorded in `media/provenance.json` (Apache-2.0).
 
