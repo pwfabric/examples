@@ -57,7 +57,7 @@
         "gap": 12,
         "align": {
           "xs": "stretch",
-          "md": "end"
+          "md": "start"
         }
       },
       "children": [
