@@ -1,0 +1,157 @@
+{
+  "id": "theme-dental-appointments",
+  "kind": "ui-appearance",
+  "version": "1.0.0",
+  "category": "ui",
+  "name": "Example Dental Clinic",
+  "state": "stable",
+  "description": "Clean mint ground, deep teal ink and buttons, soft corners and calm, open type for booking a visit.",
+  "tags": [
+    "theme",
+    "appearance",
+    "light",
+    "dark"
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#0d6660",
+      "secondary": "#e2f1ee",
+      "accent": "#d8eee9",
+      "background": "#f4f9f8",
+      "card": "#ffffff",
+      "text": "#102a28",
+      "textMuted": "#4a6461",
+      "border": "#d3e3e0",
+      "error": "#b3261e",
+      "success": "#1f6b3a",
+      "warning": "#8a5a00",
+      "info": "#245f8a",
+      "textOnPrimary": "#ffffff"
+    },
+    "border": {
+      "radius": "12px",
+      "width": "1px",
+      "style": "solid",
+      "radiusLarge": "16px",
+      "radiusSmall": "8px",
+      "radiusXl": "22px",
+      "radius2xl": "28px",
+      "radiusFull": "9999px"
+    },
+    "typography": {
+      "fontFamily": "Figtree, ui-sans-serif, system-ui, sans-serif",
+      "headingFontFamily": "Figtree, ui-sans-serif, system-ui, sans-serif",
+      "monoFontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "baseFontSize": "16px",
+      "headingWeight": "700",
+      "headingLineHeight": "1.25",
+      "letterSpacing": "-0.005em",
+      "bodyLineHeight": "1.6",
+      "fontSizeSm": "14px",
+      "fontSizeXs": "12.5px",
+      "fontSizeLg": "18px",
+      "fontSizeXl": "21px",
+      "fontSize2xl": "25px",
+      "fontSize3xl": "30px",
+      "fontSize4xl": "38px",
+      "bodyWeight": "400",
+      "bodyLetterSpacing": "0em"
+    },
+    "spacing": {
+      "base": "1rem",
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "xxl": "3rem"
+    },
+    "shadows": {
+      "card": "0 1px 3px 0 rgba(16,42,40,.07)",
+      "button": "none",
+      "sm": "0 1px 2px 0 rgba(0,0,0,.05)",
+      "md": "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1)",
+      "lg": "0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1)",
+      "xl": "0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1)"
+    },
+    "motion": {
+      "durationFast": "150ms",
+      "durationNormal": "200ms",
+      "durationSlow": "300ms",
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "easingBounce": "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "layout": {
+      "gap": "0px",
+      "padding": "0px",
+      "containerMaxWidth": "1120px",
+      "gridGap": "24px",
+      "sectionPaddingY": "clamp(2.5rem, 5vw, 4rem)",
+      "sectionPaddingX": "clamp(1rem, 3vw, 1.5rem)"
+    },
+    "focus": {
+      "ringColor": "#1a8a80",
+      "ringWidth": "2px",
+      "ringOffset": "2px"
+    },
+    "zIndex": {
+      "sticky": 150,
+      "nav": 200,
+      "dropdown": 300,
+      "drawer": 400,
+      "modal": 500,
+      "toast": 540
+    },
+    "fonts": [
+      {
+        "family": "Figtree",
+        "fallback": "sans-serif",
+        "files": [
+          {
+            "src": "media/fonts/figtree-latin-ext.woff2",
+            "weight": "400 800",
+            "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+          },
+          {
+            "src": "media/fonts/figtree-latin.woff2",
+            "weight": "400 800",
+            "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+          }
+        ]
+      }
+    ]
+  },
+  "knowledge": {
+    "purpose": "Example Dental Clinic's own look: mint and teal, calm and clear, for patients booking a visit and for reception handling requests.",
+    "useCases": [
+      "Every page of the Example Dental Clinic app"
+    ],
+    "composesWith": [
+      "platform/persistence",
+      "platform/entities"
+    ],
+    "antiPatterns": [
+      "Pinning colours in block props — the clinic tokens already cascade"
+    ]
+  },
+  "darkTheme": {
+    "colors": {
+      "primary": "#7dd3c6",
+      "secondary": "#173230",
+      "accent": "#1b3a37",
+      "background": "#0b1918",
+      "card": "#122624",
+      "text": "#e4f3f0",
+      "textMuted": "#a3c0bb",
+      "border": "#2a4643",
+      "error": "#f2a49c",
+      "success": "#9fd8ae",
+      "warning": "#f0c36a",
+      "info": "#9cc8ea",
+      "textOnPrimary": "#062220"
+    },
+    "focus": {
+      "ringColor": "#7dd3c6"
+    }
+  }
+}

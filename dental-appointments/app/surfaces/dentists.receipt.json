@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "dentists",
+  "version": "1.0.0",
+  "kind": "surface",
+  "title": "Dentists",
+  "description": "The dentists and the hygienist at Example Dental Clinic: who they are, the days they are in and the languages they speak.",
+  "blocks": [
+    {
+      "id": "head",
+      "type": "section",
+      "props": {
+        "paddingY": 32,
+        "gap": 8,
+        "textAlign": "left"
+      },
+      "children": [
+        {
+          "id": "head-t",
+          "type": "heading",
+          "props": {
+            "text": "Who you will see",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "head-s",
+          "type": "text",
+          "props": {
+            "content": "Two dentists and a hygienist. Ask for one of them by name, or leave it to reception.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        }
+      ],
+      "style": {
+        "paddingBottom": "8px"
+      }
+    },
+    {
+      "id": "dentists-err",
+      "type": "alert",
+      "props": {
+        "variant": "error",
+        "title": "The team did not load",
+        "message": "Check your connection and try again, or call us on 01632 960 214."
+      },
+      "visibleWhen": "{{!!__errors.dentists}}"
+    },
+    {
+      "id": "dentists-retry",
+      "type": "button",
+      "props": {
+        "label": "Try again",
+        "variant": "outline",
+        "icon": "refresh-cw",
+        "action": {
+          "type": "refresh",
+          "sourceId": "dentists"
+        }
+      },
+      "visibleWhen": "{{!!__errors.dentists}}",
+      "style": {
+        "alignSelf": "flex-start"
+      }
+    },
+    {
+      "id": "team-wait",
+      "type": "grid",
+      "props": {
+        "columns": 3,
+        "columnsXs": 1,
+        "gap": 20
+      },
+      "children": [
+        {
+          "id": "team-wait-1",
+          "type": "skeleton",
+          "props": {
+            "variant": "card",
+            "height": 420
+          }
+        },
+        {
+          "id": "team-wait-2",
+          "type": "skeleton",
+          "props": {
+            "variant": "card",
+            "height": 420
+          }
+        },
+        {
+          "id": "team-wait-3",
+          "type": "skeleton",
+          "props": {
+            "variant": "card",
+            "height": 420
+          }
+        }
+      ],
+      "visibleWhen": "{{__loading.dentists && length(dentists) == 0}}"
+    },
+    {
+      "id": "team",
+      "type": "grid",
+      "props": {
+        "columns": 3,
+        "columnsXs": 1,
+        "gap": 20,
+        "alignItems": "stretch"
+      },
+      "children": [
+        {
+          "id": "doc",
+          "type": "card",
+          "props": {
+            "padding": 0,
+            "gap": 0,
+            "align": "stretch"
+          },
+          "children": [
+            {
+              "id": "doc-pic",
+              "type": "image",
+              "props": {
+                "src": "{{item.image}}",
+                "alt": "{{item.imageAlt}}",
+                "width": 320,
+                "height": 240,
+                "aspectRatio": "4/3",
+                "objectFit": "cover"
+              },
+              "style": {
+                "width": "100%",
+                "height": "auto"
+              }
+            },
+            {
+              "id": "doc-body",
+              "type": "container",
+              "props": {
+                "direction": "column",
+                "gap": 8,
+                "padding": 20
+              },
+              "children": [
+                {
+                  "id": "doc-name",
+                  "type": "heading",
+                  "props": {
+                    "text": "{{item.name}}",
+                    "level": "h2"
+                  }
+                },
+                {
+                  "id": "doc-role",
+                  "type": "text",
+                  "props": {
+                    "content": "{{item.role}}",
+                    "color": "var(--pw-color-primary)",
+                    "fontWeight": "semibold"
+                  }
+                },
+                {
+                  "id": "doc-about",
+                  "type": "text",
+                  "props": {
+                    "content": "{{item.about}}",
+                    "color": "var(--pw-color-text-muted)"
+                  },
+                  "style": {
+                    "flex": "1 1 auto"
+                  }
+                },
+                {
+                  "id": "doc-facts",
+                  "type": "definition-list",
+                  "props": {
+                    "items": [
+                      {
+                        "term": "In clinic",
+                        "description": "{{item.days}}"
+                      },
+                      {
+                        "term": "Speaks",
+                        "description": "{{item.languages}}"
+                      }
+                    ],
+                    "layout": "stacked",
+                    "dividers": false
+                  }
+                },
+                {
+                  "id": "doc-ask",
+                  "type": "button",
+                  "props": {
+                    "label": "Ask for {{item.callName}}",
+                    "href": "/request?dentist={{item.id}}",
+                    "variant": "outline",
+                    "fullWidth": true
+                  }
+                }
+              ],
+              "style": {
+                "flex": "1 1 auto"
+              }
+            }
+          ],
+          "style": {
+            "height": "100%"
+          }
+        }
+      ],
+      "repeat": "{{dentists}}",
+      "visibleWhen": "{{length(dentists) > 0}}",
+      "style": {
+        "paddingBottom": "40px"
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "config": {
+        "dataSources": [
+          {
+            "id": "dentists",
+            "kind": "entity",
+            "entityType": "Dentist",
+            "query": {
+              "sort": [
+                {
+                  "field": "rank",
+                  "direction": "asc"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "The people a patient may ask for, from the clinic’s records: picture, role, a line about them, their days and languages, and a way into the form with them chosen.",
+    "laws": [
+      "Each person links to the form with them chosen (?dentist=<id>)"
+    ],
+    "patternsExercised": [
+      "page-header",
+      "card-grid"
+    ]
+  }
+}

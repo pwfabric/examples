@@ -1,0 +1,397 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "request",
+  "version": "1.0.0",
+  "kind": "surface",
+  "title": "Request an appointment",
+  "description": "Ask Example Dental Clinic for an appointment: the service, a day and morning or afternoon. Reception calls you back within one working day.",
+  "blocks": [
+    {
+      "id": "head",
+      "type": "section",
+      "props": {
+        "paddingY": 32,
+        "gap": 8,
+        "textAlign": "left"
+      },
+      "children": [
+        {
+          "id": "head-t",
+          "type": "heading",
+          "props": {
+            "text": "Request an appointment",
+            "level": "h1"
+          }
+        },
+        {
+          "id": "head-s",
+          "type": "text",
+          "props": {
+            "content": "Choose what you need and when suits you. This is a request, not a booking: reception calls you within one working day to agree a time.",
+            "color": "var(--pw-color-text-muted)"
+          }
+        }
+      ],
+      "style": {
+        "paddingBottom": "8px"
+      }
+    },
+    {
+      "id": "req",
+      "type": "container",
+      "props": {
+        "direction": "row",
+        "gap": 32,
+        "padding": 0,
+        "wrap": true,
+        "align": "start"
+      },
+      "children": [
+        {
+          "id": "req-main",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 16,
+            "padding": 0
+          },
+          "children": [
+            {
+              "id": "services-err",
+              "type": "alert",
+              "props": {
+                "variant": "error",
+                "title": "The services did not load",
+                "message": "Check your connection and try again, or call us on 01632 960 214."
+              },
+              "visibleWhen": "{{!!__errors.services}}"
+            },
+            {
+              "id": "req-form",
+              "type": "form",
+              "props": {
+                "submitLabel": "Send request",
+                "submittingWhen": "{{state.sending}}",
+                "resetWhen": "{{state.sent}}",
+                "gap": 16
+              },
+              "children": [
+                {
+                  "id": "req-service",
+                  "type": "select",
+                  "props": {
+                    "name": "service",
+                    "label": "What do you need?",
+                    "placeholder": "Choose a service",
+                    "options": "{{services}}",
+                    "labelKey": "name",
+                    "valueKey": "id",
+                    "defaultValue": "{{length(services) > 0 ? state.service : ''}}",
+                    "required": true
+                  }
+                },
+                {
+                  "id": "req-dentist",
+                  "type": "select",
+                  "props": {
+                    "name": "dentist",
+                    "label": "Who would you like to see?",
+                    "placeholder": "No preference",
+                    "options": "{{dentists}}",
+                    "labelKey": "name",
+                    "valueKey": "id",
+                    "defaultValue": "{{length(dentists) > 0 ? state.dentist : ''}}"
+                  }
+                },
+                {
+                  "id": "req-day",
+                  "type": "date-input",
+                  "props": {
+                    "name": "day",
+                    "label": "Which day suits you?",
+                    "required": true,
+                    "minDate": "{{today(1)}}",
+                    "maxDate": "{{today(90)}}",
+                    "disabledWeekdays": [
+                      0
+                    ]
+                  }
+                },
+                {
+                  "id": "req-time",
+                  "type": "radio",
+                  "props": {
+                    "name": "time",
+                    "label": "Morning or afternoon?",
+                    "options": [
+                      {
+                        "label": "Morning (8:30–12:30)",
+                        "value": "morning"
+                      },
+                      {
+                        "label": "Afternoon (13:30–18:00)",
+                        "value": "afternoon"
+                      }
+                    ],
+                    "orientation": "horizontal",
+                    "required": true
+                  }
+                },
+                {
+                  "id": "req-name",
+                  "type": "input",
+                  "props": {
+                    "name": "name",
+                    "label": "Your name",
+                    "autocomplete": "name",
+                    "required": true,
+                    "maxLength": 120
+                  }
+                },
+                {
+                  "id": "req-phone",
+                  "type": "input",
+                  "props": {
+                    "name": "phone",
+                    "type": "tel",
+                    "label": "Phone number we can call",
+                    "autocomplete": "tel",
+                    "required": true,
+                    "maxLength": 40
+                  }
+                },
+                {
+                  "id": "req-email",
+                  "type": "input",
+                  "props": {
+                    "name": "email",
+                    "type": "email",
+                    "label": "E-mail (optional, for the confirmation)",
+                    "autocomplete": "email",
+                    "maxLength": 200
+                  }
+                },
+                {
+                  "id": "req-note",
+                  "type": "textarea",
+                  "props": {
+                    "name": "note",
+                    "label": "Anything we should know? (optional)",
+                    "rows": 3,
+                    "maxLength": 600
+                  }
+                },
+                {
+                  "id": "req-consent",
+                  "type": "checkbox",
+                  "props": {
+                    "name": "consent",
+                    "label": "The clinic may keep these details to arrange my visit.",
+                    "required": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "req-ok",
+              "type": "alert",
+              "props": {
+                "variant": "success",
+                "title": "Request sent",
+                "message": "Thank you. Reception will call you within one working day to agree a time. If it is urgent, call 01632 960 214.",
+                "focusOnShow": true
+              },
+              "visibleWhen": "{{state.sent}}"
+            },
+            {
+              "id": "req-fail",
+              "type": "alert",
+              "props": {
+                "variant": "error",
+                "title": "Your request did not arrive",
+                "message": "{{state.reason == 'validation' ? 'Check the fields above: a service, a day, morning or afternoon, your name, a phone number and the consent box are needed.' : (state.reason == 'network' ? 'Check your connection, then send it again.' : 'Something went wrong on our side. Send it again in a moment, or call 01632 960 214.')}}",
+                "focusOnShow": true
+              },
+              "visibleWhen": "{{state.failed}}"
+            }
+          ],
+          "style": {
+            "flex": "2 1 360px",
+            "minWidth": "0"
+          }
+        },
+        {
+          "id": "req-side",
+          "type": "card",
+          "props": {
+            "padding": 20,
+            "gap": 10,
+            "align": "stretch"
+          },
+          "children": [
+            {
+              "id": "side-t",
+              "type": "heading",
+              "props": {
+                "text": "Opening hours",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "side-hours",
+              "type": "definition-list",
+              "props": {
+                "items": [
+                  {
+                    "term": "Monday to Friday",
+                    "description": "8:30–18:00"
+                  },
+                  {
+                    "term": "Saturday",
+                    "description": "9:00–13:00"
+                  },
+                  {
+                    "term": "Sunday",
+                    "description": "Closed"
+                  }
+                ],
+                "layout": "stacked",
+                "dividers": false
+              }
+            },
+            {
+              "id": "side-pain",
+              "type": "heading",
+              "props": {
+                "text": "In pain?",
+                "level": "h3"
+              }
+            },
+            {
+              "id": "side-pain-t",
+              "type": "text",
+              "props": {
+                "content": "Do not wait for a call back. Ring us from 8:30 and we will see you the same day.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            },
+            {
+              "id": "side-call",
+              "type": "button",
+              "props": {
+                "label": "Call 01632 960 214",
+                "href": "tel:+441632960214",
+                "variant": "secondary",
+                "icon": "phone",
+                "fullWidth": true
+              }
+            }
+          ],
+          "style": {
+            "flex": "1 1 260px",
+            "minWidth": "0",
+            "alignSelf": "flex-start"
+          }
+        }
+      ],
+      "style": {
+        "paddingBottom": "40px"
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "config": {
+        "dataSources": [
+          {
+            "id": "services",
+            "kind": "entity",
+            "entityType": "Service",
+            "query": {
+              "sort": [
+                {
+                  "field": "rank",
+                  "direction": "asc"
+                }
+              ]
+            }
+          },
+          {
+            "id": "dentists",
+            "kind": "entity",
+            "entityType": "Dentist",
+            "query": {
+              "sort": [
+                {
+                  "field": "rank",
+                  "direction": "asc"
+                }
+              ]
+            }
+          },
+          {
+            "id": "requests",
+            "kind": "entity",
+            "entityType": "AppointmentRequest",
+            "fields": {
+              "name": "text",
+              "phone": "text",
+              "email": "email",
+              "service": "relation",
+              "dentist": "relation",
+              "day": "date",
+              "time": "enum",
+              "note": "text",
+              "consent": "boolean"
+            }
+          }
+        ],
+        "initialState": {
+          "service": "",
+          "dentist": "",
+          "sending": false,
+          "sent": false,
+          "failed": false,
+          "reason": ""
+        },
+        "urlState": [
+          "service",
+          "dentist"
+        ]
+      }
+    },
+    {
+      "capability": "platform/entities",
+      "config": {
+        "formBindings": [
+          {
+            "formId": "req-form",
+            "sourceId": "requests",
+            "method": "POST",
+            "statusKeys": {
+              "loading": "sending",
+              "success": "sent",
+              "error": "failed",
+              "reason": "reason"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "The one thing a patient does here: send a request that reception answers by phone.",
+    "laws": [
+      "The form writes one AppointmentRequest record; the server sets its status (new) and the time it was sent",
+      "A service or a dentist named in the address (?service=, ?dentist=) is chosen when the form opens",
+      "The day is from tomorrow to ninety days ahead, never a Sunday",
+      "Visitors may create requests but never read them: only reception lists them",
+      "A sent request empties the form and says what happens next; a refused one says why in the clinic’s words"
+    ],
+    "patternsExercised": [
+      "page-header",
+      "form-with-aside"
+    ]
+  }
+}

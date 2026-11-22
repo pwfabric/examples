@@ -1,0 +1,57 @@
+{
+  "data": [
+    {
+      "id": "67dc648c-9da0-4e2d-883c-5cd7e7fb5709",
+      "name": "Priya Example",
+      "phone": "07700 900123",
+      "email": "priya@example.com",
+      "service": "02123f3e-86a9-42b1-a8a2-e0bb07c2d82f",
+      "dentist": "9585c87e-e31b-4a87-bd9b-ba48043a4f71",
+      "day": "2026-11-25",
+      "time": "morning",
+      "note": "Six months since my last check-up.",
+      "consent": true,
+      "status": "new",
+      "sentAt": "2026-11-21T09:12:00.000Z"
+    },
+    {
+      "id": "a7eec675-326f-4cb4-8675-69f1ea9ac303",
+      "name": "Owen Sample",
+      "phone": "07700 900456",
+      "service": "3bc41ac5-69f4-4844-ba0c-605c52a60e1b",
+      "day": "2026-11-23",
+      "time": "morning",
+      "note": "Lost a filling on the lower left, it is sensitive to cold.",
+      "consent": true,
+      "status": "new",
+      "sentAt": "2026-11-22T07:40:00.000Z"
+    },
+    {
+      "id": "9d1d1f4a-0af4-4a76-af49-5e21075c40f9",
+      "name": "Maya Placeholder",
+      "phone": "07700 900789",
+      "email": "maya@example.com",
+      "service": "d4c5b183-3de8-48a6-88ed-cacbad4b5163",
+      "dentist": "1dedae25-4200-4009-813e-a22d46d16bb6",
+      "day": "2026-11-28",
+      "time": "afternoon",
+      "note": "For my son, aged 7.",
+      "consent": true,
+      "status": "booked",
+      "sentAt": "2026-11-19T16:03:00.000Z"
+    },
+    {
+      "id": "52182c32-9919-4c15-8076-816d4dbcdb9c",
+      "name": "Jon Example",
+      "phone": "07700 900321",
+      "email": "jon@example.com",
+      "service": "e9d55540-1013-4e16-8e81-a671ac6fe52c",
+      "day": "2026-12-02",
+      "time": "afternoon",
+      "note": "",
+      "consent": true,
+      "status": "declined",
+      "sentAt": "2026-11-18T11:30:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "title": "Example Dental Clinic",
+  "titleTemplate": "%s · Example Dental Clinic",
+  "description": "Example Dental Clinic in Exampleton: what we do, who you will see, and a form to request an appointment that reception answers by phone.",
+  "locale": "en-GB",
+  "intent": {
+    "purpose": "A patient requests an appointment; reception signs in and handles the requests.",
+    "audience": "Patients of a small dental clinic, and the clinic's reception",
+    "tone": "Calm, plain and reassuring",
+    "successCriteria": "A patient sends a request in under a minute; reception sees it, calls back and marks it booked or declined"
+  },
+  "theme": {
+    "direction": "Mint ground, deep teal ink, soft corners, calm open type",
+    "paletteHint": "theme-dental-appointments",
+    "status": "applied"
+  },
+  "capabilities": [],
+  "media": [
+    "media/logo.svg",
+    "media/clinic.svg",
+    "media/dentist-amira.svg",
+    "media/dentist-tom.svg",
+    "media/dentist-lena.svg"
+  ],
+  "customBlocks": [],
+  "surfaces": [
+    {
+      "key": "services",
+      "name": "Services",
+      "isEntry": true,
+      "purpose": "What the clinic does, with a way into the request form for each service",
+      "keyContent": [],
+      "linksTo": [
+        "request",
+        "dentists"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg",
+        "media/clinic.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "dentists",
+      "name": "Dentists",
+      "isEntry": false,
+      "purpose": "Who a patient may see, their days and languages",
+      "keyContent": [],
+      "linksTo": [
+        "request"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg",
+        "media/dentist-amira.svg",
+        "media/dentist-tom.svg",
+        "media/dentist-lena.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "request",
+      "name": "Request an appointment",
+      "isEntry": false,
+      "purpose": "The form that writes an appointment request",
+      "keyContent": [],
+      "linksTo": [
+        "services"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "reception",
+      "name": "Reception",
+      "isEntry": false,
+      "purpose": "Reception signs in and handles the requests",
+      "keyContent": [],
+      "linksTo": [],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "not-found",
+      "name": "Not found",
+      "isEntry": false,
+      "purpose": "The in-shell page an unknown address meets",
+      "keyContent": [],
+      "linksTo": [
+        "services",
+        "request"
+      ],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    },
+    {
+      "key": "sign-in",
+      "name": "Sign-in",
+      "isEntry": false,
+      "purpose": "The app's own sign-in screen, drawn where a visitor signs in",
+      "keyContent": [],
+      "linksTo": [],
+      "usesCapabilities": [],
+      "usesMedia": [
+        "media/logo.svg"
+      ],
+      "usesCustomBlocks": [],
+      "status": "applied"
+    }
+  ],
+  "models": [],
+  "shell": "topnav",
+  "packs": [],
+  "messages": {
+    "ui.loading": "Loading…",
+    "ui.retry": "Try again",
+    "ui.skipToContent": "Skip to the content",
+    "ui.dismiss": "Dismiss",
+    "ui.nav.main": "Main",
+    "ui.nav.menu": "Menu",
+    "ui.nav.close": "Close the menu",
+    "ui.colorScheme": "Colour scheme",
+    "ui.colorScheme.light": "Light",
+    "ui.colorScheme.dark": "Dark",
+    "ui.colorScheme.system": "Device",
+    "notFound.title": "Page not found",
+    "notFound.body": "The link may be mistyped or out of date.",
+    "notFound.home": "Our services",
+    "account.signIn": "Sign in",
+    "account.signOut": "Sign out",
+    "account.profile": "Your account",
+    "account.greeting": "Signed in as {name}",
+    "ui.account.menu": "{name} — account menu",
+    "ui.account.name": "Your account",
+    "ui.account.profile": "Your account",
+    "ui.account.signIn": "Sign in",
+    "ui.account.signOut": "Sign out",
+    "session.unreachable": "Reception sign-in is not answering. Try again in a moment.",
+    "session.unexpected": "Sign-in gave an answer we could not read. Try again.",
+    "session.failed": "You are not signed in. Try again.",
+    "session.refused": "That e-mail and password do not match a reception account.",
+    "gate.title": "Reception sign-in",
+    "gate.email": "E-mail",
+    "gate.password": "Password",
+    "gate.name": "Name",
+    "gate.signIn": "Sign in",
+    "gate.register": "Create account",
+    "gate.close": "Close",
+    "gate.or": "or",
+    "gate.noProvider": "Sign-in is not set up for this app.",
+    "gate.provider.password": "Sign in with e-mail"
+  }
+}

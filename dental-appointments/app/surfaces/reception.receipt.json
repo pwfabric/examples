@@ -1,0 +1,614 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "reception",
+  "version": "1.0.0",
+  "kind": "surface",
+  "title": "Reception",
+  "description": "Reception’s list of appointment requests at Example Dental Clinic.",
+  "blocks": [
+    {
+      "id": "out",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "gap": 16,
+        "padding": 0
+      },
+      "children": [
+        {
+          "id": "out-head",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 8,
+            "textAlign": "left"
+          },
+          "children": [
+            {
+              "id": "out-head-t",
+              "type": "heading",
+              "props": {
+                "text": "Reception",
+                "level": "h1"
+              }
+            },
+            {
+              "id": "out-head-s",
+              "type": "text",
+              "props": {
+                "content": "Sign in with the reception account to see the appointment requests.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ],
+          "style": {
+            "paddingBottom": "8px"
+          }
+        },
+        {
+          "id": "out-in",
+          "type": "button",
+          "props": {
+            "label": "Sign in",
+            "variant": "primary",
+            "icon": "log-in",
+            "action": {
+              "type": "auth:signIn",
+              "method": "password"
+            }
+          },
+          "style": {
+            "alignSelf": "flex-start"
+          }
+        }
+      ],
+      "visibleWhen": "{{!__auth.signedIn}}",
+      "style": {
+        "paddingBottom": "40px"
+      }
+    },
+    {
+      "id": "other",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "gap": 12,
+        "padding": 0
+      },
+      "children": [
+        {
+          "id": "head",
+          "type": "section",
+          "props": {
+            "paddingY": 32,
+            "gap": 8,
+            "textAlign": "left"
+          },
+          "children": [
+            {
+              "id": "head-t",
+              "type": "heading",
+              "props": {
+                "text": "This account is not reception’s",
+                "level": "h1"
+              }
+            },
+            {
+              "id": "head-s",
+              "type": "text",
+              "props": {
+                "content": "Requests are only shown to the reception account. Sign out and sign in with it.",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ],
+          "style": {
+            "paddingBottom": "8px"
+          }
+        },
+        {
+          "id": "other-out",
+          "type": "button",
+          "props": {
+            "label": "Sign out",
+            "variant": "outline",
+            "icon": "log-in",
+            "action": {
+              "type": "auth:signOut"
+            }
+          },
+          "style": {
+            "alignSelf": "flex-start"
+          }
+        }
+      ],
+      "visibleWhen": "{{__auth.signedIn && !includes(me.roles, 'reception')}}",
+      "style": {
+        "paddingBottom": "40px"
+      }
+    },
+    {
+      "id": "desk",
+      "type": "container",
+      "props": {
+        "direction": "column",
+        "gap": 16,
+        "padding": 0
+      },
+      "children": [
+        {
+          "id": "desk-head",
+          "type": "container",
+          "props": {
+            "direction": "row",
+            "gap": 12,
+            "padding": 0,
+            "wrap": true,
+            "align": "center",
+            "justify": "between"
+          },
+          "children": [
+            {
+              "id": "desk-title",
+              "type": "section",
+              "props": {
+                "paddingY": 0,
+                "gap": 4,
+                "textAlign": "left"
+              },
+              "children": [
+                {
+                  "id": "desk-t",
+                  "type": "heading",
+                  "props": {
+                    "text": "Appointment requests",
+                    "level": "h1"
+                  }
+                },
+                {
+                  "id": "desk-who",
+                  "type": "text",
+                  "props": {
+                    "content": "Signed in as {{me.email}}",
+                    "color": "var(--pw-color-text-muted)"
+                  }
+                }
+              ],
+              "style": {
+                "flex": "1 1 260px"
+              }
+            },
+            {
+              "id": "desk-out",
+              "type": "button",
+              "props": {
+                "label": "Sign out",
+                "variant": "ghost",
+                "action": {
+                  "type": "auth:signOut"
+                }
+              }
+            }
+          ],
+          "style": {
+            "paddingTop": "32px"
+          }
+        },
+        {
+          "id": "desk-status",
+          "type": "segmented-control",
+          "props": {
+            "label": "Show",
+            "options": [
+              {
+                "label": "New",
+                "value": "new"
+              },
+              {
+                "label": "Booked",
+                "value": "booked"
+              },
+              {
+                "label": "Declined",
+                "value": "declined"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ],
+            "value": "{{state.status}}",
+            "stateKey": "status",
+            "wrap": true
+          }
+        },
+        {
+          "id": "desk-err",
+          "type": "alert",
+          "props": {
+            "variant": "error",
+            "title": "The requests did not load",
+            "message": "{{__errors.requests == 'forbidden' ? 'This account may not read requests.' : 'Check your connection and try again.'}}"
+          },
+          "visibleWhen": "{{!!__errors.requests}}"
+        },
+        {
+          "id": "desk-write-err",
+          "type": "alert",
+          "props": {
+            "variant": "error",
+            "title": "That change was not saved",
+            "message": "The request kept its status. Try again in a moment."
+          },
+          "visibleWhen": "{{state.writeFailed}}"
+        },
+        {
+          "id": "desk-wait",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 12,
+            "padding": 0
+          },
+          "children": [
+            {
+              "id": "desk-wait-1",
+              "type": "skeleton",
+              "props": {
+                "variant": "card",
+                "height": 150
+              }
+            },
+            {
+              "id": "desk-wait-2",
+              "type": "skeleton",
+              "props": {
+                "variant": "card",
+                "height": 150
+              }
+            },
+            {
+              "id": "desk-wait-3",
+              "type": "skeleton",
+              "props": {
+                "variant": "card",
+                "height": 150
+              }
+            }
+          ],
+          "visibleWhen": "{{__loading.requests && length(requests) == 0}}"
+        },
+        {
+          "id": "desk-none",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 6,
+            "padding": 0
+          },
+          "children": [
+            {
+              "id": "desk-none-t",
+              "type": "heading",
+              "props": {
+                "text": "{{state.status == 'new' ? 'No new requests' : (state.status == 'booked' ? 'Nothing booked yet' : (state.status == 'declined' ? 'Nothing declined' : 'No requests yet'))}}",
+                "level": "h2"
+              }
+            },
+            {
+              "id": "desk-none-s",
+              "type": "text",
+              "props": {
+                "content": "{{state.status == 'new' ? 'New requests from the website appear here. Booked and declined ones are under their own tabs.' : 'Requests move here when you mark them.'}}",
+                "color": "var(--pw-color-text-muted)"
+              }
+            }
+          ],
+          "visibleWhen": "{{length(requests) == 0 && !__loading.requests && !__errors.requests}}",
+          "style": {
+            "paddingBlock": "24px"
+          }
+        },
+        {
+          "id": "desk-list",
+          "type": "container",
+          "props": {
+            "direction": "column",
+            "gap": 12,
+            "padding": 0
+          },
+          "children": [
+            {
+              "id": "r",
+              "type": "card",
+              "props": {
+                "padding": 20,
+                "gap": 12,
+                "align": "stretch"
+              },
+              "children": [
+                {
+                  "id": "r-top",
+                  "type": "container",
+                  "props": {
+                    "direction": "row",
+                    "gap": 10,
+                    "padding": 0,
+                    "wrap": true,
+                    "align": "center",
+                    "justify": "between",
+                    "keepRow": true
+                  },
+                  "children": [
+                    {
+                      "id": "r-name",
+                      "type": "heading",
+                      "props": {
+                        "text": "{{item.name}}",
+                        "level": "h2"
+                      },
+                      "style": {
+                        "flex": "1 1 auto"
+                      }
+                    },
+                    {
+                      "id": "r-new",
+                      "type": "badge",
+                      "props": {
+                        "text": "New",
+                        "variant": "info"
+                      },
+                      "visibleWhen": "{{item.status == 'new'}}"
+                    },
+                    {
+                      "id": "r-booked",
+                      "type": "badge",
+                      "props": {
+                        "text": "Booked",
+                        "variant": "success"
+                      },
+                      "visibleWhen": "{{item.status == 'booked'}}"
+                    },
+                    {
+                      "id": "r-declined",
+                      "type": "badge",
+                      "props": {
+                        "text": "Declined",
+                        "variant": "default"
+                      },
+                      "visibleWhen": "{{item.status == 'declined'}}"
+                    }
+                  ]
+                },
+                {
+                  "id": "r-facts",
+                  "type": "definition-list",
+                  "props": {
+                    "items": [
+                      {
+                        "term": "Wants",
+                        "description": "{{find(services, 'id', item.service).name}}"
+                      },
+                      {
+                        "term": "With",
+                        "description": "{{item.dentist ? find(dentists, 'id', item.dentist).name : 'No preference'}}"
+                      },
+                      {
+                        "term": "When",
+                        "description": "{{date(item.day, 'full')}}, {{item.time == 'morning' ? 'morning' : 'afternoon'}}"
+                      },
+                      {
+                        "term": "Phone",
+                        "description": "{{item.phone}}"
+                      },
+                      {
+                        "term": "E-mail",
+                        "description": "{{item.email ? item.email : '—'}}"
+                      },
+                      {
+                        "term": "Note",
+                        "description": "{{item.note ? item.note : '—'}}"
+                      },
+                      {
+                        "term": "Sent",
+                        "description": "{{datetime(item.sentAt)}}"
+                      }
+                    ],
+                    "layout": "columns",
+                    "dividers": true
+                  }
+                },
+                {
+                  "id": "r-acts",
+                  "type": "container",
+                  "props": {
+                    "direction": "row",
+                    "gap": 8,
+                    "padding": 0,
+                    "wrap": true,
+                    "align": "center"
+                  },
+                  "children": [
+                    {
+                      "id": "r-call",
+                      "type": "button",
+                      "props": {
+                        "label": "Call {{item.phone}}",
+                        "href": "tel:{{item.phone.replaceAll(' ', '')}}",
+                        "variant": "primary",
+                        "size": "small",
+                        "icon": "phone"
+                      }
+                    },
+                    {
+                      "id": "r-book",
+                      "type": "button",
+                      "props": {
+                        "label": "Mark booked",
+                        "variant": "secondary",
+                        "size": "small",
+                        "icon": "check",
+                        "action": {
+                          "type": "write",
+                          "sourceId": "requests",
+                          "op": "update",
+                          "id": "{{item.id}}",
+                          "values": {
+                            "status": "booked"
+                          },
+                          "statusKeys": {
+                            "error": "writeFailed"
+                          }
+                        }
+                      },
+                      "visibleWhen": "{{item.status != 'booked'}}"
+                    },
+                    {
+                      "id": "r-decline",
+                      "type": "button",
+                      "props": {
+                        "label": "Decline",
+                        "variant": "ghost",
+                        "size": "small",
+                        "icon": "x",
+                        "action": {
+                          "type": "write",
+                          "sourceId": "requests",
+                          "op": "update",
+                          "id": "{{item.id}}",
+                          "values": {
+                            "status": "declined"
+                          },
+                          "statusKeys": {
+                            "error": "writeFailed"
+                          }
+                        }
+                      },
+                      "visibleWhen": "{{item.status == 'new'}}"
+                    },
+                    {
+                      "id": "r-reopen",
+                      "type": "button",
+                      "props": {
+                        "label": "Back to new",
+                        "variant": "ghost",
+                        "size": "small",
+                        "icon": "refresh-cw",
+                        "action": {
+                          "type": "write",
+                          "sourceId": "requests",
+                          "op": "update",
+                          "id": "{{item.id}}",
+                          "values": {
+                            "status": "new"
+                          },
+                          "statusKeys": {
+                            "error": "writeFailed"
+                          }
+                        }
+                      },
+                      "visibleWhen": "{{item.status != 'new'}}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "repeat": "{{requests}}",
+          "visibleWhen": "{{length(requests) > 0}}"
+        }
+      ],
+      "visibleWhen": "{{__auth.signedIn && includes(me.roles, 'reception')}}",
+      "style": {
+        "paddingBottom": "40px"
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "platform/persistence",
+      "config": {
+        "dataSources": [
+          {
+            "id": "requests",
+            "kind": "entity",
+            "entityType": "AppointmentRequest",
+            "requiresSession": true,
+            "fields": {
+              "name": "text",
+              "phone": "text",
+              "email": "email",
+              "service": "relation",
+              "dentist": "relation",
+              "day": "date",
+              "time": "enum",
+              "note": "text",
+              "consent": "boolean",
+              "status": "enum"
+            },
+            "query": {
+              "filter": {
+                "field": "status",
+                "operator": "eq",
+                "value": "{{state.status == 'all' ? '' : state.status}}"
+              },
+              "sort": [
+                {
+                  "field": "day",
+                  "direction": "asc"
+                }
+              ]
+            }
+          },
+          {
+            "id": "services",
+            "kind": "entity",
+            "entityType": "Service",
+            "query": {
+              "sort": [
+                {
+                  "field": "rank",
+                  "direction": "asc"
+                }
+              ]
+            }
+          },
+          {
+            "id": "dentists",
+            "kind": "entity",
+            "entityType": "Dentist",
+            "query": {
+              "sort": [
+                {
+                  "field": "rank",
+                  "direction": "asc"
+                }
+              ]
+            }
+          }
+        ],
+        "initialState": {
+          "status": "new",
+          "writeFailed": false
+        },
+        "urlState": [
+          "status"
+        ]
+      }
+    }
+  ],
+  "knowledge": {
+    "purpose": "Reception signs in and works through the requests: who, what, when, how to reach them, and a status to move each one along.",
+    "laws": [
+      "Signed out, the page is a sign-in form; signed in without the reception role, it says so and offers to sign out",
+      "Only the reception role reads and updates AppointmentRequest records (auth.json); the source requires a session",
+      "The status control lives in the address (?status=new|booked|declined|all) and filters the list",
+      "Mark booked, Decline and Back to new each write the status of that one request; the list refreshes from the server"
+    ],
+    "patternsExercised": [
+      "sign-in-inline",
+      "record-cards",
+      "status-tabs"
+    ]
+  }
+}

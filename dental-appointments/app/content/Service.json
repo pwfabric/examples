@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": "02123f3e-86a9-42b1-a8a2-e0bb07c2d82f",
+      "rank": 1,
+      "name": "Check-up and clean",
+      "summary": "We look at your teeth and gums, take X-rays if they are due, and polish away the stains.",
+      "minutes": 30,
+      "priceFrom": 55,
+      "icon": "shield-check"
+    },
+    {
+      "id": "52c5974a-4896-4c0d-810a-8fabb57acb7a",
+      "rank": 2,
+      "name": "Hygienist visit",
+      "summary": "A deep clean below the gum line, with advice on brushing that suits your mouth.",
+      "minutes": 45,
+      "priceFrom": 70,
+      "icon": "sparkles"
+    },
+    {
+      "id": "f0b1c8ac-bb41-4ef6-8d59-14ed15254c4b",
+      "rank": 3,
+      "name": "White filling",
+      "summary": "A tooth-coloured filling for a cavity or a chipped edge, matched to the shade of your teeth.",
+      "minutes": 45,
+      "priceFrom": 120,
+      "icon": "layers"
+    },
+    {
+      "id": "3bc41ac5-69f4-4844-ba0c-605c52a60e1b",
+      "rank": 4,
+      "name": "Emergency appointment",
+      "summary": "Toothache, a broken tooth or a lost filling: we keep time free every day for pain.",
+      "minutes": 20,
+      "priceFrom": 60,
+      "icon": "zap"
+    },
+    {
+      "id": "e9d55540-1013-4e16-8e81-a671ac6fe52c",
+      "rank": 5,
+      "name": "Teeth whitening",
+      "summary": "Two visits to fit your trays, then two weeks of whitening at home.",
+      "minutes": 60,
+      "priceFrom": 250,
+      "icon": "sun"
+    },
+    {
+      "id": "d4c5b183-3de8-48a6-88ed-cacbad4b5163",
+      "rank": 6,
+      "name": "Children's check-up",
+      "summary": "For patients under 18, with a dentist who takes it slowly. No charge.",
+      "minutes": 20,
+      "priceFrom": 0,
+      "icon": "heart"
+    }
+  ]
+}
