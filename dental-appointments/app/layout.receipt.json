@@ -140,9 +140,21 @@
                     {
                       "id": "foot-reception",
                       "type": "link",
+                      "visibleWhen": "{{!__auth.signedIn}}",
                       "props": {
                         "href": "/reception",
                         "text": "Reception sign-in",
+                        "underline": "always",
+                        "fontSize": 14
+                      }
+                    },
+                    {
+                      "id": "foot-requests",
+                      "type": "link",
+                      "visibleWhen": "{{__auth.signedIn}}",
+                      "props": {
+                        "href": "/reception",
+                        "text": "Appointment requests",
                         "underline": "always",
                         "fontSize": 14
                       }
