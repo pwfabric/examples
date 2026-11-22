@@ -32,12 +32,12 @@
     {
       "id": "@pwpack/foundation",
       "version": "2.0.0",
-      "hash": "sha256:6d3da4eeebe3fa693831419569aa743d94846a128e11ca8d02b84df527d990ad"
+      "hash": "sha256:bcb2e415dfd38170ae8ab5cd2589b358b7fcf43c6267aea77f6497359d14db64"
     },
     {
       "id": "@pwpack/widgets",
       "version": "2.0.0",
-      "hash": "sha256:dfd3d597b3da2f479dcff5e41fdf3915ac82851ea8b5b197bae2a9621155e0f3"
+      "hash": "sha256:5ca8c9a7e174d9931c46cfe4334d8fc8109064fae64a0f369b9fcdb530ca5a70"
     }
   ]
 }
