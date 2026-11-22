@@ -1,18 +1,18 @@
 {
   "id": "@pwpack/local/lighting-hub-waitlist",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "formatVersion": "1.0",
   "engines": {
-    "pwfabric": ">=3.0.0 <4"
+    "pwfabric": ">=3.5.0 <4"
   },
   "requires": [
     {
       "id": "@pwpack/foundation",
-      "range": "^1.0.0"
+      "range": "^2.0.0"
     },
     {
       "id": "@pwpack/widgets",
-      "range": "^1.0.0"
+      "range": "^2.0.0"
     }
   ],
   "license": {
@@ -31,13 +31,13 @@
   "packs": [
     {
       "id": "@pwpack/foundation",
-      "version": "1.0.0",
-      "hash": "sha256:88344a3158ef7db54ebf25d3885719efd8668031bdace9921470f6397cdc5f31"
+      "version": "2.0.0",
+      "hash": "sha256:fe2343a757219c98d47eef7a085b6b8c0d8e92f171b4fef57e8d223aa746934c"
     },
     {
       "id": "@pwpack/widgets",
-      "version": "1.0.0",
-      "hash": "sha256:907e93da0e11c6fe2a094f74f779582c81f05e9fd3a08d92f3736ea7586cf0f8"
+      "version": "2.0.0",
+      "hash": "sha256:dfd3d597b3da2f479dcff5e41fdf3915ac82851ea8b5b197bae2a9621155e0f3"
     }
   ]
 }

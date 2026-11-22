@@ -1,6 +1,6 @@
 {
   "use": "theme-lighting-hub-waitlist",
   "mode": {
-    "policy": "light"
+    "policy": "system"
   }
 }
