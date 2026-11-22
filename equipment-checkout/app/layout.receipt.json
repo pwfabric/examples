@@ -30,7 +30,15 @@
             "logoText": "Example Team kit",
             "logoHref": "/",
             "links": []
-          }
+          },
+          "conditionalStates": [
+            {
+              "selector": " [data-pw-nav-narrow] > button[aria-controls]",
+              "style": {
+                "display": "none"
+              }
+            }
+          ]
         },
         {
           "id": "frame",
