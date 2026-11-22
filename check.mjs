@@ -161,6 +161,7 @@ function main() {
   const packs = findPacks(opts.packs)
   const list = apps()
   if (list.length === 0) throw new Error(`no example apps found in ${HERE}`)
+  const width = Math.max(...list.map((a) => a.length))
 
   const work = mkdtempSync(join(tmpdir(), 'pwf-examples-'))
   let cli
@@ -189,17 +190,17 @@ function main() {
       const { code, output } = pwf(cli, args, dir)
       const line = `pwf ${args.map((a) => (a.endsWith('.pwpack') ? a.split(/[\\/]/).pop() : a)).join(' ')}`
       if (code === 0) {
-        console.log(`  ✓ ${app.padEnd(14)} ${line}`)
+        console.log(`  ✓ ${app.padEnd(width)} ${line}`)
       } else {
         ok = false
-        console.log(`  ✗ ${app.padEnd(14)} ${line} (exit ${code})`)
+        console.log(`  ✗ ${app.padEnd(width)} ${line} (exit ${code})`)
         console.log(output.trimEnd().split(/\r?\n/).map((l) => `      | ${l}`).join('\n'))
         break
       }
     }
     if (ok && !existsSync(join(dir, '.pwf', 'out', 'index.html'))) {
       ok = false
-      console.log(`  ✗ ${app.padEnd(14)} pwf build exited 0 but wrote no .pwf/out/index.html`)
+      console.log(`  ✗ ${app.padEnd(width)} pwf build exited 0 but wrote no .pwf/out/index.html`)
     }
     if (!ok) failed++
   }
