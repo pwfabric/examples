@@ -86,8 +86,10 @@ node check.mjs --packs <folder with the .pwpack files>
 For each app, in a temporary copy, `check.mjs` runs `pwf add` for every pack
 the app requires, then `pwf validate` and `pwf build`, and fails unless each
 exits 0. The packs folder may hold several versions of a pack: each app gets
-the newest within its range. CI runs it against the packs built from
-[pwfabric/packs](https://github.com/pwfabric/packs) and the published `pwf`.
+the newest within its range. CI runs it against the pack releases the
+examples pin, downloaded from
+[pwfabric/packs](https://github.com/pwfabric/packs/releases), and the
+published `pwf`.
 
 ## Licence
 
