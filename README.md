@@ -13,14 +13,14 @@ the open [foundation and widgets packs](https://github.com/pwfabric/packs).
 
 ## Running one
 
-The command line is on npm (Node 22 or newer; `pwf` 3.5 or newer). Download
-`foundation-2.0.0.pwpack` (and, for the lighting app, `widgets-2.0.0.pwpack`)
+The command line is on npm (Node 22 or newer; `pwf` 3.7 or newer). Download
+`foundation-3.0.0.pwpack` (and, for the lighting app, `widgets-3.0.0.pwpack`)
 from the [packs releases](https://github.com/pwfabric/packs/releases), then:
 
 ```sh
 npm install -g @pwfabric/cli
 cd cafe-menu
-pwf add ../foundation-2.0.0.pwpack
+pwf add ../foundation-3.0.0.pwpack
 pwf doctor
 pwf dev
 ```

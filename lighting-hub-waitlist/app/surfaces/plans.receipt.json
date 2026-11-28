@@ -658,7 +658,7 @@
             "src": "pwpack/media/demo-flat-sketch-map.svg",
             "alt": "Sketch map: the demo flat at 12 Example Street marked in amber, a short walk from the bus stop, Example Park across the road",
             "aspectRatio": "12/7",
-            "borderRadius": 20
+            "borderRadius": "var(--pw-border-radius-lg)"
           },
           "style": {
             "width": "100%",

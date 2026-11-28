@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # The pack releases the examples pin (pwfabric/packs release tags).
-      PACKS: foundation@2.0.0 widgets@2.0.0
+      PACKS: foundation@3.0.0 widgets@3.0.0
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
@@ -46,6 +46,6 @@ jobs:
             curl -fsSL --retry 3 -o "$file.sha256" "$base/$file.sha256"
             sha256sum -c "$file.sha256"
           done
-      - name: Check the examples with the published pwf (@pwfabric/cli@^3.5.0)
+      - name: Check the examples with the published pwf (@pwfabric/cli@^3.7.0)
         working-directory: examples
         run: node check.mjs --packs ../packs
