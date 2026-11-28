@@ -22,7 +22,7 @@ pounds, and every picture has its own description; each word field has its Turki
 menu; nobody writes it through the app (`app/definitions/auth.json`).
 
 ```sh
-pwf add ../foundation-3.0.0.pwpack
+pwf add ../foundation-3.1.0.pwpack
 pwf dev
 ```
 

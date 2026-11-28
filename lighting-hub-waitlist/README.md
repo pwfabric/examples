@@ -20,7 +20,7 @@ Every page stands in one layout (`app/layout.receipt.json`), written once: the e
 The app's today is Tuesday 17 November 2026; the first kits ship in March 2027.
 
 ```sh
-pwf add ../foundation-3.0.0.pwpack
+pwf add ../foundation-3.1.0.pwpack
 pwf add ../widgets-3.0.0.pwpack
 pwf dev
 ```

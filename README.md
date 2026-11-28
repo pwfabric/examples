@@ -8,19 +8,19 @@ the open [foundation and widgets packs](https://github.com/pwfabric/packs).
 
 | App | The need it serves | Packs |
 |---|---|---|
-| [`cafe-menu`](cafe-menu/) | Example Café: the menu a guest opens from the QR code on the table. Dishes by category with diet tags, allergens and prices, and how to find the café. Reads the app's own records. In English and Turkish. | foundation 2 |
-| [`lighting-hub-waitlist`](lighting-hub-waitlist/) | Example Light: a lighting hub's website before launch. What it does, how it works, the kits, and a waitlist that writes a record. One layout for every page, a daylight and an evening palette with a colour-scheme choice, composed page titles. | foundation 2, widgets 2 |
+| [`cafe-menu`](cafe-menu/) | Example Café: the menu a guest opens from the QR code on the table. Dishes by category with diet tags, allergens and prices, and how to find the café. Reads the app's own records. In English and Turkish. | foundation 3 |
+| [`lighting-hub-waitlist`](lighting-hub-waitlist/) | Example Light: a lighting hub's website before launch. What it does, how it works, the kits, and a waitlist that writes a record. One layout for every page, a daylight and an evening palette with a colour-scheme choice, composed page titles. | foundation 3, widgets 3 |
 
 ## Running one
 
-The command line is on npm (Node 22 or newer; `pwf` 3.7 or newer). Download
-`foundation-3.0.0.pwpack` (and, for the lighting app, `widgets-3.0.0.pwpack`)
+The command line is on npm (Node 22 or newer; `pwf` 3.8 or newer). Download
+`foundation-3.1.0.pwpack` (and, for the lighting app, `widgets-3.0.0.pwpack`)
 from the [packs releases](https://github.com/pwfabric/packs/releases), then:
 
 ```sh
 npm install -g @pwfabric/cli
 cd cafe-menu
-pwf add ../foundation-3.0.0.pwpack
+pwf add ../foundation-3.1.0.pwpack
 pwf doctor
 pwf dev
 ```
