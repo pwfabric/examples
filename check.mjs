@@ -15,7 +15,7 @@
  *
  * Which `pwf`: `--cli <path-to-bin.js>`, else the PWF_CLI environment
  * variable, else the published CLI: `@pwfabric/cli` installed in this folder's
- * node_modules if there is one, otherwise `@pwfabric/cli@^3.5.0` from npm,
+ * node_modules if there is one, otherwise `@pwfabric/cli@^3.7.0` from npm,
  * installed into the temporary directory for this run. To check against an
  * engine clone, pass `--cli ../pwfabric/packages/cli/dist/bin.js` (after
  * `pnpm build` there).
@@ -39,7 +39,7 @@ import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 /** The published CLI this check runs when no other is named. */
-const CLI_PACKAGE = '@pwfabric/cli@^3.5.0'
+const CLI_PACKAGE = '@pwfabric/cli@^3.7.0'
 function parseArgs(argv) {
   const opts = { cli: undefined, packs: undefined, keep: false }
   for (let i = 0; i < argv.length; i++) {

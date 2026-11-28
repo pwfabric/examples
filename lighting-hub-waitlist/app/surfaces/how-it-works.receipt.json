@@ -268,7 +268,7 @@
                 "alt": "The living room at eight in the morning: cool daylight through the window, every lamp off",
                 "aspectRatio": "4/3",
                 "objectFit": "cover",
-                "borderRadius": 12
+                "borderRadius": "var(--pw-border-radius-sm)"
               }
             },
             {
@@ -336,7 +336,7 @@
                 "alt": "The same room at dusk: an orange sky, the floor lamp and the pendant warming up",
                 "aspectRatio": "4/3",
                 "objectFit": "cover",
-                "borderRadius": 12
+                "borderRadius": "var(--pw-border-radius-sm)"
               }
             },
             {
@@ -404,7 +404,7 @@
                 "alt": "The same room at night: a dark window, the floor lamp low and amber, the pendant almost out",
                 "aspectRatio": "4/3",
                 "objectFit": "cover",
-                "borderRadius": 12
+                "borderRadius": "var(--pw-border-radius-sm)"
               }
             },
             {

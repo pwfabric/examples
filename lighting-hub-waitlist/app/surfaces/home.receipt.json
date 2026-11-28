@@ -75,7 +75,7 @@
         "src": "pwpack/media/hub.svg",
         "alt": "The Example Light hub, a pale disc the size of a coaster with an amber ring, on a sideboard beside a lit lamp and a plant",
         "aspectRatio": "16/7",
-        "borderRadius": 24,
+        "borderRadius": "var(--pw-border-radius-xl)",
         "priority": true
       },
       "style": {
@@ -184,13 +184,13 @@
                 "glass": "lg"
               },
               "style": {
-                "borderRadius": "1.4rem",
+                "borderRadius": "var(--pw-border-radius-xl)",
                 "transition": "transform 180ms ease, box-shadow 180ms ease"
               },
               "states": {
                 "hover": {
                   "transform": "translateY(-3px)",
-                  "boxShadow": "0 26px 70px rgba(0,0,0,.5)"
+                  "boxShadow": "var(--pw-shadow-xl)"
                 }
               },
               "children": [
@@ -224,13 +224,13 @@
                 "glass": "lg"
               },
               "style": {
-                "borderRadius": "1.4rem",
+                "borderRadius": "var(--pw-border-radius-xl)",
                 "transition": "transform 180ms ease, box-shadow 180ms ease"
               },
               "states": {
                 "hover": {
                   "transform": "translateY(-3px)",
-                  "boxShadow": "0 26px 70px rgba(0,0,0,.5)"
+                  "boxShadow": "var(--pw-shadow-xl)"
                 }
               },
               "children": [
@@ -264,13 +264,13 @@
                 "glass": "lg"
               },
               "style": {
-                "borderRadius": "1.4rem",
+                "borderRadius": "var(--pw-border-radius-xl)",
                 "transition": "transform 180ms ease, box-shadow 180ms ease"
               },
               "states": {
                 "hover": {
                   "transform": "translateY(-3px)",
-                  "boxShadow": "0 26px 70px rgba(0,0,0,.5)"
+                  "boxShadow": "var(--pw-shadow-xl)"
                 }
               },
               "children": [
